@@ -25,7 +25,21 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Display)
 	UCameraComponent* Camera;
 
+public:
+	FORCEINLINE void SetMoveSpeedForward(float Value) { MoveSpeedForward = Value; }
+	FORCEINLINE void SetMoveSpeedRight(float Value) { MoveSpeedRight = Value; }
+
 protected:
 	virtual void BeginPlay() override;
-	
+
+	UCharacterMovementComponent* MovementComponent;
+
+	UPROPERTY(BlueprintReadOnly)
+	float MoveSpeed;
+
+	UPROPERTY(BlueprintReadOnly)
+	float MoveSpeedForward;
+
+	UPROPERTY(BlueprintReadOnly)
+	float MoveSpeedRight;
 };
