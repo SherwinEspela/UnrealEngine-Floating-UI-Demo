@@ -8,6 +8,7 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UWidgetComponent;
 
 UCLASS()
 class WORLDSPACEUIDEMO_API APlayerCharacter : public ACharacter
@@ -51,4 +52,7 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	float MoveSpeedThreshold = 20.f;
+
+	UPROPERTY(EditDefaultsOnly)
+	UWidgetComponent* MainMenuWidgetComponent;
 };

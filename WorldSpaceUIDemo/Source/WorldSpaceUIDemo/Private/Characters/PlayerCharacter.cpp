@@ -8,6 +8,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Animation/AnimMontage.h"
 #include "Animations/PlayerAnimInstance.h"
+#include "Components/WidgetComponent.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -32,6 +33,11 @@ APlayerCharacter::APlayerCharacter()
 	MovementComponent->RotationRate = FRotator(0.f, 400.f, 0.f);
 	MovementComponent->MaxWalkSpeed = 300.f;
 	MovementComponent->MinAnalogWalkSpeed = 50.f;
+
+	MainMenuWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Indicator Widget"));
+	MainMenuWidgetComponent->SetupAttachment(GetRootComponent());
+	//MainMenuWidgetComponent->SetDrawSize(FVector2D(40.f, 40.f));
+	MainMenuWidgetComponent->SetWidgetSpace(EWidgetSpace::World);
 }
 
 void APlayerCharacter::BeginPlay()
