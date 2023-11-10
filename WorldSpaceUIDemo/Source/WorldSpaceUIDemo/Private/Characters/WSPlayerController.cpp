@@ -25,7 +25,10 @@ void AWSPlayerController::SetupInputComponent()
 
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
 	EnhancedInputComponent->BindAction(InputActionMovement, ETriggerEvent::Triggered, this, &AWSPlayerController::Move);
+	EnhancedInputComponent->BindAction(InputActionMovement, ETriggerEvent::Completed, this, &AWSPlayerController::MoveCompleted);
+	EnhancedInputComponent->BindAction(InputActionLookAround, ETriggerEvent::Started, this, &AWSPlayerController::LookAroundStarted);
 	EnhancedInputComponent->BindAction(InputActionLookAround, ETriggerEvent::Triggered, this, &AWSPlayerController::LookAround);
+	EnhancedInputComponent->BindAction(InputActionLookAround, ETriggerEvent::Completed, this, &AWSPlayerController::LookAroundCompleted);
 	EnhancedInputComponent->BindAction(InputActionReloadLevel, ETriggerEvent::Triggered, this, &AWSPlayerController::ReloadLevel);
 }
 
@@ -45,8 +48,14 @@ void AWSPlayerController::Move(const FInputActionValue& Value)
 	if (PlayerCharacter)
 	{
 		float MaxSpeed = PlayerCharacter->GetMovementComponent()->GetMaxSpeed();
-		PlayerCharacter->SetMoveSpeedForward(MovementVector.Y * MaxSpeed);
-		PlayerCharacter->SetMoveSpeedRight(MovementVector.X * MaxSpeed);
+		MoveSpeedForward = MovementVector.Y * MaxSpeed;
+		MoveSpeedRight = MovementVector.X * MaxSpeed;
+
+		bool IsWithinRange = MoveSpeedRight > -30.f && MoveSpeedRight < 30.f;
+		PlayerCharacter->SetOrientRotationToMovement(IsWithinRange && !IsLookingAround);
+		
+		PlayerCharacter->SetMoveSpeedForward(MoveSpeedForward);
+		PlayerCharacter->SetMoveSpeedRight(MoveSpeedRight);
 	}
 }
 
@@ -56,26 +65,27 @@ void AWSPlayerController::LookAround(const FInputActionValue& Value)
 	PlayerCharacter->AddControllerYawInput(LookAxisVector.X);
 	PlayerCharacter->AddControllerPitchInput(LookAxisVector.Y);
 
-	FRotator Rotation = GetControlRotation();
-	IsRotatingRight = Rotation.Yaw > CurrentRightAngleValue;
-	CurrentRightAngleValue = Rotation.Yaw;
-
-	int AngleY = FMath::Floor(Rotation.Yaw);
-	//UE_LOG(LogTemp, Warning, TEXT("AngleY ===== %i"), AngleY);
-
-	if (AngleY == 90)
-	{
-		if (IsRotatingRight)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Is rotating RIGHT..."));
-		}
-		else {
-			UE_LOG(LogTemp, Warning, TEXT("Is rotating LEFT..."));
-		}
-	}
+	IsLookingAround = true;
+	PlayerCharacter->SetOrientRotationToMovement(true);
 }
 
 void AWSPlayerController::ReloadLevel()
 {
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+}
+
+void AWSPlayerController::MoveCompleted()
+{
+	PlayerCharacter->SetOrientRotationToMovement(true);
+}
+
+void AWSPlayerController::LookAroundStarted()
+{
+	IsLookingAround = true;
+	PlayerCharacter->SetOrientRotationToMovement(true);
+}
+
+void AWSPlayerController::LookAroundCompleted()
+{
+	IsLookingAround = false;
 }

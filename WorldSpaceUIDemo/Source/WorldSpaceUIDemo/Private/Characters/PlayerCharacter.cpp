@@ -6,6 +6,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Animation/AnimMontage.h"
+#include "Animations/PlayerAnimInstance.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -26,9 +28,9 @@ APlayerCharacter::APlayerCharacter()
 	Camera->SetupAttachment(CameraBoom);
 
 	MovementComponent = GetCharacterMovement();
-	MovementComponent->bOrientRotationToMovement = false;
+	MovementComponent->bOrientRotationToMovement = true;
 	MovementComponent->RotationRate = FRotator(0.f, 400.f, 0.f);
-	MovementComponent->MaxWalkSpeed = 850.f;
+	MovementComponent->MaxWalkSpeed = 300.f;
 	MovementComponent->MinAnalogWalkSpeed = 50.f;
 }
 
@@ -36,11 +38,25 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	bUseControllerRotationYaw = false;
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	MoveSpeed = UKismetMathLibrary::VSizeXY(MovementComponent->Velocity);
-	bUseControllerRotationYaw = MoveSpeed > 0.f;
+}
+
+void APlayerCharacter::TurnRight(bool Right)
+{
+	auto PlayerAnimInstance = Cast<UPlayerAnimInstance>(GetMesh()->GetAnimInstance());
+	if (PlayerAnimInstance) PlayerAnimInstance->TurnRight(Right);
+}
+
+void APlayerCharacter::SetOrientRotationToMovement(bool Value)
+{
+	if (MovementComponent)
+	{
+		MovementComponent->bOrientRotationToMovement = Value;
+	}
 }

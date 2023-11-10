@@ -13,5 +13,12 @@ UCLASS()
 class WORLDSPACEUIDEMO_API UPlayerAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
+
+public:
+	void TurnRight(bool Right = true);
+
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = Movement)
+	UAnimMontage* MontageTurn;
 	
 };

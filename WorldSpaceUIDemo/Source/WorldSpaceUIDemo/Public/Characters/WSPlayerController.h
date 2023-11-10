@@ -45,9 +45,14 @@ private:
 	void Move(const FInputActionValue& Value);
 	void LookAround(const FInputActionValue& Value);
 	void ReloadLevel();
+	void MoveCompleted();
+	void LookAroundStarted();
+	void LookAroundCompleted();
 
 	APlayerCharacter* PlayerCharacter;
 
 	bool IsRotatingRight = false;
 	float CurrentRightAngleValue = 0.f;
+	bool bCanResetControlOrientation = true;
+	bool IsLookingAround = false;
 };

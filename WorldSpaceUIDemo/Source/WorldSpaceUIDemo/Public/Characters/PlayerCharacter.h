@@ -18,6 +18,9 @@ public:
 	APlayerCharacter();
 	virtual void Tick(float DeltaTime) override;
 
+	void TurnRight(bool Right = true);
+	void SetOrientRotationToMovement(bool Value);
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Display)
 	USpringArmComponent* CameraBoom;
@@ -28,12 +31,15 @@ public:
 public:
 	FORCEINLINE void SetMoveSpeedForward(float Value) { MoveSpeedForward = Value; }
 	FORCEINLINE void SetMoveSpeedRight(float Value) { MoveSpeedRight = Value; }
+	FORCEINLINE void SetUseControllerRotationYaw(bool Value) { bUseControllerRotationYaw = Value; }
+	
 
 protected:
 	virtual void BeginPlay() override;
 
 	UCharacterMovementComponent* MovementComponent;
 
+protected:
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeed;
 
@@ -42,4 +48,7 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeedRight;
+
+	UPROPERTY(EditAnywhere)
+	float MoveSpeedThreshold = 20.f;
 };
