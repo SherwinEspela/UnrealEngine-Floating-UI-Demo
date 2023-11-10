@@ -47,4 +47,7 @@ private:
 	void ReloadLevel();
 
 	APlayerCharacter* PlayerCharacter;
+
+	bool IsRotatingRight = false;
+	float CurrentRightAngleValue = 0.f;
 };

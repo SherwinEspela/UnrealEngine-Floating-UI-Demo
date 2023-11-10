@@ -55,6 +55,24 @@ void AWSPlayerController::LookAround(const FInputActionValue& Value)
 	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 	PlayerCharacter->AddControllerYawInput(LookAxisVector.X);
 	PlayerCharacter->AddControllerPitchInput(LookAxisVector.Y);
+
+	FRotator Rotation = GetControlRotation();
+	IsRotatingRight = Rotation.Yaw > CurrentRightAngleValue;
+	CurrentRightAngleValue = Rotation.Yaw;
+
+	int AngleY = FMath::Floor(Rotation.Yaw);
+	//UE_LOG(LogTemp, Warning, TEXT("AngleY ===== %i"), AngleY);
+
+	if (AngleY == 90)
+	{
+		if (IsRotatingRight)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Is rotating RIGHT..."));
+		}
+		else {
+			UE_LOG(LogTemp, Warning, TEXT("Is rotating LEFT..."));
+		}
+	}
 }
 
 void AWSPlayerController::ReloadLevel()
