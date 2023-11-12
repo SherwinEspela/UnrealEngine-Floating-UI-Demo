@@ -12,7 +12,7 @@ void UDataBiosProfileWidget::NativeConstruct()
 	{
 		FString Paragraph1 = "Over 12 years of professional software development experience | ";
 		FString Paragraph2 = "Well-versed in numerous programming languages including C++, C#, Swift, Python and JavaScript | ";
-		FString Paragraph3 = "Developed applications and games for mobile devices and Windows PC using Unreal Engine, Unity 3D, React Native and XCode |";
+		FString Paragraph3 = "Developed applications and games for mobile devices and Windows PC using Unreal Engine, Unity 3D, React Native and XCode";
 		FString Details = FString::Printf(TEXT("%s%s%s"), *Paragraph1, *Paragraph2, *Paragraph3);
 		Text1Details->SetText(FText::FromString(Details.ToUpper()));
 	}
