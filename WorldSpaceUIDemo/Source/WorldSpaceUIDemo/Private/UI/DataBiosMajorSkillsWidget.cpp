@@ -10,8 +10,16 @@ void UDataBiosMajorSkillsWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	UE_LOG(LogTemp, Warning, TEXT("UDataBiosMajorSkillsWidget::NativeConstruct"));
+	LoadSkills();
+}
 
+void UDataBiosMajorSkillsWidget::NativePreConstruct()
+{
+	Super::NativePreConstruct();
+}
+
+void UDataBiosMajorSkillsWidget::LoadSkills()
+{
 	TArray<USkillWidget*> SkillsWidgets;
 	if (SkillsDataTable)
 	{
@@ -22,9 +30,13 @@ void UDataBiosMajorSkillsWidget::NativeConstruct()
 		{
 			FMajorSkillsRow* Row = SkillsDataTable->FindRow<FMajorSkillsRow>(RowName, "");
 			USkillWidget* SW = CreateWidget<USkillWidget>(GetWorld(), SkillWidgetClass);
-			UE_LOG(LogTemp, Warning, TEXT("Skill Name ====== %s"), *Row->SkillName);
-			SW->SetValues(Row->SkillIcon, Row->SkillName, Row->Level);
-			SkillsWidgets.Add(SW);
+
+			if (SW)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Skill Name ====== %s"), *Row->SkillName);
+				SW->SetValues(Row->SkillIcon, Row->SkillName, Row->Level);
+				SkillsWidgets.Add(SW);
+			}
 		}
 
 		int Index = 0;
@@ -41,10 +53,4 @@ void UDataBiosMajorSkillsWidget::NativeConstruct()
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("Skills data table NULL...."));
 	}
-}
-
-void UDataBiosMajorSkillsWidget::NativePreConstruct()
-{
-	Super::NativePreConstruct();
-
 }

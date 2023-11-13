@@ -35,7 +35,7 @@ class WORLDSPACEUIDEMO_API UDataBiosMajorSkillsWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	UDataTable* SkillsDataTable;
 
 protected:
@@ -45,6 +45,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	UUniformGridPanel* SkillsGrid;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	TSubclassOf<USkillWidget> SkillWidgetClass;
+
+private:
+	void LoadSkills();
 };
