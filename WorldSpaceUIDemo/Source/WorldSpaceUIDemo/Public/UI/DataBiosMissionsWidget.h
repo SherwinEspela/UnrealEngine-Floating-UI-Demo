@@ -4,48 +4,48 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Engine/DataTable.h"
 #include "UI/DataBiosCommonWidget.h"
-#include "DataBiosMajorSkillsWidget.generated.h"
+#include "DataBiosMissionsWidget.generated.h"
 
-class UUniformGridPanel;
-class UDataTable;
-class USkillWidget;
+class UMissionWidget;
 
 USTRUCT(BlueprintType)
-struct FMajorSkillsRow : public FTableRowBase
+struct FMissionRow : public FTableRowBase
 {
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	UTexture2D* SkillIcon = nullptr;
+	UTexture2D* MissionIcon = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FString SkillName = "";
+	FString MissionName = "";
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	int Level = 1;
+	int Difficulty = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool IsCompleted = false;
 };
 
 /**
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UDataBiosMajorSkillsWidget : public UDataBiosCommonWidget
+class WORLDSPACEUIDEMO_API UDataBiosMissionsWidget : public UDataBiosCommonWidget
 {
 	GENERATED_BODY()
 
 public:
 	UPROPERTY(EditAnywhere)
-	UDataTable* SkillsDataTable;
+	UDataTable* MissionsDataTable;
 
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<USkillWidget> SkillWidgetClass;
+	TSubclassOf<UMissionWidget> MissionWidgetClass;
 
 private:
-	void LoadSkills();
+	void LoadCells();
 };
