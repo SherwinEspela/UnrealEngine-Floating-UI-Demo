@@ -7,10 +7,7 @@
 
 void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, FString Location, TArray<FString> Rewards)
 {
-	if (TextureMission)
-	{
-		ImageMission->SetBrushFromTexture(TextureMission);
-	}
+	if (TextureMission) ImageMission->SetBrushFromTexture(TextureMission);
 
 	TextMissionName->SetText(FText::FromString(MissionName.ToUpper()));
 	TextDescription->SetText(FText::FromString(Description.ToUpper()));
@@ -19,9 +16,6 @@ void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionN
 	TextLocation->SetText(FText::FromString(Location));
 
 	FString RewardsValue;
-	for (FString Reward : Rewards)
-	{
-		RewardsValue += FString::Printf(TEXT(", "), *Reward);
-	}
+	for (FString Reward : Rewards) RewardsValue += FString::Printf(TEXT(", "), *Reward);
 	TextRewards->SetText(FText::FromString(RewardsValue));
 }
