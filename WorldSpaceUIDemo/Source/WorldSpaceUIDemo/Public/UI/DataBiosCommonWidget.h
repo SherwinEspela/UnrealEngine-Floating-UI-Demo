@@ -20,4 +20,7 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	UUniformGridPanel* CellsGrid;
 
+	UPROPERTY(EditAnywhere)
+	bool bIsDebugging = false;
+
 };

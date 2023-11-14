@@ -10,12 +10,13 @@ void UDataBiosMajorSkillsWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	LoadSkills();
 }
 
 void UDataBiosMajorSkillsWidget::NativePreConstruct()
 {
 	Super::NativePreConstruct();
+
+	LoadSkills();
 }
 
 void UDataBiosMajorSkillsWidget::LoadSkills()
