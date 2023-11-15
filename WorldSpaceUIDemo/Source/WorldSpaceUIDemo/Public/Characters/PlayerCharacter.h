@@ -9,6 +9,7 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UWidgetComponent;
+class AHUDCameraActor;
 
 UCLASS()
 class WORLDSPACEUIDEMO_API APlayerCharacter : public ACharacter
@@ -55,4 +56,10 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	UWidgetComponent* MainMenuWidgetComponent;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;
+
+private:
+	AHUDCameraActor* HUDCamera;
 };
