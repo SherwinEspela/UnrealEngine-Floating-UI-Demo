@@ -15,6 +15,7 @@ AHUDCameraActor::AHUDCameraActor()
 	CameraBoom->bInheritPitch = false;
 	CameraBoom->bInheritYaw = false;
 	CameraBoom->bInheritRoll = false;
+	CameraBoom->TargetArmLength = 86.f;
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(CameraBoom);
