@@ -23,6 +23,7 @@ public:
 
 	void TurnRight(bool Right = true);
 	void SetOrientRotationToMovement(bool Value);
+	UMainMenuWidget* GetMainMenuWidget();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Display)
@@ -35,7 +36,6 @@ public:
 	FORCEINLINE void SetMoveSpeedForward(float Value) { MoveSpeedForward = Value; }
 	FORCEINLINE void SetMoveSpeedRight(float Value) { MoveSpeedRight = Value; }
 	FORCEINLINE void SetUseControllerRotationYaw(bool Value) { bUseControllerRotationYaw = Value; }
-	FORCEINLINE UMainMenuWidget* GetMainMenuWidget() const { return MainMenuWidget; }
 
 protected:
 	virtual void BeginPlay() override;

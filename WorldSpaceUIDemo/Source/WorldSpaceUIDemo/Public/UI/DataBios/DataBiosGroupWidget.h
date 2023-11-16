@@ -21,7 +21,7 @@ public:
 	void MoveSelectionDown();
 
 protected:
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	UDataBiosWidget* DataBios;
 
 	UPROPERTY(meta = (BindWidget))

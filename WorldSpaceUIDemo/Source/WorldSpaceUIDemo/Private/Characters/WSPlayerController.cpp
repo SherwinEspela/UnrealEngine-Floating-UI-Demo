@@ -22,6 +22,7 @@ void AWSPlayerController::BeginPlay()
 	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
 	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
 	MainMenuWidget = PlayerCharacter->GetMainMenuWidget();
+	//MainMenuWidget->Test();
 }
 
 void AWSPlayerController::SetupInputComponent()
@@ -120,12 +121,10 @@ void AWSPlayerController::ToggleCamera()
 
 void AWSPlayerController::DPadUpTapped()
 {
-	if (bIsViewingPlayerCamera) return;
-	if (MainMenuWidget) MainMenuWidget->MoveSelectionUp();
+	MainMenuWidget->MoveSelectionUp();
 }
 
 void AWSPlayerController::DPadDownTapped()
 {
-	if (bIsViewingPlayerCamera) return;
-	if (MainMenuWidget) MainMenuWidget->MoveSelectionDown();
+	MainMenuWidget->MoveSelectionDown();
 }

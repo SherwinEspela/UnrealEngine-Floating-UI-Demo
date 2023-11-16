@@ -38,8 +38,9 @@ APlayerCharacter::APlayerCharacter()
 	MainMenuWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Indicator Widget"));
 	MainMenuWidgetComponent->SetupAttachment(GetRootComponent());
 	MainMenuWidgetComponent->SetWidgetSpace(EWidgetSpace::World);
+	//MainMenuWidgetComponent->SetWidgetClass()
 
-	MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent);
+	//MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent);
 }
 
 void APlayerCharacter::BeginPlay()
@@ -50,6 +51,8 @@ void APlayerCharacter::BeginPlay()
 
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
+
+	MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetWidgetClass());
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
@@ -70,4 +73,14 @@ void APlayerCharacter::SetOrientRotationToMovement(bool Value)
 	{
 		MovementComponent->bOrientRotationToMovement = Value;
 	}
+}
+
+UMainMenuWidget* APlayerCharacter::GetMainMenuWidget()
+{
+	if (MainMenuWidget == nullptr)
+	{
+		MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetWidgetClass());
+	}
+
+	return MainMenuWidget;
 }
