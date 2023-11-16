@@ -7,6 +7,7 @@
 #include "MainMenuWidget.generated.h"
 
 class UUniformGridPanel;
+class UDataBiosGroupWidget;
 
 /**
  * 
@@ -17,16 +18,21 @@ class WORLDSPACEUIDEMO_API UMainMenuWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void SetSomething();
+	void MoveSelectionUp();
+	void MoveSelectionDown();
 
 protected:
 	void NativeConstruct() override;
 
+protected:
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UUniformGridPanel* DotGrid;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UUserWidget> TilableDotClass;
+
+	UPROPERTY(meta = (BindWidget))
+	UDataBiosGroupWidget* DataBiosGroup;
 
 	UPROPERTY(EditAnywhere)
 	int DotCount = 20;

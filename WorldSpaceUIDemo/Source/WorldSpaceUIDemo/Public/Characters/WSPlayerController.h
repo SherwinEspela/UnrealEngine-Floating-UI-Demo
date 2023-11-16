@@ -25,6 +25,8 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
 
+protected:
+	/* Input Actions */
 	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
 	UInputMappingContext* InputMappingContextPlayer;
 
@@ -40,6 +42,13 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
 	UInputAction* InputActionYButton;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionDPadUpButton;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionDPadDownButton;
+
+protected:
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeedForward;
 
@@ -60,6 +69,8 @@ private:
 	void LookAroundStarted();
 	void LookAroundCompleted();
 	void ToggleCamera();
+	void DPadUpTapped();
+	void DPadDownTapped();
 
 private:
 	APlayerCharacter* PlayerCharacter;

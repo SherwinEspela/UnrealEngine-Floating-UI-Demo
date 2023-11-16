@@ -16,6 +16,9 @@ UCLASS()
 class WORLDSPACEUIDEMO_API UDataBiosGroupWidget : public UUserWidget
 {
 	GENERATED_BODY()
+public:
+	void MoveSelectionUp();
+	void MoveSelectionDown();
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -23,5 +26,4 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextTitle;
-
 };

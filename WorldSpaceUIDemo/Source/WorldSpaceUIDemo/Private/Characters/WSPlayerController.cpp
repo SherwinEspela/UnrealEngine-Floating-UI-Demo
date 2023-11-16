@@ -22,7 +22,6 @@ void AWSPlayerController::BeginPlay()
 	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
 	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
 	MainMenuWidget = PlayerCharacter->GetMainMenuWidget();
-	MainMenuWidget->SetSomething();
 }
 
 void AWSPlayerController::SetupInputComponent()
@@ -37,6 +36,8 @@ void AWSPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(InputActionLookAround, ETriggerEvent::Completed, this, &AWSPlayerController::LookAroundCompleted);
 	EnhancedInputComponent->BindAction(InputActionReloadLevel, ETriggerEvent::Triggered, this, &AWSPlayerController::ReloadLevel);
 	EnhancedInputComponent->BindAction(InputActionYButton, ETriggerEvent::Triggered, this, &AWSPlayerController::ToggleCamera);
+	EnhancedInputComponent->BindAction(InputActionDPadUpButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadUpTapped);
+	EnhancedInputComponent->BindAction(InputActionDPadDownButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadDownTapped);
 }
 
 void AWSPlayerController::Move(const FInputActionValue& Value)
@@ -115,4 +116,16 @@ void AWSPlayerController::ToggleCamera()
 	}
 
 	bIsViewingPlayerCamera = !bIsViewingPlayerCamera;
+}
+
+void AWSPlayerController::DPadUpTapped()
+{
+	if (bIsViewingPlayerCamera) return;
+	if (MainMenuWidget) MainMenuWidget->MoveSelectionUp();
+}
+
+void AWSPlayerController::DPadDownTapped()
+{
+	if (bIsViewingPlayerCamera) return;
+	if (MainMenuWidget) MainMenuWidget->MoveSelectionDown();
 }

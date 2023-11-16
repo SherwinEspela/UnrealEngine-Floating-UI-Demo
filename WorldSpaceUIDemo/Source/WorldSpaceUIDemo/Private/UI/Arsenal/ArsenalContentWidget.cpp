@@ -28,8 +28,6 @@ void UArsenalContentWidget::LoadCells(UUniformGridPanel* Grid, UDataTable* DataT
 	TArray<UArsenalCellWidget*> Widgets;
 	if (DataTable)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Arsenals data table available...."));
-
 		TArray<FName> RowNames = DataTable->GetRowNames();
 		for (FName RowName : RowNames)
 		{
@@ -38,8 +36,6 @@ void UArsenalContentWidget::LoadCells(UUniformGridPanel* Grid, UDataTable* DataT
 
 			if (Widget)
 			{
-				UE_LOG(LogTemp, Warning, TEXT("Arsenal Name ====== %s"), *Row->ArsenalName);
-
 				Widget->SetValues(Row->ArsenalIcon, Row->Quantity);
 				Widgets.Add(Widget);
 			}

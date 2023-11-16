@@ -3,6 +3,7 @@
 
 #include "UI/MainMenuWidget.h"
 #include "Components/UniformGridPanel.h"
+#include "UI/DataBios/DataBiosGroupWidget.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -24,7 +25,12 @@ void UMainMenuWidget::NativeConstruct()
 	}
 }
 
-void UMainMenuWidget::SetSomething()
+void UMainMenuWidget::MoveSelectionUp()
 {
-	GEngine->AddOnScreenDebugMessage(1, 15.f, FColor::Blue, TEXT("UMainMenuWidget::SetSomething"));
+	DataBiosGroup->MoveSelectionUp();
+}
+
+void UMainMenuWidget::MoveSelectionDown()
+{
+	DataBiosGroup->MoveSelectionDown();
 }

@@ -2,4 +2,14 @@
 
 
 #include "UI/DataBios/DataBiosGroupWidget.h"
+#include "UI/DataBiosWidget.h"
 
+void UDataBiosGroupWidget::MoveSelectionUp()
+{
+	DataBios->MoveSelectionUp();
+}
+
+void UDataBiosGroupWidget::MoveSelectionDown()
+{
+	DataBios->MoveSelectionDown();
+}

@@ -10,6 +10,7 @@ void UDataBiosWidget::NativeConstruct()
 
 	SetupWidgetMapping();
 	TabProfile->SetHighlight();
+	SelectedSideTab = TabProfile;
 }
 
 void UDataBiosWidget::SetupWidgetMapping()
@@ -20,4 +21,24 @@ void UDataBiosWidget::SetupWidgetMapping()
 	TabMissions->SetMapAbove(TabMainSkills);
 	TabMissions->SetMapBelow(TabTargets);
 	TabTargets->SetMapAbove(TabMissions);
+}
+
+void UDataBiosWidget::MoveSelectionUp()
+{
+	UpdateNewSelectedSideTab(SelectedSideTab->MoveUp());
+}
+
+void UDataBiosWidget::MoveSelectionDown()
+{
+	UpdateNewSelectedSideTab(SelectedSideTab->MoveDown());
+}
+
+void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget)
+{
+	if (MappableWidget)
+	{
+		SelectedSideTab->SetHighlight(false);
+		SelectedSideTab = Cast<USideMenuTab>(MappableWidget);
+		SelectedSideTab->SetHighlight();
+	}
 }

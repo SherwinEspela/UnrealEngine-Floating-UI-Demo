@@ -8,6 +8,7 @@
 
 class UDataBiosMajorSkillsWidget;
 class USideMenuTab;
+class UMappableWidget;
 
 /**
  * 
@@ -16,6 +17,10 @@ UCLASS()
 class WORLDSPACEUIDEMO_API UDataBiosWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+public:
+	void MoveSelectionUp();
+	void MoveSelectionDown();
 
 protected:
 	void NativeConstruct() override;
@@ -37,5 +42,10 @@ protected:
 	UDataBiosMajorSkillsWidget* MajorSkillsWidget;
 
 private:
+	USideMenuTab* SelectedSideTab;
+
+private:
 	void SetupWidgetMapping();
+	void UpdateNewSelectedSideTab(UMappableWidget* MappableWidget);
+
 };
