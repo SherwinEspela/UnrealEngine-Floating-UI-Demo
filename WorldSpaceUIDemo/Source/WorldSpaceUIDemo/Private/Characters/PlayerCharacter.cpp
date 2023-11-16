@@ -49,13 +49,13 @@ void APlayerCharacter::BeginPlay()
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
 
 	// Attaching HUD Camera
-	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
-	FAttachmentTransformRules AttachmentRules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, false);
+	//HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
+	/*FAttachmentTransformRules AttachmentRules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, false);
 	FString SocketName = TEXT("HeadHUDSocket");
 	HUDCamera->AttachToActor(this, AttachmentRules, FName(SocketName));
 	FVector SocketLocation = GetMesh()->GetSocketLocation(*SocketName);
 	HUDCamera->SetActorLocation(SocketLocation);
-	HUDCamera->SetActorRotation(FRotator(0.f, -33.f, 0.f));
+	HUDCamera->SetActorRotation(FRotator(0.f, -33.f, 0.f));*/
 }
 
 void APlayerCharacter::Tick(float DeltaTime)

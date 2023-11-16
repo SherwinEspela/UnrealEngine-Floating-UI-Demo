@@ -35,7 +35,7 @@ public:
 	FORCEINLINE void SetMoveSpeedForward(float Value) { MoveSpeedForward = Value; }
 	FORCEINLINE void SetMoveSpeedRight(float Value) { MoveSpeedRight = Value; }
 	FORCEINLINE void SetUseControllerRotationYaw(bool Value) { bUseControllerRotationYaw = Value; }
-	FORCEINLINE AHUDCameraActor* GetHUDCamera() { return HUDCamera; }
+	//FORCEINLINE AHUDCameraActor* GetHUDCamera() { return HUDCamera; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -58,9 +58,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UWidgetComponent* MainMenuWidgetComponent;
 
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;
+	/*UPROPERTY(EditAnywhere)
+	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;*/
 
-private:
-	AHUDCameraActor* HUDCamera;
+//private:
+//	AHUDCameraActor* HUDCamera;
 };

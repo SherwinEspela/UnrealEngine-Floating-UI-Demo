@@ -17,10 +17,9 @@ void AWSPlayerController::BeginPlay()
 	UEnhancedInputLocalPlayerSubsystem* PlayerSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
 	PlayerSubsystem->AddMappingContext(InputMappingContextPlayer, 0);
 
-	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
-	HUDCamera = PlayerCharacter->GetHUDCamera();
-
 	bIsViewingPlayerCamera = true;
+	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
+	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
 }
 
 void AWSPlayerController::SetupInputComponent()
@@ -99,6 +98,13 @@ void AWSPlayerController::ToggleCamera()
 {
 	if (bIsViewingPlayerCamera)
 	{
+		FString SocketName = TEXT("HeadHUDSocket");
+		FVector SocketLocation = PlayerCharacter->GetMesh()->GetSocketLocation(*SocketName);
+		HUDCamera->SetActorLocation(SocketLocation);
+		FRotator SocketRotation = PlayerCharacter->GetActorRotation();
+		SocketRotation.Yaw -= 33.f;
+		HUDCamera->SetActorRotation(SocketRotation);
+
 		SetViewTargetWithBlend(HUDCamera, CameraSwitchBlendTime);
 	}
 	else {

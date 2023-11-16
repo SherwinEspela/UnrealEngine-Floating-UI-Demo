@@ -48,6 +48,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 	float CameraSwitchBlendTime = 0.5f;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;
+
 private:
 	void Move(const FInputActionValue& Value);
 	void LookAround(const FInputActionValue& Value);
