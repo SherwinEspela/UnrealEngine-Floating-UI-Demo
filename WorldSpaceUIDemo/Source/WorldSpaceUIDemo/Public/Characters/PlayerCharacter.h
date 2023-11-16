@@ -10,6 +10,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UWidgetComponent;
 class AHUDCameraActor;
+class UMainMenuWidget;
 
 UCLASS()
 class WORLDSPACEUIDEMO_API APlayerCharacter : public ACharacter
@@ -22,7 +23,6 @@ public:
 
 	void TurnRight(bool Right = true);
 	void SetOrientRotationToMovement(bool Value);
-	void ToggleCamera();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Display)
@@ -35,12 +35,10 @@ public:
 	FORCEINLINE void SetMoveSpeedForward(float Value) { MoveSpeedForward = Value; }
 	FORCEINLINE void SetMoveSpeedRight(float Value) { MoveSpeedRight = Value; }
 	FORCEINLINE void SetUseControllerRotationYaw(bool Value) { bUseControllerRotationYaw = Value; }
-	//FORCEINLINE AHUDCameraActor* GetHUDCamera() { return HUDCamera; }
+	FORCEINLINE UMainMenuWidget* GetMainMenuWidget() const { return MainMenuWidget; }
 
 protected:
 	virtual void BeginPlay() override;
-
-	UCharacterMovementComponent* MovementComponent;
 
 protected:
 	UPROPERTY(BlueprintReadOnly)
@@ -58,9 +56,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UWidgetComponent* MainMenuWidgetComponent;
 
-	/*UPROPERTY(EditAnywhere)
-	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;*/
+protected:
+	UCharacterMovementComponent* MovementComponent;
 
-//private:
-//	AHUDCameraActor* HUDCamera;
+private:
+	UMainMenuWidget* MainMenuWidget;
 };

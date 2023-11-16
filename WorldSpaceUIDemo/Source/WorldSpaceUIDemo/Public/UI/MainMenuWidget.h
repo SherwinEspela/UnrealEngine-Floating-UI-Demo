@@ -16,6 +16,9 @@ class WORLDSPACEUIDEMO_API UMainMenuWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
+public:
+	void SetSomething();
+
 protected:
 	void NativeConstruct() override;
 

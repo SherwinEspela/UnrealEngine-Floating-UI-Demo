@@ -9,6 +9,7 @@
 #include "Animations/PlayerAnimInstance.h"
 #include "Components/WidgetComponent.h"
 #include "Characters/HUDCameraActor.h"
+#include "UI/MainMenuWidget.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -37,6 +38,8 @@ APlayerCharacter::APlayerCharacter()
 	MainMenuWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Indicator Widget"));
 	MainMenuWidgetComponent->SetupAttachment(GetRootComponent());
 	MainMenuWidgetComponent->SetWidgetSpace(EWidgetSpace::World);
+
+	MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent);
 }
 
 void APlayerCharacter::BeginPlay()
@@ -47,15 +50,6 @@ void APlayerCharacter::BeginPlay()
 
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
-
-	// Attaching HUD Camera
-	//HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
-	/*FAttachmentTransformRules AttachmentRules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, false);
-	FString SocketName = TEXT("HeadHUDSocket");
-	HUDCamera->AttachToActor(this, AttachmentRules, FName(SocketName));
-	FVector SocketLocation = GetMesh()->GetSocketLocation(*SocketName);
-	HUDCamera->SetActorLocation(SocketLocation);
-	HUDCamera->SetActorRotation(FRotator(0.f, -33.f, 0.f));*/
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
@@ -76,9 +70,4 @@ void APlayerCharacter::SetOrientRotationToMovement(bool Value)
 	{
 		MovementComponent->bOrientRotationToMovement = Value;
 	}
-}
-
-void APlayerCharacter::ToggleCamera()
-{
-
 }

@@ -11,6 +11,7 @@ class UInputMappingContext;
 class UInputAction;
 class APlayerCharacter;
 class AHUDCameraActor;
+class UMainMenuWidget;
 
 /**
  * 
@@ -60,8 +61,10 @@ private:
 	void LookAroundCompleted();
 	void ToggleCamera();
 
+private:
 	APlayerCharacter* PlayerCharacter;
 	AHUDCameraActor* HUDCamera;
+	UMainMenuWidget* MainMenuWidget;
 
 	bool IsRotatingRight = false;
 	float CurrentRightAngleValue = 0.f;

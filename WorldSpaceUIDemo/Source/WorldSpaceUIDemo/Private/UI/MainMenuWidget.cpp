@@ -23,3 +23,8 @@ void UMainMenuWidget::NativeConstruct()
 		}
 	}
 }
+
+void UMainMenuWidget::SetSomething()
+{
+	GEngine->AddOnScreenDebugMessage(1, 15.f, FColor::Blue, TEXT("UMainMenuWidget::SetSomething"));
+}

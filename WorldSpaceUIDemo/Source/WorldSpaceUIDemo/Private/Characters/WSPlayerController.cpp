@@ -9,6 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Characters/HUDCameraActor.h"
+#include "UI/MainMenuWidget.h"
 
 void AWSPlayerController::BeginPlay()
 {
@@ -20,6 +21,8 @@ void AWSPlayerController::BeginPlay()
 	bIsViewingPlayerCamera = true;
 	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
 	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
+	MainMenuWidget = PlayerCharacter->GetMainMenuWidget();
+	MainMenuWidget->SetSomething();
 }
 
 void AWSPlayerController::SetupInputComponent()
