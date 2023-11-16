@@ -8,6 +8,7 @@
 #include "Characters/PlayerCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Characters/HUDCameraActor.h"
 
 void AWSPlayerController::BeginPlay()
 {
@@ -16,7 +17,9 @@ void AWSPlayerController::BeginPlay()
 	UEnhancedInputLocalPlayerSubsystem* PlayerSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
 	PlayerSubsystem->AddMappingContext(InputMappingContextPlayer, 0);
 
+	bIsViewingPlayerCamera = true;
 	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
+	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
 }
 
 void AWSPlayerController::SetupInputComponent()
@@ -30,6 +33,7 @@ void AWSPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(InputActionLookAround, ETriggerEvent::Triggered, this, &AWSPlayerController::LookAround);
 	EnhancedInputComponent->BindAction(InputActionLookAround, ETriggerEvent::Completed, this, &AWSPlayerController::LookAroundCompleted);
 	EnhancedInputComponent->BindAction(InputActionReloadLevel, ETriggerEvent::Triggered, this, &AWSPlayerController::ReloadLevel);
+	EnhancedInputComponent->BindAction(InputActionYButton, ETriggerEvent::Triggered, this, &AWSPlayerController::ToggleCamera);
 }
 
 void AWSPlayerController::Move(const FInputActionValue& Value)
@@ -88,4 +92,24 @@ void AWSPlayerController::LookAroundStarted()
 void AWSPlayerController::LookAroundCompleted()
 {
 	IsLookingAround = false;
+}
+
+void AWSPlayerController::ToggleCamera()
+{
+	if (bIsViewingPlayerCamera)
+	{
+		FString SocketName = TEXT("HeadHUDSocket");
+		FVector SocketLocation = PlayerCharacter->GetMesh()->GetSocketLocation(*SocketName);
+		HUDCamera->SetActorLocation(SocketLocation);
+		FRotator SocketRotation = PlayerCharacter->GetActorRotation();
+		SocketRotation.Yaw -= 33.f;
+		HUDCamera->SetActorRotation(SocketRotation);
+
+		SetViewTargetWithBlend(HUDCamera, CameraSwitchBlendTime);
+	}
+	else {
+		SetViewTargetWithBlend(PlayerCharacter, CameraSwitchBlendTime);
+	}
+
+	bIsViewingPlayerCamera = !bIsViewingPlayerCamera;
 }

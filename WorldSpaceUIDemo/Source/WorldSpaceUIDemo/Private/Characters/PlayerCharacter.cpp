@@ -1,5 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Copyright 2023, Sherwin Espela. All Rights Reserved.
 
 #include "Characters/PlayerCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -9,6 +8,7 @@
 #include "Animation/AnimMontage.h"
 #include "Animations/PlayerAnimInstance.h"
 #include "Components/WidgetComponent.h"
+#include "Characters/HUDCameraActor.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -36,7 +36,6 @@ APlayerCharacter::APlayerCharacter()
 
 	MainMenuWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Indicator Widget"));
 	MainMenuWidgetComponent->SetupAttachment(GetRootComponent());
-	//MainMenuWidgetComponent->SetDrawSize(FVector2D(40.f, 40.f));
 	MainMenuWidgetComponent->SetWidgetSpace(EWidgetSpace::World);
 }
 
@@ -45,6 +44,18 @@ void APlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 	
 	bUseControllerRotationYaw = false;
+
+	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
+	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
+
+	// Attaching HUD Camera
+	//HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
+	/*FAttachmentTransformRules AttachmentRules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, false);
+	FString SocketName = TEXT("HeadHUDSocket");
+	HUDCamera->AttachToActor(this, AttachmentRules, FName(SocketName));
+	FVector SocketLocation = GetMesh()->GetSocketLocation(*SocketName);
+	HUDCamera->SetActorLocation(SocketLocation);
+	HUDCamera->SetActorRotation(FRotator(0.f, -33.f, 0.f));*/
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
@@ -65,4 +76,9 @@ void APlayerCharacter::SetOrientRotationToMovement(bool Value)
 	{
 		MovementComponent->bOrientRotationToMovement = Value;
 	}
+}
+
+void APlayerCharacter::ToggleCamera()
+{
+
 }

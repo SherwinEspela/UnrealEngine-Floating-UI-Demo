@@ -10,6 +10,7 @@
 class UInputMappingContext;
 class UInputAction;
 class APlayerCharacter;
+class AHUDCameraActor;
 
 /**
  * 
@@ -35,11 +36,20 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
 	UInputAction* InputActionReloadLevel;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionYButton;
+
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeedForward;
 
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeedRight;
+
+	UPROPERTY(EditAnywhere)
+	float CameraSwitchBlendTime = 0.5f;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;
 
 private:
 	void Move(const FInputActionValue& Value);
@@ -48,11 +58,14 @@ private:
 	void MoveCompleted();
 	void LookAroundStarted();
 	void LookAroundCompleted();
+	void ToggleCamera();
 
 	APlayerCharacter* PlayerCharacter;
+	AHUDCameraActor* HUDCamera;
 
 	bool IsRotatingRight = false;
 	float CurrentRightAngleValue = 0.f;
 	bool bCanResetControlOrientation = true;
 	bool IsLookingAround = false;
+	bool bIsViewingPlayerCamera = true;
 };
