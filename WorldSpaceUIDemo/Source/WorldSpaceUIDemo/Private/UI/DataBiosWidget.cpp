@@ -4,6 +4,7 @@
 #include "UI/DataBiosWidget.h"
 #include "UI/SideMenuTab.h"
 #include "Components/WidgetSwitcher.h"
+#include "UI/DataBiosMissionsWidget.h"
 
 void UDataBiosWidget::NativeConstruct()
 {
@@ -44,8 +45,6 @@ void UDataBiosWidget::MoveSelectionRight()
 	case EDataBiosSelectionRegion::EDSR_Targets:
 		break;
 	case EDataBiosSelectionRegion::EDSR_SideMenu:
-		UMappableWidget* Widget = SelectedSideTab->MoveRight();
-		
 		break;
 	default:
 		break;

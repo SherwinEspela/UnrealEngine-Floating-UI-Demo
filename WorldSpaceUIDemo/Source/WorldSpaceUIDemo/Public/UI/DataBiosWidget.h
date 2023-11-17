@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "CustomEnums.h"
 #include "DataBiosWidget.generated.h"
 
 class UDataBiosMajorSkillsWidget;
@@ -12,14 +13,6 @@ class UDataBiosTargetsWidget;
 class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
-
-UENUM(BlueprintType)
-enum class EDataBiosSelectionRegion : uint8
-{
-	EDSR_Missions	UMETA(DisplayName = "Panel Missions"),
-	EDSR_Targets	UMETA(DisplayName = "Panel Targets"),
-	EDSR_SideMenu	UMETA(DisplayName = "Side Menu")
-};
 
 /**
  * 
