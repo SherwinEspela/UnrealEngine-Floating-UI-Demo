@@ -8,7 +8,8 @@
 
 class USpringArmComponent;
 class UCameraComponent;
-class UWidgetComponent;
+//class UWidgetComponent;
+class UFloatingWidgetComponent;
 class AHUDCameraActor;
 class UMainMenuWidget;
 
@@ -23,6 +24,7 @@ public:
 
 	void TurnRight(bool Right = true);
 	void SetOrientRotationToMovement(bool Value);
+
 	UMainMenuWidget* GetMainMenuWidget();
 
 public:
@@ -36,6 +38,7 @@ public:
 	FORCEINLINE void SetMoveSpeedForward(float Value) { MoveSpeedForward = Value; }
 	FORCEINLINE void SetMoveSpeedRight(float Value) { MoveSpeedRight = Value; }
 	FORCEINLINE void SetUseControllerRotationYaw(bool Value) { bUseControllerRotationYaw = Value; }
+	FORCEINLINE UFloatingWidgetComponent* GetMainMenuWidgetComponent() { return MainMenuWidgetComponent; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -54,7 +57,7 @@ protected:
 	float MoveSpeedThreshold = 20.f;
 
 	UPROPERTY(EditDefaultsOnly)
-	UWidgetComponent* MainMenuWidgetComponent;
+	UFloatingWidgetComponent* MainMenuWidgetComponent;
 
 protected:
 	UCharacterMovementComponent* MovementComponent;

@@ -75,7 +75,6 @@ private:
 private:
 	APlayerCharacter* PlayerCharacter;
 	AHUDCameraActor* HUDCamera;
-	UMainMenuWidget* MainMenuWidget;
 
 	bool IsRotatingRight = false;
 	float CurrentRightAngleValue = 0.f;

@@ -6,10 +6,10 @@
 
 void UDataBiosGroupWidget::MoveSelectionUp()
 {
-	DataBios->MoveSelectionUp();
+	//DataBios->MoveSelectionUp();
 }
 
 void UDataBiosGroupWidget::MoveSelectionDown()
 {
-	DataBios->MoveSelectionDown();
+	//DataBios->MoveSelectionDown();
 }

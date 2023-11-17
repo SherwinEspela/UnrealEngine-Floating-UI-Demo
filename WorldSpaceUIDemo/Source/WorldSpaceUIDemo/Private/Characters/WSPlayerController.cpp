@@ -10,6 +10,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Characters/HUDCameraActor.h"
 #include "UI/MainMenuWidget.h"
+#include "HUD/FloatingWidgetComponent.h"
 
 void AWSPlayerController::BeginPlay()
 {
@@ -21,8 +22,6 @@ void AWSPlayerController::BeginPlay()
 	bIsViewingPlayerCamera = true;
 	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
 	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
-	MainMenuWidget = PlayerCharacter->GetMainMenuWidget();
-	//MainMenuWidget->Test();
 }
 
 void AWSPlayerController::SetupInputComponent()
@@ -121,10 +120,10 @@ void AWSPlayerController::ToggleCamera()
 
 void AWSPlayerController::DPadUpTapped()
 {
-	MainMenuWidget->MoveSelectionUp();
+	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionUp();
 }
 
 void AWSPlayerController::DPadDownTapped()
 {
-	MainMenuWidget->MoveSelectionDown();
+	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionDown();
 }

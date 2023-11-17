@@ -10,6 +10,7 @@
 #include "Components/WidgetComponent.h"
 #include "Characters/HUDCameraActor.h"
 #include "UI/MainMenuWidget.h"
+#include "HUD/FloatingWidgetComponent.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -35,12 +36,8 @@ APlayerCharacter::APlayerCharacter()
 	MovementComponent->MaxWalkSpeed = 300.f;
 	MovementComponent->MinAnalogWalkSpeed = 50.f;
 
-	MainMenuWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Indicator Widget"));
+	MainMenuWidgetComponent = CreateDefaultSubobject<UFloatingWidgetComponent>(TEXT("Indicator Widget"));
 	MainMenuWidgetComponent->SetupAttachment(GetRootComponent());
-	MainMenuWidgetComponent->SetWidgetSpace(EWidgetSpace::World);
-	//MainMenuWidgetComponent->SetWidgetClass()
-
-	//MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent);
 }
 
 void APlayerCharacter::BeginPlay()
@@ -52,7 +49,7 @@ void APlayerCharacter::BeginPlay()
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
 
-	MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetWidgetClass());
+	MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetUserWidgetObject());
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
@@ -79,7 +76,7 @@ UMainMenuWidget* APlayerCharacter::GetMainMenuWidget()
 {
 	if (MainMenuWidget == nullptr)
 	{
-		MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetWidgetClass());
+		MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetUserWidgetObject());
 	}
 
 	return MainMenuWidget;

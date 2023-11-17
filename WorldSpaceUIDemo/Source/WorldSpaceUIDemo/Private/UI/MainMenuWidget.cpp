@@ -27,30 +27,18 @@ void UMainMenuWidget::NativeConstruct()
 
 void UMainMenuWidget::MoveSelectionUp()
 {
-	//DataBiosGroup->MoveSelectionUp();
-
-	//UE_LOG(LogTemp, Warning, TEXT("UMainMenuWidget::DPadUpTapped"));
-	//if (DataBiosGroup)
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("UMainMenuWidget::DPadUpTapped"));
-	//	//DataBiosGroup->MoveSelectionUp();
-	//}
-	//else {
-	//	UE_LOG(LogTemp, Warning, TEXT("DataBiosGroup NULL..."));
-	//}
+	if (DataBiosGroup)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("DataBiosGroup AVAILABLE"));
+		//DataBiosGroup->MoveSelectionUp();
+	}
 }
 
 void UMainMenuWidget::MoveSelectionDown()
 {
-	//DataBiosGroup->MoveSelectionDown();
-
-	//UE_LOG(LogTemp, Warning, TEXT("UMainMenuWidget::DPadDownTapped"));
-	//if (DataBiosGroup)
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("UMainMenuWidget::DPadDownTapped"));
-	//	//DataBiosGroup->MoveSelectionDown();
-	//}
-	//else {
-	//	UE_LOG(LogTemp, Warning, TEXT("DataBiosGroup NULL..."));
-	//}
+	if (DataBiosGroup)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("DataBiosGroup AVAILABLE"));
+		//DataBiosGroup->MoveSelectionDown();
+	}
 }
