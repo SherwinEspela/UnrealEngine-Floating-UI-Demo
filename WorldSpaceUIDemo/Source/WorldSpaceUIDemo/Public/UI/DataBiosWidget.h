@@ -13,6 +13,14 @@ class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
 
+UENUM(BlueprintType)
+enum class EDataBiosSelectionRegion : uint8
+{
+	EDSR_Missions	UMETA(DisplayName = "Panel Missions"),
+	EDSR_Targets	UMETA(DisplayName = "Panel Targets"),
+	EDSR_SideMenu	UMETA(DisplayName = "Side Menu")
+};
+
 /**
  * 
  */
@@ -24,6 +32,8 @@ class WORLDSPACEUIDEMO_API UDataBiosWidget : public UUserWidget
 public:
 	void MoveSelectionUp();
 	void MoveSelectionDown();
+	void MoveSelectionRight();
+	void MoveSelectionLeft();
 
 protected:
 	void NativeConstruct() override;
@@ -54,6 +64,7 @@ private:
 	USideMenuTab* SelectedSideTab;
 
 	int CurrentTabIndex = 0;
+	EDataBiosSelectionRegion SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
 
 private:
 	void SetupWidgetMapping();

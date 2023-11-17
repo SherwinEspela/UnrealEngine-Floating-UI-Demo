@@ -5,9 +5,11 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UI/DataBiosCommonWidget.h"
+#include "UI/MappableWidget.h"
 #include "DataBiosMissionsWidget.generated.h"
 
 class UMissionWidget;
+class UMappableWidget;
 
 USTRUCT(BlueprintType)
 struct FMissionRow : public FTableRowBase
@@ -39,6 +41,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	UDataTable* MissionsDataTable;
 
+public:
+	FORCEINLINE UMappableWidget* GetFirstMissionWidget() const { return FirstMissionWidget; }
+
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
@@ -48,4 +53,10 @@ protected:
 
 private:
 	void LoadCells();
+	void SetupWidgetMapping();
+
+	TArray<UMissionWidget*> MissionWidgets;
+
+	UMappableWidget* FirstMissionWidget;
+	UMissionWidget* SelectedWidget;
 };

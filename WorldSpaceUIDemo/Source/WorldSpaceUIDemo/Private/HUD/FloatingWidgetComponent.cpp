@@ -21,12 +21,10 @@ void UFloatingWidgetComponent::BeginPlay()
 
 void UFloatingWidgetComponent::MoveSelectionUp()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("UFloatingWidgetComponent::MoveSelectionUp"));
 	MainMenuWidget->MoveSelectionUp();
 }
 
 void UFloatingWidgetComponent::MoveSelectionDown()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("UFloatingWidgetComponent::MoveSelectionDown"));
 	MainMenuWidget->MoveSelectionDown();
 }

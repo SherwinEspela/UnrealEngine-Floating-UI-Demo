@@ -21,6 +21,7 @@ void UDataBiosWidget::SetupWidgetMapping()
 	TabMainSkills->SetMapBelow(TabMissions);
 	TabMissions->SetMapAbove(TabMainSkills);
 	TabMissions->SetMapBelow(TabTargets);
+	TabMissions->SetMapOnRight(Missions->GetFirstMissionWidget());
 	TabTargets->SetMapAbove(TabMissions);
 }
 
@@ -32,6 +33,28 @@ void UDataBiosWidget::MoveSelectionUp()
 void UDataBiosWidget::MoveSelectionDown()
 {
 	UpdateNewSelectedSideTab(SelectedSideTab->MoveDown(), false);
+}
+
+void UDataBiosWidget::MoveSelectionRight()
+{
+	switch (SelectionRegion)
+	{
+	case EDataBiosSelectionRegion::EDSR_Missions:
+		break;
+	case EDataBiosSelectionRegion::EDSR_Targets:
+		break;
+	case EDataBiosSelectionRegion::EDSR_SideMenu:
+		UMappableWidget* Widget = SelectedSideTab->MoveRight();
+		
+		break;
+	default:
+		break;
+	}
+}
+
+void UDataBiosWidget::MoveSelectionLeft()
+{
+
 }
 
 void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp)
