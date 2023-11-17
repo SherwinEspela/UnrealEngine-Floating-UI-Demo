@@ -27,18 +27,10 @@ void UMainMenuWidget::NativeConstruct()
 
 void UMainMenuWidget::MoveSelectionUp()
 {
-	if (DataBiosGroup)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("DataBiosGroup AVAILABLE"));
-		//DataBiosGroup->MoveSelectionUp();
-	}
+	if (DataBiosGroup) DataBiosGroup->MoveSelectionUp();
 }
 
 void UMainMenuWidget::MoveSelectionDown()
 {
-	if (DataBiosGroup)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("DataBiosGroup AVAILABLE"));
-		//DataBiosGroup->MoveSelectionDown();
-	}
+	if (DataBiosGroup) DataBiosGroup->MoveSelectionDown();
 }
