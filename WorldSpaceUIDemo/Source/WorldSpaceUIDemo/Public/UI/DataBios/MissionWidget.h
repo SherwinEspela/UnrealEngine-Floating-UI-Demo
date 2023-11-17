@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "UI/MappableWidget.h"
 #include "MissionWidget.generated.h"
 
 class UImage;
@@ -14,7 +15,7 @@ class UTexture2D;
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UMissionWidget : public UUserWidget
+class WORLDSPACEUIDEMO_API UMissionWidget : public UMappableWidget
 {
 	GENERATED_BODY()
 
@@ -22,6 +23,12 @@ public:
 	void SetValues(UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted);
 
 protected:
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBG;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBorder;
+
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageIcon;
 

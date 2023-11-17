@@ -23,11 +23,6 @@ void UDataBiosMissionsWidget::LoadCells()
 	TArray<UMissionWidget*> Widgets;
 	if (MissionsDataTable)
 	{
-		if (bIsDebugging)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Missions data table available...."));
-		}
-
 		TArray<FName> RowNames = MissionsDataTable->GetRowNames();
 		for (FName RowName : RowNames)
 		{
@@ -36,11 +31,6 @@ void UDataBiosMissionsWidget::LoadCells()
 
 			if (Widget)
 			{
-				if (bIsDebugging)
-				{
-					UE_LOG(LogTemp, Warning, TEXT("Mission Name ====== %s"), *Row->MissionName);
-				}
-
 				Widget->SetValues(Row->MissionIcon, Row->MissionName, Row->Difficulty, Row->IsCompleted);
 				Widgets.Add(Widget);
 			}

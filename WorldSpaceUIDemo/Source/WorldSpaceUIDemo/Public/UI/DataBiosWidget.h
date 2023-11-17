@@ -7,6 +7,8 @@
 #include "DataBiosWidget.generated.h"
 
 class UDataBiosMajorSkillsWidget;
+class UDataBiosMissionsWidget;
+class UDataBiosTargetsWidget;
 class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
@@ -40,7 +42,10 @@ protected:
 	USideMenuTab* TabTargets;
 
 	UPROPERTY(meta = (BindWidget))
-	UDataBiosMajorSkillsWidget* MajorSkillsWidget;
+	UDataBiosMissionsWidget* Missions;
+
+	UPROPERTY(meta = (BindWidget))
+	UDataBiosTargetsWidget* Targets;
 
 	UPROPERTY(meta = (BindWidget))
 	UWidgetSwitcher* WidgetSwitcher;
