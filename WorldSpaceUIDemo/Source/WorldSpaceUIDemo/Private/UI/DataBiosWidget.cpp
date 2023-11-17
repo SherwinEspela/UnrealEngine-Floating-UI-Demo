@@ -3,6 +3,7 @@
 
 #include "UI/DataBiosWidget.h"
 #include "UI/SideMenuTab.h"
+#include "Components/WidgetSwitcher.h"
 
 void UDataBiosWidget::NativeConstruct()
 {
@@ -25,20 +26,22 @@ void UDataBiosWidget::SetupWidgetMapping()
 
 void UDataBiosWidget::MoveSelectionUp()
 {
-	UpdateNewSelectedSideTab(SelectedSideTab->MoveUp());
+	UpdateNewSelectedSideTab(SelectedSideTab->MoveUp(), true);
 }
 
 void UDataBiosWidget::MoveSelectionDown()
 {
-	UpdateNewSelectedSideTab(SelectedSideTab->MoveDown());
+	UpdateNewSelectedSideTab(SelectedSideTab->MoveDown(), false);
 }
 
-void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget)
+void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp)
 {
 	if (MappableWidget)
 	{
 		SelectedSideTab->SetHighlight(false);
 		SelectedSideTab = Cast<USideMenuTab>(MappableWidget);
 		SelectedSideTab->SetHighlight();
+		CurrentTabIndex = IsMovingUp ? --CurrentTabIndex : ++CurrentTabIndex;
+		WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
 	}
 }

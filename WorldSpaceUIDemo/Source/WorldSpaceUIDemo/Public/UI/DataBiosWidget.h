@@ -9,6 +9,7 @@
 class UDataBiosMajorSkillsWidget;
 class USideMenuTab;
 class UMappableWidget;
+class UWidgetSwitcher;
 
 /**
  * 
@@ -41,11 +42,16 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	UDataBiosMajorSkillsWidget* MajorSkillsWidget;
 
+	UPROPERTY(meta = (BindWidget))
+	UWidgetSwitcher* WidgetSwitcher;
+
 private:
 	USideMenuTab* SelectedSideTab;
 
+	int CurrentTabIndex = 0;
+
 private:
 	void SetupWidgetMapping();
-	void UpdateNewSelectedSideTab(UMappableWidget* MappableWidget);
+	void UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp);
 
 };
