@@ -19,6 +19,8 @@ class WORLDSPACEUIDEMO_API UDataBiosGroupWidget : public UUserWidget
 public:
 	void MoveSelectionUp();
 	void MoveSelectionDown();
+	void MoveSelectionLeft();
+	void MoveSelectionRight();
 
 protected:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))

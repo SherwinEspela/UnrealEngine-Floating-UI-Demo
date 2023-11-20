@@ -20,6 +20,8 @@ class WORLDSPACEUIDEMO_API UMainMenuWidget : public UUserWidget
 public:
 	void MoveSelectionUp();
 	void MoveSelectionDown();
+	void MoveSelectionLeft();
+	void MoveSelectionRight();
 
 protected:
 	void NativeConstruct() override;

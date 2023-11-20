@@ -42,6 +42,12 @@ public:
 	UDataTable* MissionsDataTable;
 
 public:
+	void MoveSelectionUp();
+	void MoveSelectionDown();
+	void MoveSelectionRight();
+	void MoveSelectionLeft();
+
+public:
 	FORCEINLINE UMappableWidget* GetFirstMissionWidget() const { return FirstMissionWidget; }
 
 protected:
@@ -59,4 +65,6 @@ private:
 
 	UMappableWidget* FirstMissionWidget;
 	UMissionWidget* SelectedWidget;
+
+	void UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp);
 };

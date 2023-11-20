@@ -4,6 +4,11 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 
+UMissionWidget::UMissionWidget()
+{
+	SetSelectionRegion(EDataBiosSelectionRegion::EDSR_Missions);
+}
+
 void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted)
 {
 	if (TextureIcon) {
@@ -16,4 +21,9 @@ void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int
 
 	FString Status = FString::Printf(TEXT("Status: %s"), IsCompleted ? TEXT("Completed") : TEXT("Pending"));
 	TextStatus->SetText(FText::FromString(Status.ToUpper()));
+}
+
+void UMissionWidget::SetHighlight(bool ShoudHighlight)
+{
+	//ImageBG->SetBrushTintColor(FSlateColor(FColor(9, 3, 5, )))
 }

@@ -34,3 +34,13 @@ void UMainMenuWidget::MoveSelectionDown()
 {
 	if (DataBiosGroup) DataBiosGroup->MoveSelectionDown();
 }
+
+void UMainMenuWidget::MoveSelectionLeft()
+{
+	if (DataBiosGroup) DataBiosGroup->MoveSelectionLeft();
+}
+
+void UMainMenuWidget::MoveSelectionRight()
+{
+	if (DataBiosGroup) DataBiosGroup->MoveSelectionRight();
+}

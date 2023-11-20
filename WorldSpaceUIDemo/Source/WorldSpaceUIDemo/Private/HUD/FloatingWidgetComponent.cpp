@@ -28,3 +28,13 @@ void UFloatingWidgetComponent::MoveSelectionDown()
 {
 	MainMenuWidget->MoveSelectionDown();
 }
+
+void UFloatingWidgetComponent::MoveSelectionLeft()
+{
+	MainMenuWidget->MoveSelectionLeft();
+}
+
+void UFloatingWidgetComponent::MoveSelectionRight()
+{
+	MainMenuWidget->MoveSelectionRight();
+}

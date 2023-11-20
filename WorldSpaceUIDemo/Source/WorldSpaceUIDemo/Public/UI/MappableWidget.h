@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "CustomEnums.h"
 #include "MappableWidget.generated.h"
 
 /**
@@ -19,16 +20,20 @@ public:
 	FORCEINLINE UMappableWidget* MoveDown() const { return Below; }
 	FORCEINLINE UMappableWidget* MoveLeft() const { return Left; }
 	FORCEINLINE UMappableWidget* MoveRight() const { return Right; }
+	FORCEINLINE EDataBiosSelectionRegion GetSelectionRegion() const { return SelectionRegion; }
 
 public:
 	FORCEINLINE void SetMapAbove(UMappableWidget* Value) { Above = Value; }
 	FORCEINLINE void SetMapBelow(UMappableWidget* Value) { Below = Value; }
 	FORCEINLINE void SetMapOnLeft(UMappableWidget* Value) { Left = Value; }
 	FORCEINLINE void SetMapOnRight(UMappableWidget* Value) { Right = Value; }
+	FORCEINLINE void SetSelectionRegion(EDataBiosSelectionRegion Value) { SelectionRegion = Value; }
 
 private:
 	UMappableWidget* Above;
 	UMappableWidget* Below;
 	UMappableWidget* Left;
 	UMappableWidget* Right;
+
+	EDataBiosSelectionRegion SelectionRegion;
 };

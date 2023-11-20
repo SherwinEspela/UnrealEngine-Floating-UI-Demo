@@ -20,7 +20,10 @@ class WORLDSPACEUIDEMO_API UMissionWidget : public UMappableWidget
 	GENERATED_BODY()
 
 public:
+	UMissionWidget();
+
 	void SetValues(UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted);
+	void SetHighlight(bool ShoudHighlight = true);
 
 protected:
 	UPROPERTY(meta = (BindWidget))

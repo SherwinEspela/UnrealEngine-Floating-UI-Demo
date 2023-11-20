@@ -38,6 +38,8 @@ void AWSPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(InputActionYButton, ETriggerEvent::Triggered, this, &AWSPlayerController::ToggleCamera);
 	EnhancedInputComponent->BindAction(InputActionDPadUpButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadUpTapped);
 	EnhancedInputComponent->BindAction(InputActionDPadDownButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadDownTapped);
+	EnhancedInputComponent->BindAction(InputActionDPadLeftButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadLeftTapped);
+	EnhancedInputComponent->BindAction(InputActionDPadRightButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadRightTapped);
 }
 
 void AWSPlayerController::Move(const FInputActionValue& Value)
@@ -126,4 +128,14 @@ void AWSPlayerController::DPadUpTapped()
 void AWSPlayerController::DPadDownTapped()
 {
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionDown();
+}
+
+void AWSPlayerController::DPadLeftTapped()
+{
+	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionLeft();
+}
+
+void AWSPlayerController::DPadRightTapped()
+{
+	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionRight();
 }

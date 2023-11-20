@@ -4,6 +4,11 @@
 #include "UI/SideMenuTab.h"
 #include "Components/Image.h"
 
+USideMenuTab::USideMenuTab()
+{
+	SetSelectionRegion(EDataBiosSelectionRegion::EDSR_SideMenu);
+}
+
 void USideMenuTab::NativeConstruct()
 {
 	Super::NativeConstruct();

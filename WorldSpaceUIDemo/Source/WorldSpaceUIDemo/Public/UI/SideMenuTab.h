@@ -18,6 +18,8 @@ class WORLDSPACEUIDEMO_API USideMenuTab : public UMappableWidget
 	GENERATED_BODY()
 
 public:	
+	USideMenuTab();
+
 	void SetHighlight(bool ShoudHighlight = true);
 
 protected:

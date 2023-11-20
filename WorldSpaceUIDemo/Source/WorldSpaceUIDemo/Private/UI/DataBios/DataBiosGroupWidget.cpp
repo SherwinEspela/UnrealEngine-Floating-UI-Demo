@@ -19,3 +19,19 @@ void UDataBiosGroupWidget::MoveSelectionDown()
 		DataBios->MoveSelectionDown();
 	}
 }
+
+void UDataBiosGroupWidget::MoveSelectionLeft()
+{
+	if (DataBios)
+	{
+		DataBios->MoveSelectionLeft();
+	}
+}
+
+void UDataBiosGroupWidget::MoveSelectionRight()
+{
+	if (DataBios)
+	{
+		DataBios->MoveSelectionRight();
+	}
+}

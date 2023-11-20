@@ -48,6 +48,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
 	UInputAction* InputActionDPadDownButton;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionDPadLeftButton;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionDPadRightButton;
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeedForward;
@@ -71,6 +77,8 @@ private:
 	void ToggleCamera();
 	void DPadUpTapped();
 	void DPadDownTapped();
+	void DPadLeftTapped();
+	void DPadRightTapped();
 
 private:
 	APlayerCharacter* PlayerCharacter;
