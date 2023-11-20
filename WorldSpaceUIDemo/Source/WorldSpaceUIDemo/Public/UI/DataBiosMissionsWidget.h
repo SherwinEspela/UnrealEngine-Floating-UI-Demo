@@ -47,6 +47,8 @@ public:
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
 
+	void SetHighlightOnFirstMissionWidget();
+
 public:
 	FORCEINLINE UMappableWidget* GetFirstMissionWidget() const { return FirstMissionWidget; }
 
@@ -66,5 +68,5 @@ private:
 	UMappableWidget* FirstMissionWidget;
 	UMissionWidget* SelectedWidget;
 
-	void UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp);
+	void UpdateNewSelectedWidget(UMappableWidget* MappableWidget);
 };

@@ -25,5 +25,5 @@ void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int
 
 void UMissionWidget::SetHighlight(bool ShoudHighlight)
 {
-	//ImageBG->SetBrushTintColor(FSlateColor(FColor(9, 3, 5, )))
+	ImageBG->SetBrushTintColor(FSlateColor(FColor(0, 0, 0, 1)));
 }

@@ -69,10 +69,23 @@ void UDataBiosWidget::MoveSelectionRight()
 		case EDataBiosSelectionRegion::EDSR_Targets:
 			break;
 		case EDataBiosSelectionRegion::EDSR_SideMenu:
-			UE_LOG(LogTemp, Warning, TEXT("UDataBiosWidget::MoveSelectionRight"));
-			//UMappableWidget* NewWidget = SelectedSideTab->MoveRight();
-			//SelectionRegion = NewWidget->GetSelectionRegion();
-			//UE_LOG(LogTemp, Warning, TEXT("NewWidget ====== %s"), *NewWidget->GetName())
+			UMappableWidget* NewWidget = SelectedSideTab->MoveRight();
+			if (NewWidget)
+			{
+				SelectionRegion = NewWidget->GetSelectionRegion();
+				//UE_LOG(LogTemp, Warning, TEXT("NewWidget ====== %s, Selection Region === %s"), *NewWidget->GetName(), *UEnum::GetValueAsString(SelectionRegion));
+				
+				switch (SelectionRegion)
+				{
+					case EDataBiosSelectionRegion::EDSR_Missions:
+						Missions->SetHighlightOnFirstMissionWidget();
+						break;
+					case EDataBiosSelectionRegion::EDSR_Targets:
+						break;
+					case EDataBiosSelectionRegion::EDSR_SideMenu:
+						break;
+				}
+			}	
 			break;
 	}
 }

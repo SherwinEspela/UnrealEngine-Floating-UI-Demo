@@ -76,6 +76,8 @@ void UDataBiosMissionsWidget::SetupWidgetMapping()
 	MissionWidgets[1]->SetMapBelow(MissionWidgets[5]);
 	MissionWidgets[2]->SetMapBelow(MissionWidgets[6]);
 	MissionWidgets[3]->SetMapBelow(MissionWidgets[7]);
+
+	FirstMissionWidget = MissionWidgets[0];
 }
 
 void UDataBiosMissionsWidget::MoveSelectionUp()
@@ -88,7 +90,17 @@ void UDataBiosMissionsWidget::MoveSelectionDown()
 	SelectedWidget->MoveDown();
 }
 
-void UDataBiosMissionsWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp)
+void UDataBiosMissionsWidget::MoveSelectionLeft()
+{
+	//SelectedWidget->MoveLeft();
+}
+
+void UDataBiosMissionsWidget::MoveSelectionRight()
+{
+	UpdateNewSelectedWidget(SelectedWidget->MoveRight());
+}
+
+void UDataBiosMissionsWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
 {
 	if (MappableWidget)
 	{
@@ -96,4 +108,10 @@ void UDataBiosMissionsWidget::UpdateNewSelectedSideTab(UMappableWidget* Mappable
 		SelectedWidget = Cast<UMissionWidget>(MappableWidget);
 		SelectedWidget->SetHighlight();
 	}
+}
+
+void UDataBiosMissionsWidget::SetHighlightOnFirstMissionWidget()
+{
+	auto MissionWidget = Cast<UMissionWidget>(FirstMissionWidget);
+	MissionWidget->SetHighlight();
 }
