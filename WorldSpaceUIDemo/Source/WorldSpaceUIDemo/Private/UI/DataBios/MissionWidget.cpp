@@ -3,10 +3,18 @@
 #include "UI/DataBios/MissionWidget.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
+#include "Utility/ThemeManager.h"
 
 UMissionWidget::UMissionWidget()
 {
 	SetSelectionRegion(EDataBiosSelectionRegion::EDSR_Missions);
+}
+
+void UMissionWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
 }
 
 void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted)
@@ -25,5 +33,12 @@ void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int
 
 void UMissionWidget::SetHighlight(bool ShoudHighlight)
 {
-	ImageBG->SetBrushTintColor(FSlateColor(FColor(0, 0, 0, 1)));
+	if (ShoudHighlight)
+	{
+		ImageBG->SetBrushTintColor(FSlateColor(COLOR_HIGHLIGHT1));
+	}
+	else {
+		ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
+	}
+	
 }

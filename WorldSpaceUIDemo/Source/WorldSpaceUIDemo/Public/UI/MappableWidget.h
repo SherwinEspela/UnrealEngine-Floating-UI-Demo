@@ -29,11 +29,14 @@ public:
 	FORCEINLINE void SetMapOnRight(UMappableWidget* Value) { Right = Value; }
 	FORCEINLINE void SetSelectionRegion(EDataBiosSelectionRegion Value) { SelectionRegion = Value; }
 
+public:
+	bool bIsExit = false;
+
 private:
 	UMappableWidget* Above;
 	UMappableWidget* Below;
 	UMappableWidget* Left;
 	UMappableWidget* Right;
 
-	EDataBiosSelectionRegion SelectionRegion;
+	EDataBiosSelectionRegion SelectionRegion;	
 };

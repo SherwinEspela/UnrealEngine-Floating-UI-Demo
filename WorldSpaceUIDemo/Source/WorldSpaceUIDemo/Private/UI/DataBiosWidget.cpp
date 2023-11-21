@@ -13,6 +13,8 @@ void UDataBiosWidget::NativeConstruct()
 	SetupWidgetMapping();
 	TabProfile->SetHighlight();
 	SelectedSideTab = TabProfile;
+
+	Missions->OnMissionPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
 }
 
 void UDataBiosWidget::SetupWidgetMapping()
@@ -33,6 +35,7 @@ void UDataBiosWidget::MoveSelectionUp()
 	switch (SelectionRegion)
 	{
 		case EDataBiosSelectionRegion::EDSR_Missions:
+			Missions->MoveSelectionUp();
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
 			break;
@@ -49,6 +52,7 @@ void UDataBiosWidget::MoveSelectionDown()
 	switch (SelectionRegion)
 	{
 		case EDataBiosSelectionRegion::EDSR_Missions:
+			Missions->MoveSelectionDown();
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
 			break;
@@ -65,6 +69,7 @@ void UDataBiosWidget::MoveSelectionRight()
 	switch (SelectionRegion)
 	{
 		case EDataBiosSelectionRegion::EDSR_Missions:
+			Missions->MoveSelectionRight();
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
 			break;
@@ -72,13 +77,12 @@ void UDataBiosWidget::MoveSelectionRight()
 			UMappableWidget* NewWidget = SelectedSideTab->MoveRight();
 			if (NewWidget)
 			{
-				SelectionRegion = NewWidget->GetSelectionRegion();
-				//UE_LOG(LogTemp, Warning, TEXT("NewWidget ====== %s, Selection Region === %s"), *NewWidget->GetName(), *UEnum::GetValueAsString(SelectionRegion));
-				
+				SelectionRegion = NewWidget->GetSelectionRegion();				
 				switch (SelectionRegion)
 				{
 					case EDataBiosSelectionRegion::EDSR_Missions:
 						Missions->SetHighlightOnFirstMissionWidget();
+						Missions->SetMissionTab(TabMissions);
 						break;
 					case EDataBiosSelectionRegion::EDSR_Targets:
 						break;
@@ -95,11 +99,11 @@ void UDataBiosWidget::MoveSelectionLeft()
 	switch (SelectionRegion)
 	{
 	case EDataBiosSelectionRegion::EDSR_Missions:
+		Missions->MoveSelectionLeft();
 		break;
 	case EDataBiosSelectionRegion::EDSR_Targets:
 		break;
 	case EDataBiosSelectionRegion::EDSR_SideMenu:
-		UE_LOG(LogTemp, Warning, TEXT("UDataBiosWidget::MoveSelectionLeft"));
 		break;
 	}
 
@@ -115,4 +119,9 @@ void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, 
 		CurrentTabIndex = IsMovingUp ? --CurrentTabIndex : ++CurrentTabIndex;
 		WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
 	}
+}
+
+void UDataBiosWidget::HandlePanelExitted()
+{
+	SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
 }

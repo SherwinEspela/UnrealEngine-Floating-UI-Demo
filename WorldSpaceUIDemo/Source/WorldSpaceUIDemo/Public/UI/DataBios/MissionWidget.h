@@ -26,6 +26,9 @@ public:
 	void SetHighlight(bool ShoudHighlight = true);
 
 protected:
+	virtual void NativeConstruct() override;
+
+protected:
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageBG;
 

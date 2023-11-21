@@ -63,4 +63,7 @@ private:
 	void SetupWidgetMapping();
 	void UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp);
 
+private:
+	UFUNCTION()
+	void HandlePanelExitted();
 };

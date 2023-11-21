@@ -51,10 +51,10 @@ void UDataBiosMissionsWidget::SetupWidgetMapping()
 {
 	// 0 1 2 3
 	// 4 5 6 7
-	MissionWidgets[4]->SetMapBelow(MissionWidgets[0]);
-	MissionWidgets[5]->SetMapBelow(MissionWidgets[1]);
-	MissionWidgets[6]->SetMapBelow(MissionWidgets[2]);
-	MissionWidgets[7]->SetMapBelow(MissionWidgets[3]);
+	MissionWidgets[4]->SetMapAbove(MissionWidgets[0]);
+	MissionWidgets[5]->SetMapAbove(MissionWidgets[1]);
+	MissionWidgets[6]->SetMapAbove(MissionWidgets[2]);
+	MissionWidgets[7]->SetMapAbove(MissionWidgets[3]);
 
 	MissionWidgets[0]->SetMapOnRight(MissionWidgets[1]);
 	MissionWidgets[1]->SetMapOnRight(MissionWidgets[2]);
@@ -78,21 +78,29 @@ void UDataBiosMissionsWidget::SetupWidgetMapping()
 	MissionWidgets[3]->SetMapBelow(MissionWidgets[7]);
 
 	FirstMissionWidget = MissionWidgets[0];
+	SelectedWidget = MissionWidgets[0];
 }
 
 void UDataBiosMissionsWidget::MoveSelectionUp()
 {
-	SelectedWidget->MoveUp();
+	UpdateNewSelectedWidget(SelectedWidget->MoveUp());
 }
 
 void UDataBiosMissionsWidget::MoveSelectionDown()
 {
-	SelectedWidget->MoveDown();
+	UpdateNewSelectedWidget(SelectedWidget->MoveDown());
 }
 
 void UDataBiosMissionsWidget::MoveSelectionLeft()
 {
-	//SelectedWidget->MoveLeft();
+	if (SelectedWidget->bIsExit)
+	{
+		SelectedWidget->SetHighlight(false);
+		OnMissionPanelExitted.Broadcast();
+	}
+	else {
+		UpdateNewSelectedWidget(SelectedWidget->MoveLeft());
+	}
 }
 
 void UDataBiosMissionsWidget::MoveSelectionRight()
@@ -112,6 +120,15 @@ void UDataBiosMissionsWidget::UpdateNewSelectedWidget(UMappableWidget* MappableW
 
 void UDataBiosMissionsWidget::SetHighlightOnFirstMissionWidget()
 {
-	auto MissionWidget = Cast<UMissionWidget>(FirstMissionWidget);
-	MissionWidget->SetHighlight();
+	Cast<UMissionWidget>(FirstMissionWidget)->SetHighlight();
+	SelectedWidget = MissionWidgets[0];
+}
+
+void UDataBiosMissionsWidget::SetMissionTab(UMappableWidget* MissionTab)
+{
+	MissionWidgets[0]->SetMapOnLeft(MissionTab);
+	MissionWidgets[4]->SetMapOnLeft(MissionTab);
+
+	MissionWidgets[0]->bIsExit = true;
+	MissionWidgets[4]->bIsExit = true;
 }

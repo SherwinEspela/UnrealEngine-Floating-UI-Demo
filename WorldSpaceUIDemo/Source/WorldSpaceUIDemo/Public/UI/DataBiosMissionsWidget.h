@@ -8,6 +8,8 @@
 #include "UI/MappableWidget.h"
 #include "DataBiosMissionsWidget.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMissionPanelExittedSignature);
+
 class UMissionWidget;
 class UMappableWidget;
 
@@ -48,9 +50,15 @@ public:
 	void MoveSelectionLeft();
 
 	void SetHighlightOnFirstMissionWidget();
+	void SetMissionTab(UMappableWidget *MissionTab);
 
 public:
 	FORCEINLINE UMappableWidget* GetFirstMissionWidget() const { return FirstMissionWidget; }
+
+public:
+	// Delegates
+	UPROPERTY(BlueprintAssignable)
+	FMissionPanelExittedSignature OnMissionPanelExitted;
 
 protected:
 	void NativeConstruct() override;
