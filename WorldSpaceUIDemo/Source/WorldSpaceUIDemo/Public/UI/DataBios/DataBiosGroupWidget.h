@@ -17,6 +17,8 @@ class WORLDSPACEUIDEMO_API UDataBiosGroupWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+	void NativeConstruct() override;
+
 	void MoveSelectionUp();
 	void MoveSelectionDown();
 	void MoveSelectionLeft();
@@ -28,4 +30,10 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextTitle;
+
+private:
+	UFUNCTION()
+	void HandleNewTabSelected(int SelectedTabIndex);
+
+	TArray<FString> Titles = { "PROFILE", "MAJOR SKILLS", "MISSIONS", "TARGETS" };
 };

@@ -129,6 +129,7 @@ void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, 
 		SelectedSideTab->SetHighlight();
 		CurrentTabIndex = IsMovingUp ? --CurrentTabIndex : ++CurrentTabIndex;
 		WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
+		OnNewTabSelected.Broadcast(CurrentTabIndex);
 	}
 }
 

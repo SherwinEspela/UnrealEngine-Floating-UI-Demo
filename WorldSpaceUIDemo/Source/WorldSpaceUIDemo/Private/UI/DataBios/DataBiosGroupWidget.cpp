@@ -3,6 +3,14 @@
 
 #include "UI/DataBios/DataBiosGroupWidget.h"
 #include "UI/DataBiosWidget.h"
+#include "Components/TextBlock.h"
+
+void UDataBiosGroupWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	DataBios->OnNewTabSelected.AddDynamic(this, &UDataBiosGroupWidget::HandleNewTabSelected);
+}
 
 void UDataBiosGroupWidget::MoveSelectionUp()
 {
@@ -34,4 +42,9 @@ void UDataBiosGroupWidget::MoveSelectionRight()
 	{
 		DataBios->MoveSelectionRight();
 	}
+}
+
+void UDataBiosGroupWidget::HandleNewTabSelected(int SelectedTabIndex)
+{
+	TextTitle->SetText(FText::FromString(Titles[SelectedTabIndex]));
 }

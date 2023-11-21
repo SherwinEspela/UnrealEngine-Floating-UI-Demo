@@ -14,6 +14,8 @@ class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewTabSelectedSignature, int, SelectedTabIndex);
+
 /**
  * 
  */
@@ -27,6 +29,8 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
+
+	FOnNewTabSelectedSignature OnNewTabSelected;
 
 protected:
 	void NativeConstruct() override;
