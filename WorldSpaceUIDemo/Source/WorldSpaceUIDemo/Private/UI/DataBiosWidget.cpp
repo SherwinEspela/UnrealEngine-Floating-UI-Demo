@@ -16,6 +16,7 @@ void UDataBiosWidget::NativeConstruct()
 	SelectedSideTab = TabProfile;
 
 	Missions->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
+	Targets->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
 }
 
 void UDataBiosWidget::SetupWidgetMapping()
@@ -40,6 +41,7 @@ void UDataBiosWidget::MoveSelectionUp()
 			Missions->MoveSelectionUp();
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
+			Targets->MoveSelectionUp();
 			break;
 		case EDataBiosSelectionRegion::EDSR_SideMenu:
 			UpdateNewSelectedSideTab(SelectedSideTab->MoveUp(), true);
@@ -57,6 +59,7 @@ void UDataBiosWidget::MoveSelectionDown()
 			Missions->MoveSelectionDown();
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
+			Targets->MoveSelectionDown();
 			break;
 		case EDataBiosSelectionRegion::EDSR_SideMenu:
 			UpdateNewSelectedSideTab(SelectedSideTab->MoveDown(), false);
@@ -109,6 +112,7 @@ void UDataBiosWidget::MoveSelectionLeft()
 		Missions->MoveSelectionLeft();
 		break;
 	case EDataBiosSelectionRegion::EDSR_Targets:
+		Targets->MoveSelectionLeft();
 		break;
 	case EDataBiosSelectionRegion::EDSR_SideMenu:
 		break;

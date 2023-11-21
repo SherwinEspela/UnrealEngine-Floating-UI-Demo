@@ -46,13 +46,13 @@ public:
 
 public:
 	virtual void SetHighlightOnFirstElementWidget() override;
-	//virtual void SetMenuTab(UMappableWidget* Tab) const override;
+	virtual void SetMenuTab(UMappableWidget* Tab) const override;
 	virtual void MoveSelectionLeft() override;
 
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
-	//virtual void UpdateNewSelectedWidget(UMappableWidget* MappableWidget) override;
+	virtual void UpdateNewSelectedWidget(UMappableWidget* MappableWidget) override;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UTargetWidget> TargetWidgetClass;

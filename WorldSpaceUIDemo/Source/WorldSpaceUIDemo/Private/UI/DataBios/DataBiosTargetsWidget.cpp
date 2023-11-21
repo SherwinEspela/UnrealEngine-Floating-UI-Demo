@@ -5,18 +5,16 @@
 #include "UI/DataBios/TargetWidget.h"
 #include "Components/UniformGridPanel.h"
 
-void UDataBiosTargetsWidget::NativeConstruct()
-{
-	Super::NativeConstruct();
-
-	SetupWidgetMapping();
-}
-
 void UDataBiosTargetsWidget::NativePreConstruct()
 {
 	Super::NativePreConstruct();
-
 	LoadCells();
+}
+
+void UDataBiosTargetsWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+	SetupWidgetMapping();
 }
 
 void UDataBiosTargetsWidget::LoadCells()
@@ -85,6 +83,31 @@ void UDataBiosTargetsWidget::SetHighlightOnFirstElementWidget()
 	SelectedWidget = TargetWidgets[0];
 }
 
+void UDataBiosTargetsWidget::SetMenuTab(UMappableWidget* Tab) const
+{
+	Super::SetMenuTab(Tab);
+
+	TargetWidgets[0]->SetMapOnLeft(Tab);
+	TargetWidgets[3]->SetMapOnLeft(Tab);
+
+	TargetWidgets[0]->bIsExit = true;
+	TargetWidgets[3]->bIsExit = true;
+}
+
 void UDataBiosTargetsWidget::MoveSelectionLeft()
 {
+	if (SelectedWidget->bIsExit) Cast<UTargetWidget>(SelectedWidget)->SetHighlight(false);
+	Super::MoveSelectionLeft();
+}
+
+void UDataBiosTargetsWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
+{
+	Super::UpdateNewSelectedWidget(MappableWidget);
+
+	if (MappableWidget)
+	{
+		Cast<UTargetWidget>(SelectedWidget)->SetHighlight(false);
+		Cast<UTargetWidget>(MappableWidget)->SetHighlight();
+		SelectedWidget = MappableWidget;
+	}
 }
