@@ -25,6 +25,12 @@ protected:
 	void NativeConstruct() override;
 
 	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBG;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBorder;
+
+	UPROPERTY(meta = (BindWidget))
 	UImage* ImageIcon;
 
 	UPROPERTY(meta = (BindWidget))

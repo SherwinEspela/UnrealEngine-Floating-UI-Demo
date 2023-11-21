@@ -3,6 +3,7 @@
 
 #include "UI/SkillWidget.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
 #include "Components/Image.h"
 
 
@@ -10,6 +11,8 @@ void USkillWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
+	ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
 }
 
 void USkillWidget::SetValues(UTexture2D* TextureSkillIcon, FString SkillName, int SkillLevel)
