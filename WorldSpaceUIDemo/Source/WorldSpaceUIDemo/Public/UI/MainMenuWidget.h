@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "UI/TopBar/TopBarWidget.h"
 #include "MainMenuWidget.generated.h"
 
 class UUniformGridPanel;
 class UDataBiosGroupWidget;
+class UTopBarWidget;
 
 /**
  * 
@@ -22,6 +24,8 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionLeft();
 	void MoveSelectionRight();
+	void MoveTopBarSelectionLeft();
+	void MoveTopBarSelectionRight();
 
 protected:
 	void NativeConstruct() override;
@@ -35,6 +39,9 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UDataBiosGroupWidget* DataBiosGroup;
+
+	UPROPERTY(meta = (BindWidget))
+	UTopBarWidget* TopBar;
 
 	UPROPERTY(EditAnywhere)
 	int DotCount = 20;

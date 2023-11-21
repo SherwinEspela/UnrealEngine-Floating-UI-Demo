@@ -40,6 +40,8 @@ void AWSPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(InputActionDPadDownButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadDownTapped);
 	EnhancedInputComponent->BindAction(InputActionDPadLeftButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadLeftTapped);
 	EnhancedInputComponent->BindAction(InputActionDPadRightButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadRightTapped);
+	EnhancedInputComponent->BindAction(InputActionL1Button, ETriggerEvent::Triggered, this, &AWSPlayerController::ButtonL1Tapped);
+	EnhancedInputComponent->BindAction(InputActionR1Button, ETriggerEvent::Triggered, this, &AWSPlayerController::ButtonR1Tapped);
 }
 
 void AWSPlayerController::Move(const FInputActionValue& Value)
@@ -138,4 +140,14 @@ void AWSPlayerController::DPadLeftTapped()
 void AWSPlayerController::DPadRightTapped()
 {
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionRight();
+}
+
+void AWSPlayerController::ButtonL1Tapped()
+{
+	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionLeft();
+}
+
+void AWSPlayerController::ButtonR1Tapped()
+{
+	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionRight();
 }

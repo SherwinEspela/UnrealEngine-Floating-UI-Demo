@@ -26,6 +26,8 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionLeft();
 	void MoveSelectionRight();
+	void MoveTopBarSelectionLeft();
+	void MoveTopBarSelectionRight();
 
 private:
 	UMainMenuWidget* MainMenuWidget;

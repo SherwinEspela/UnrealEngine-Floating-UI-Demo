@@ -44,3 +44,13 @@ void UMainMenuWidget::MoveSelectionRight()
 {
 	if (DataBiosGroup) DataBiosGroup->MoveSelectionRight();
 }
+
+void UMainMenuWidget::MoveTopBarSelectionLeft()
+{
+	if (TopBar) TopBar->MoveSelectionLeft();
+}
+
+void UMainMenuWidget::MoveTopBarSelectionRight()
+{
+	if (TopBar) TopBar->MoveSelectionRight();
+}
