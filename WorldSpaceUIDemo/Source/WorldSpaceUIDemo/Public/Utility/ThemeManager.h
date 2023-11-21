@@ -7,6 +7,8 @@
 
 #define COLOR_BACKGROUND1 FColor::FromHex(TEXT("051611")) 
 #define COLOR_HIGHLIGHT1 FColor::FromHex(TEXT("FF4021"))
+#define COLOR_BORDER_DEFAULT FColor::FromHex(TEXT("32E798")) 
+#define COLOR_BORDER_HIGHLIGHT FColor::FromHex(TEXT("fbdb17"))
 
 /**
  * 
