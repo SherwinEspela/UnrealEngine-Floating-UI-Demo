@@ -14,7 +14,7 @@ void UDataBiosWidget::NativeConstruct()
 	TabProfile->SetHighlight();
 	SelectedSideTab = TabProfile;
 
-	Missions->OnMissionPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
+	Missions->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
 }
 
 void UDataBiosWidget::SetupWidgetMapping()
@@ -82,7 +82,7 @@ void UDataBiosWidget::MoveSelectionRight()
 				{
 					case EDataBiosSelectionRegion::EDSR_Missions:
 						Missions->SetHighlightOnFirstMissionWidget();
-						Missions->SetMissionTab(TabMissions);
+						Missions->SetMenuTab(TabMissions);
 						break;
 					case EDataBiosSelectionRegion::EDSR_Targets:
 						break;

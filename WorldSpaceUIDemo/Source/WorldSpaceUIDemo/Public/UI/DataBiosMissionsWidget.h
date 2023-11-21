@@ -8,8 +8,6 @@
 #include "UI/MappableWidget.h"
 #include "DataBiosMissionsWidget.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMissionPanelExittedSignature);
-
 class UMissionWidget;
 class UMappableWidget;
 
@@ -44,25 +42,14 @@ public:
 	UDataTable* MissionsDataTable;
 
 public:
-	void MoveSelectionUp();
-	void MoveSelectionDown();
-	void MoveSelectionRight();
-	void MoveSelectionLeft();
-
-	void SetHighlightOnFirstMissionWidget();
-	void SetMissionTab(UMappableWidget *MissionTab);
-
-public:
-	FORCEINLINE UMappableWidget* GetFirstMissionWidget() const { return FirstMissionWidget; }
-
-public:
-	// Delegates
-	UPROPERTY(BlueprintAssignable)
-	FMissionPanelExittedSignature OnMissionPanelExitted;
+	virtual void SetHighlightOnFirstMissionWidget() override;
+	virtual void SetMenuTab(UMappableWidget* Tab) const override;
+	virtual void MoveSelectionLeft() override;
 
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
+	virtual void UpdateNewSelectedWidget(UMappableWidget* MappableWidget) override;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UMissionWidget> MissionWidgetClass;
@@ -72,9 +59,4 @@ private:
 	void SetupWidgetMapping();
 
 	TArray<UMissionWidget*> MissionWidgets;
-
-	UMappableWidget* FirstMissionWidget;
-	UMissionWidget* SelectedWidget;
-
-	void UpdateNewSelectedWidget(UMappableWidget* MappableWidget);
 };

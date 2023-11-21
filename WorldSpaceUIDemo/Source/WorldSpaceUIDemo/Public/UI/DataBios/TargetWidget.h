@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "UI/MappableWidget.h"
 #include "TargetWidget.generated.h"
 
 class UImage;
@@ -13,7 +14,7 @@ class UTextBlock;
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UTargetWidget : public UUserWidget
+class WORLDSPACEUIDEMO_API UTargetWidget : public UMappableWidget
 {
 	GENERATED_BODY()
 

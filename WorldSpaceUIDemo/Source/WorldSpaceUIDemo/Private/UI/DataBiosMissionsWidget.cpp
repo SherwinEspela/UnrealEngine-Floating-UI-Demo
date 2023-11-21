@@ -81,54 +81,39 @@ void UDataBiosMissionsWidget::SetupWidgetMapping()
 	SelectedWidget = MissionWidgets[0];
 }
 
-void UDataBiosMissionsWidget::MoveSelectionUp()
+void UDataBiosMissionsWidget::SetMenuTab(UMappableWidget* Tab) const
 {
-	UpdateNewSelectedWidget(SelectedWidget->MoveUp());
-}
+	Super::SetMenuTab(Tab);
 
-void UDataBiosMissionsWidget::MoveSelectionDown()
-{
-	UpdateNewSelectedWidget(SelectedWidget->MoveDown());
-}
+	MissionWidgets[0]->SetMapOnLeft(Tab);
+	MissionWidgets[4]->SetMapOnLeft(Tab);
 
-void UDataBiosMissionsWidget::MoveSelectionLeft()
-{
-	if (SelectedWidget->bIsExit)
-	{
-		SelectedWidget->SetHighlight(false);
-		OnMissionPanelExitted.Broadcast();
-	}
-	else {
-		UpdateNewSelectedWidget(SelectedWidget->MoveLeft());
-	}
-}
-
-void UDataBiosMissionsWidget::MoveSelectionRight()
-{
-	UpdateNewSelectedWidget(SelectedWidget->MoveRight());
-}
-
-void UDataBiosMissionsWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
-{
-	if (MappableWidget)
-	{
-		SelectedWidget->SetHighlight(false);
-		SelectedWidget = Cast<UMissionWidget>(MappableWidget);
-		SelectedWidget->SetHighlight();
-	}
+	MissionWidgets[0]->bIsExit = true;
+	MissionWidgets[4]->bIsExit = true;
 }
 
 void UDataBiosMissionsWidget::SetHighlightOnFirstMissionWidget()
 {
+	Super::SetHighlightOnFirstMissionWidget();
+
 	Cast<UMissionWidget>(FirstMissionWidget)->SetHighlight();
 	SelectedWidget = MissionWidgets[0];
 }
 
-void UDataBiosMissionsWidget::SetMissionTab(UMappableWidget* MissionTab)
+void UDataBiosMissionsWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
 {
-	MissionWidgets[0]->SetMapOnLeft(MissionTab);
-	MissionWidgets[4]->SetMapOnLeft(MissionTab);
+	Super::UpdateNewSelectedWidget(MappableWidget);
 
-	MissionWidgets[0]->bIsExit = true;
-	MissionWidgets[4]->bIsExit = true;
+	if (MappableWidget)
+	{
+		Cast<UMissionWidget>(SelectedWidget)->SetHighlight(false);
+		Cast<UMissionWidget>(MappableWidget)->SetHighlight();
+		SelectedWidget = MappableWidget;
+	}
+}
+
+void UDataBiosMissionsWidget::MoveSelectionLeft()
+{
+	if (SelectedWidget->bIsExit) Cast<UMissionWidget>(SelectedWidget)->SetHighlight(false);
+	Super::MoveSelectionLeft();
 }

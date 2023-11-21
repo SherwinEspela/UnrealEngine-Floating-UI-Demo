@@ -20,14 +20,8 @@ void UDataBiosTargetsWidget::NativePreConstruct()
 
 void UDataBiosTargetsWidget::LoadCells()
 {
-	TArray<UTargetWidget*> Widgets;
 	if (TargetsDataTable)
 	{
-		if (bIsDebugging)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Targets data table available...."));
-		}
-
 		TArray<FName> RowNames = TargetsDataTable->GetRowNames();
 		for (FName RowName : RowNames)
 		{
@@ -36,13 +30,8 @@ void UDataBiosTargetsWidget::LoadCells()
 
 			if (Widget)
 			{
-				if (bIsDebugging)
-				{
-					UE_LOG(LogTemp, Warning, TEXT("Target Name ====== %s"), *Row->TargetName);
-				}
-
 				Widget->SetValues(Row->TexturePhoto, Row->TargetName, Row->TargetId, Row->Difficulty, Row->AudioCount, Row->IsLocated);
-				Widgets.Add(Widget);
+				TargetWidgets.Add(Widget);
 			}
 		}
 
@@ -51,10 +40,51 @@ void UDataBiosTargetsWidget::LoadCells()
 		{
 			for (size_t col = 0; col < 3; col++)
 			{
-				auto Widget = Widgets[Index];
+				auto Widget = TargetWidgets[Index];
 				CellsGrid->AddChildToUniformGrid(Widget, row, col);
 				Index++;
 			}
 		}
 	}
+}
+
+void UDataBiosTargetsWidget::SetupWidgetMapping()
+{
+	// 0 1 2
+	// 3 4 5
+	TargetWidgets[0]->SetMapOnRight(TargetWidgets[1]);
+	TargetWidgets[1]->SetMapOnRight(TargetWidgets[2]);
+
+	TargetWidgets[3]->SetMapOnRight(TargetWidgets[4]);
+	TargetWidgets[4]->SetMapOnRight(TargetWidgets[5]);
+
+	TargetWidgets[0]->SetMapBelow(TargetWidgets[3]);
+	TargetWidgets[1]->SetMapBelow(TargetWidgets[4]);
+	TargetWidgets[2]->SetMapBelow(TargetWidgets[5]);
+
+	TargetWidgets[1]->SetMapOnLeft(TargetWidgets[0]);
+	TargetWidgets[2]->SetMapOnLeft(TargetWidgets[1]);
+
+	TargetWidgets[4]->SetMapOnLeft(TargetWidgets[3]);
+	TargetWidgets[5]->SetMapOnLeft(TargetWidgets[4]);
+
+	TargetWidgets[3]->SetMapAbove(TargetWidgets[0]);
+	TargetWidgets[4]->SetMapAbove(TargetWidgets[1]);
+	TargetWidgets[5]->SetMapAbove(TargetWidgets[2]);
+}
+
+void UDataBiosTargetsWidget::MoveSelectionUp()
+{
+}
+
+void UDataBiosTargetsWidget::MoveSelectionDown()
+{
+}
+
+void UDataBiosTargetsWidget::MoveSelectionLeft()
+{
+}
+
+void UDataBiosTargetsWidget::MoveSelectionRight()
+{
 }

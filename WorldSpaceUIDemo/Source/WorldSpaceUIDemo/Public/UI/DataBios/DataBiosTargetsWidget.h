@@ -44,6 +44,12 @@ public:
 	UPROPERTY(EditAnywhere)
 	UDataTable* TargetsDataTable;
 
+public:
+	void MoveSelectionUp();
+	void MoveSelectionDown();
+	void MoveSelectionRight();
+	void MoveSelectionLeft();
+
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
@@ -53,4 +59,11 @@ protected:
 
 private:
 	void LoadCells();
+	void SetupWidgetMapping();
+
+	TArray<UTargetWidget*> TargetWidgets;
+
+	UMappableWidget* FirstMissionWidget;
+	UTargetWidget* SelectedWidget;
+
 };
