@@ -77,7 +77,7 @@ void UDataBiosMissionsWidget::SetupWidgetMapping()
 	MissionWidgets[2]->SetMapBelow(MissionWidgets[6]);
 	MissionWidgets[3]->SetMapBelow(MissionWidgets[7]);
 
-	FirstMissionWidget = MissionWidgets[0];
+	FirstElementWidget = MissionWidgets[0];
 	SelectedWidget = MissionWidgets[0];
 }
 
@@ -92,11 +92,11 @@ void UDataBiosMissionsWidget::SetMenuTab(UMappableWidget* Tab) const
 	MissionWidgets[4]->bIsExit = true;
 }
 
-void UDataBiosMissionsWidget::SetHighlightOnFirstMissionWidget()
+void UDataBiosMissionsWidget::SetHighlightOnFirstElementWidget()
 {
-	Super::SetHighlightOnFirstMissionWidget();
+	Super::SetHighlightOnFirstElementWidget();
 
-	Cast<UMissionWidget>(FirstMissionWidget)->SetHighlight();
+	Cast<UMissionWidget>(FirstElementWidget)->SetHighlight();
 	SelectedWidget = MissionWidgets[0];
 }
 

@@ -34,7 +34,7 @@ void UDataBiosCommonWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWid
 {
 }
 
-void UDataBiosCommonWidget::SetHighlightOnFirstMissionWidget()
+void UDataBiosCommonWidget::SetHighlightOnFirstElementWidget()
 {	
 }
 

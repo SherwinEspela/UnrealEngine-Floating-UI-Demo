@@ -45,14 +45,14 @@ public:
 	UDataTable* TargetsDataTable;
 
 public:
-	void MoveSelectionUp();
-	void MoveSelectionDown();
-	void MoveSelectionRight();
-	void MoveSelectionLeft();
+	virtual void SetHighlightOnFirstElementWidget() override;
+	//virtual void SetMenuTab(UMappableWidget* Tab) const override;
+	virtual void MoveSelectionLeft() override;
 
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
+	//virtual void UpdateNewSelectedWidget(UMappableWidget* MappableWidget) override;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UTargetWidget> TargetWidgetClass;
@@ -62,8 +62,4 @@ private:
 	void SetupWidgetMapping();
 
 	TArray<UTargetWidget*> TargetWidgets;
-
-	UMappableWidget* FirstMissionWidget;
-	UTargetWidget* SelectedWidget;
-
 };

@@ -9,6 +9,7 @@ void UDataBiosTargetsWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	SetupWidgetMapping();
 }
 
 void UDataBiosTargetsWidget::NativePreConstruct()
@@ -71,20 +72,19 @@ void UDataBiosTargetsWidget::SetupWidgetMapping()
 	TargetWidgets[3]->SetMapAbove(TargetWidgets[0]);
 	TargetWidgets[4]->SetMapAbove(TargetWidgets[1]);
 	TargetWidgets[5]->SetMapAbove(TargetWidgets[2]);
+
+	FirstElementWidget = TargetWidgets[0];
+	SelectedWidget = TargetWidgets[0];
 }
 
-void UDataBiosTargetsWidget::MoveSelectionUp()
+void UDataBiosTargetsWidget::SetHighlightOnFirstElementWidget()
 {
-}
+	Super::SetHighlightOnFirstElementWidget();
 
-void UDataBiosTargetsWidget::MoveSelectionDown()
-{
+	Cast<UTargetWidget>(FirstElementWidget)->SetHighlight();
+	SelectedWidget = TargetWidgets[0];
 }
 
 void UDataBiosTargetsWidget::MoveSelectionLeft()
-{
-}
-
-void UDataBiosTargetsWidget::MoveSelectionRight()
 {
 }

@@ -25,11 +25,11 @@ public:
 	virtual void MoveSelectionRight();
 	virtual void MoveSelectionLeft();
 
-	virtual void SetHighlightOnFirstMissionWidget();
+	virtual void SetHighlightOnFirstElementWidget();
 	virtual void SetMenuTab(UMappableWidget* Tab) const;
 
 public:
-	FORCEINLINE UMappableWidget* GetFirstMissionWidget() const { return FirstMissionWidget; }
+	FORCEINLINE UMappableWidget* GetFirstElementWidget() const { return FirstElementWidget; }
 
 public:
 	// Delegates
@@ -43,7 +43,7 @@ protected:
 	UPROPERTY(EditAnywhere)
 	bool bIsDebugging = false;
 
-	UMappableWidget* FirstMissionWidget;
+	UMappableWidget* FirstElementWidget;
 	UMappableWidget* SelectedWidget;
 
 protected:

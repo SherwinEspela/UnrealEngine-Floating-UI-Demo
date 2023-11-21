@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UI/MappableWidget.h"
+#include "UI/Interface/Highlightable.h"
 #include "TargetWidget.generated.h"
 
 class UImage;
@@ -14,14 +15,23 @@ class UTextBlock;
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UTargetWidget : public UMappableWidget
+class WORLDSPACEUIDEMO_API UTargetWidget : public UMappableWidget, public IHighlightable
 {
 	GENERATED_BODY()
 
 public:
+	UTargetWidget();
+
 	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated);
+	void SetHighlight(bool ShoudHighlight = true);
 	
 protected:
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBG;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBorder;
+
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImagePhoto;
 

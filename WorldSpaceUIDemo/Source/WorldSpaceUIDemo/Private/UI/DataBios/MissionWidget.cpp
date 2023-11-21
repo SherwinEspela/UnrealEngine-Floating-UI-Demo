@@ -34,13 +34,5 @@ void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int
 
 void UMissionWidget::SetHighlight(bool ShoudHighlight)
 {
-	if (ShoudHighlight)
-	{
-		ImageBG->SetBrushTintColor(FSlateColor(COLOR_HIGHLIGHT1));
-		ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_HIGHLIGHT));
-	}
-	else {
-		ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
-		ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
-	}
+	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
 }

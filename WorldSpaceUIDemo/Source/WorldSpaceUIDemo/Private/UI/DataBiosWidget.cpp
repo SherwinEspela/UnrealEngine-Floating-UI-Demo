@@ -5,6 +5,7 @@
 #include "UI/SideMenuTab.h"
 #include "Components/WidgetSwitcher.h"
 #include "UI/DataBiosMissionsWidget.h"
+#include "UI/DataBios/DataBiosTargetsWidget.h"
 
 void UDataBiosWidget::NativeConstruct()
 {
@@ -24,8 +25,9 @@ void UDataBiosWidget::SetupWidgetMapping()
 	TabMainSkills->SetMapBelow(TabMissions);
 	TabMissions->SetMapAbove(TabMainSkills);
 	TabMissions->SetMapBelow(TabTargets);
-	TabMissions->SetMapOnRight(Missions->GetFirstMissionWidget());
+	TabMissions->SetMapOnRight(Missions->GetFirstElementWidget());
 	TabTargets->SetMapAbove(TabMissions);
+	TabTargets->SetMapOnRight(Targets->GetFirstElementWidget());
 
 	SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
 }
@@ -72,24 +74,29 @@ void UDataBiosWidget::MoveSelectionRight()
 			Missions->MoveSelectionRight();
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
+			Targets->MoveSelectionRight();
 			break;
 		case EDataBiosSelectionRegion::EDSR_SideMenu:
 			UMappableWidget* NewWidget = SelectedSideTab->MoveRight();
+			
 			if (NewWidget)
 			{
-				SelectionRegion = NewWidget->GetSelectionRegion();				
+				SelectionRegion = NewWidget->GetSelectionRegion();
+				
 				switch (SelectionRegion)
 				{
 					case EDataBiosSelectionRegion::EDSR_Missions:
-						Missions->SetHighlightOnFirstMissionWidget();
+						Missions->SetHighlightOnFirstElementWidget();
 						Missions->SetMenuTab(TabMissions);
 						break;
 					case EDataBiosSelectionRegion::EDSR_Targets:
+						Targets->SetHighlightOnFirstElementWidget();
+						Targets->SetMenuTab(TabTargets);
 						break;
 					case EDataBiosSelectionRegion::EDSR_SideMenu:
 						break;
 				}
-			}	
+			}
 			break;
 	}
 }

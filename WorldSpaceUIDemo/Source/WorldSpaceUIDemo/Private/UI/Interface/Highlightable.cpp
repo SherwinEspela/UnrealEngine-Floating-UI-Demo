@@ -5,9 +5,7 @@
 #include "Components/Image.h"
 #include "Utility/ThemeManager.h"
 
-// Add default functionality here for any IHighlightable functions that are not pure virtual.
-
-void IHighlightable::SetHighlight(bool ShoudHighlight)
+void IHighlightable::SetHighlightOnBackgroundAndBorder(UImage* ImageBG, UImage* ImageBorder, bool ShoudHighlight)
 {
 	if (ShoudHighlight)
 	{

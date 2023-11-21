@@ -5,6 +5,11 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 
+UTargetWidget::UTargetWidget()
+{
+	SetSelectionRegion(EDataBiosSelectionRegion::EDSR_Targets);
+}
+
 void UTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated)
 {
 	if (TexturePhoto)
@@ -20,4 +25,9 @@ void UTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName, FStr
 	TextAudioCount->SetText(FText::FromString(AudioCountValue));
 	FString StatusValue = IsLocated ? TEXT("Located") : TEXT("Unknown");
 	TextStatus->SetText(FText::FromString(FString::Printf(TEXT("STATUS: %s"), *StatusValue.ToUpper())));
+}
+
+void UTargetWidget::SetHighlight(bool ShoudHighlight)
+{
+	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
 }

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UI/MappableWidget.h"
+#include "UI/Interface/Highlightable.h"
 #include "MissionWidget.generated.h"
 
 class UImage;
@@ -15,7 +16,7 @@ class UTexture2D;
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UMissionWidget : public UMappableWidget
+class WORLDSPACEUIDEMO_API UMissionWidget : public UMappableWidget, public IHighlightable
 {
 	GENERATED_BODY()
 

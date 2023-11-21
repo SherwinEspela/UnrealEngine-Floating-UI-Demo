@@ -42,7 +42,7 @@ public:
 	UDataTable* MissionsDataTable;
 
 public:
-	virtual void SetHighlightOnFirstMissionWidget() override;
+	virtual void SetHighlightOnFirstElementWidget() override;
 	virtual void SetMenuTab(UMappableWidget* Tab) const override;
 	virtual void MoveSelectionLeft() override;
 
