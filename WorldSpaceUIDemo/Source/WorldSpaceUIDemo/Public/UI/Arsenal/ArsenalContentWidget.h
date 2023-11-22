@@ -69,7 +69,7 @@ private:
 
 private:
 	void LoadAllCells();
-	void LoadCells(TArray<UArsenalCellWidget*> Widgets, UUniformGridPanel* Grid, UDataTable* DataTable);
+	void LoadCells(TArray<UArsenalCellWidget*>& OutWidgets, UUniformGridPanel* Grid, UDataTable* DataTable);
 	void SetupWidgetMapping();
 	void SetupArsenalWidgetMapping();
 	void SetupItemWidgetMapping();

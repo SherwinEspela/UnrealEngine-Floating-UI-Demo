@@ -11,6 +11,7 @@ class UUniformGridPanel;
 class UDataBiosGroupWidget;
 class UTopBarWidget;
 class UArsenalGroupWidget;
+class UNavigationBaseWidget;
 
 /**
  * 
@@ -55,4 +56,7 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	bool bIsViewingDataBios = true;
+
+private:
+	UNavigationBaseWidget* CurrentNavigation;
 };

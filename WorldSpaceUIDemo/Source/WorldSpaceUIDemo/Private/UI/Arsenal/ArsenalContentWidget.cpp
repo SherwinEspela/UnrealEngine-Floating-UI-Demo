@@ -24,7 +24,7 @@ void UArsenalContentWidget::LoadAllCells()
 	LoadCells(ItemWidgets, ItemCellsGrid, ItemsDataTable);
 }
 
-void UArsenalContentWidget::LoadCells(TArray<UArsenalCellWidget*> Widgets, UUniformGridPanel* Grid, UDataTable* DataTable)
+void UArsenalContentWidget::LoadCells(TArray<UArsenalCellWidget*>& OutWidgets, UUniformGridPanel* Grid, UDataTable* DataTable)
 {
 	if (DataTable)
 	{
@@ -37,7 +37,7 @@ void UArsenalContentWidget::LoadCells(TArray<UArsenalCellWidget*> Widgets, UUnif
 			if (Widget)
 			{
 				Widget->SetValues(Row->ArsenalIcon, Row->Quantity);
-				Widgets.Add(Widget);
+				OutWidgets.Add(Widget);
 			}
 		}
 
@@ -46,7 +46,7 @@ void UArsenalContentWidget::LoadCells(TArray<UArsenalCellWidget*> Widgets, UUnif
 		{
 			for (size_t col = 0; col < 3; col++)
 			{
-				auto Widget = Widgets[Index];
+				auto Widget = OutWidgets[Index];
 				Grid->AddChildToUniformGrid(Widget, row, col);
 				Index++;
 			}
@@ -65,14 +65,14 @@ void UArsenalContentWidget::SetupWidgetMapping()
 	SetupItemWidgetMapping();
 
 	// Arsenal to Items
-	ArsenalWidgets[2]->SetMapOnRight(ArsenalWidgets[0]);
-	ArsenalWidgets[5]->SetMapOnRight(ArsenalWidgets[3]);
-	ArsenalWidgets[8]->SetMapOnRight(ArsenalWidgets[6]);
+	ArsenalWidgets[2]->SetMapOnRight(ItemWidgets[0]);
+	ArsenalWidgets[5]->SetMapOnRight(ItemWidgets[3]);
+	ArsenalWidgets[8]->SetMapOnRight(ItemWidgets[6]);
 
 	// Items to Arsenal
-	ArsenalWidgets[0]->SetMapOnLeft(ArsenalWidgets[2]);
-	ArsenalWidgets[3]->SetMapOnLeft(ArsenalWidgets[5]);
-	ArsenalWidgets[6]->SetMapOnLeft(ArsenalWidgets[8]);
+	ItemWidgets[0]->SetMapOnLeft(ArsenalWidgets[2]);
+	ItemWidgets[3]->SetMapOnLeft(ArsenalWidgets[5]);
+	ItemWidgets[6]->SetMapOnLeft(ArsenalWidgets[8]);
 
 	ArsenalWidgets[0]->SetHighlight();
 	SelectedWidget = ArsenalWidgets[0];

@@ -5,6 +5,7 @@
 #include "Components/UniformGridPanel.h"
 #include "UI/DataBios/DataBiosGroupWidget.h"
 #include "UI/Arsenal//ArsenalGroupWidget.h"
+#include "UI/Abstract/NavigationBaseWidget.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -24,42 +25,50 @@ void UMainMenuWidget::NativeConstruct()
 			}
 		}
 	}
+
+	CurrentNavigation = ArsenalGroup;
 }
 
 void UMainMenuWidget::MoveSelectionUp()
 {
-	if (bIsViewingDataBios)
+	/*if (bIsViewingDataBios)
 	{
 		DataBiosGroup->MoveSelectionUp();
 	}
 	else {
 		ArsenalGroup->MoveSelectionUp();
-	}
+	}*/
+	CurrentNavigation->MoveSelectionUp();
 }
 
 void UMainMenuWidget::MoveSelectionDown()
 {
-	if (DataBiosGroup) DataBiosGroup->MoveSelectionDown();
+	//if (DataBiosGroup) DataBiosGroup->MoveSelectionDown();
+	CurrentNavigation->MoveSelectionDown();
 }
 
 void UMainMenuWidget::MoveSelectionLeft()
 {
-	if (DataBiosGroup) DataBiosGroup->MoveSelectionLeft();
+	//if (DataBiosGroup) DataBiosGroup->MoveSelectionLeft();
+	CurrentNavigation->MoveSelectionLeft();
 }
 
 void UMainMenuWidget::MoveSelectionRight()
 {
-	if (DataBiosGroup) DataBiosGroup->MoveSelectionRight();
+	//if (DataBiosGroup) DataBiosGroup->MoveSelectionRight();
+	CurrentNavigation->MoveSelectionRight();
 }
 
 void UMainMenuWidget::MoveTopBarSelectionLeft()
 {
 	if (TopBar) TopBar->MoveSelectionLeft();
 	bIsViewingDataBios = true;
+	CurrentNavigation = DataBiosGroup;
 }
 
 void UMainMenuWidget::MoveTopBarSelectionRight()
 {
 	if (TopBar) TopBar->MoveSelectionRight();
 	bIsViewingDataBios = false;
+	CurrentNavigation = ArsenalGroup;
 }

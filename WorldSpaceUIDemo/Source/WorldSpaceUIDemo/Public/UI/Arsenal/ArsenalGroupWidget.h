@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "UI/Abstract/NavigationBaseWidget.h"
 #include "ArsenalGroupWidget.generated.h"
 
 class UTextBlock;
@@ -14,15 +15,15 @@ class UArsenalContentWidget;
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UArsenalGroupWidget : public UUserWidget
+class WORLDSPACEUIDEMO_API UArsenalGroupWidget : public UNavigationBaseWidget
 {
 	GENERATED_BODY()
 
 public:
-	void MoveSelectionUp();
-	void MoveSelectionDown();
-	void MoveSelectionLeft();
-	void MoveSelectionRight();
+	void MoveSelectionUp() override;
+	void MoveSelectionDown() override;
+	void MoveSelectionLeft() override;
+	void MoveSelectionRight() override;
 	
 protected:
 	UPROPERTY(meta = (BindWidget))

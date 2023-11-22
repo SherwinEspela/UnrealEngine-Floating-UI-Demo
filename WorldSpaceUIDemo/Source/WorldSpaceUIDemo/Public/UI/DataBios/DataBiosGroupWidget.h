@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "UI/Abstract/NavigationBaseWidget.h"
 #include "DataBiosGroupWidget.generated.h"
 
 class UTextBlock;
@@ -13,16 +14,16 @@ class UDataBiosWidget;
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UDataBiosGroupWidget : public UUserWidget
+class WORLDSPACEUIDEMO_API UDataBiosGroupWidget : public UNavigationBaseWidget
 {
 	GENERATED_BODY()
 public:
 	void NativeConstruct() override;
 
-	void MoveSelectionUp();
-	void MoveSelectionDown();
-	void MoveSelectionLeft();
-	void MoveSelectionRight();
+	void MoveSelectionUp() override;
+	void MoveSelectionDown() override;
+	void MoveSelectionLeft() override;
+	void MoveSelectionRight() override;
 
 protected:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
