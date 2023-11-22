@@ -33,6 +33,13 @@ protected:
 	void NativeConstruct() override;
 
 protected:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnDataBiosGroupSelected();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnArsenalGroupSelected();
+
+protected:
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UUniformGridPanel* DotGrid;
 

@@ -144,10 +144,14 @@ void AWSPlayerController::DPadRightTapped()
 
 void AWSPlayerController::ButtonL1Tapped()
 {
+	if (bIsDisplayingDataBios) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionLeft();
+	bIsDisplayingDataBios = true;
 }
 
 void AWSPlayerController::ButtonR1Tapped()
 {
+	if (!bIsDisplayingDataBios) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionRight();
+	bIsDisplayingDataBios = false;
 }

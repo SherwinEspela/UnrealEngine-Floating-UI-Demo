@@ -97,4 +97,5 @@ private:
 	bool bCanResetControlOrientation = true;
 	bool IsLookingAround = false;
 	bool bIsViewingPlayerCamera = true;
+	bool bIsDisplayingDataBios = true;
 };

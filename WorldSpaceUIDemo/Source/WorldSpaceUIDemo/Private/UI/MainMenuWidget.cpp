@@ -54,15 +54,13 @@ void UMainMenuWidget::MoveSelectionRight()
 void UMainMenuWidget::MoveTopBarSelectionLeft()
 {
 	if (TopBar) TopBar->MoveSelectionLeft();
-	CurrentNavigation->SetVisibility(ESlateVisibility::Hidden);
 	CurrentNavigation = DataBiosGroup;
-	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
+	OnDataBiosGroupSelected();
 }
 
 void UMainMenuWidget::MoveTopBarSelectionRight()
 {
 	if (TopBar) TopBar->MoveSelectionRight();
-	CurrentNavigation->SetVisibility(ESlateVisibility::Hidden);
 	CurrentNavigation = ArsenalGroup;
-	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
+	OnArsenalGroupSelected();
 }
