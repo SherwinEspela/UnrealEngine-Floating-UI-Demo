@@ -5,14 +5,16 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 
-void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, FString Location, FString Rewards)
+void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, bool IsCompleted, FString Location, FString Rewards)
 {
 	if (TextureMission) ImageMission->SetBrushFromTexture(TextureMission);
 
 	TextMissionName->SetText(FText::FromString(MissionName.ToUpper()));
 	TextDescription->SetText(FText::FromString(Description.ToUpper()));
-	FString MissionIdValue = FString::Printf(TEXT("ID-%S"), *MissionId);
+	FString MissionIdValue = FString::Printf(TEXT("MISSION ID: %s"), *MissionId);
 	TextMissionId->SetText(FText::FromString(MissionIdValue));
-	TextLocation->SetText(FText::FromString(Location));
-	TextRewards->SetText(FText::FromString(Rewards));
+	FString StatusValue = FString::Printf(TEXT("STATUS: %s"), IsCompleted ? TEXT("Completed") : TEXT("Pending"));
+	TextStatus->SetText(FText::FromString(StatusValue));
+	TextLocation->SetText(FText::FromString(FString::Printf(TEXT("LOCATION: %s"), *Location)));
+	TextRewards->SetText(FText::FromString(FString::Printf(TEXT("REWARDS: %s"), *Rewards)));
 }

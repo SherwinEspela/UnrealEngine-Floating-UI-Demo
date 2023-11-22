@@ -73,8 +73,7 @@ void UMainMenuWidget::OpenModal()
 	if (!MissionsDataTable) return;
 	FName RowName = DataBiosGroup->GetRowNameFromSelectedWidget();
 	FMissionRow* Row = MissionsDataTable->FindRow<FMissionRow>(RowName, "");
-	//UE_LOG(LogTemp, Warning, TEXT("Mission Name === %s"), *Row->MissionName);
-	ModalMission->SetValues(Row->MissionIcon, Row->MissionName, Row->Description, Row->MissionId, Row->Location, Row->Rewards);
+	ModalMission->SetValues(Row->MissionIcon, Row->MissionName, Row->Description, Row->MissionId, Row->IsCompleted, Row->Location, Row->Rewards);
 	ModalMission->SetVisibility(ESlateVisibility::Visible);
 	BottomButtonA->OnButtonTapped();
 }

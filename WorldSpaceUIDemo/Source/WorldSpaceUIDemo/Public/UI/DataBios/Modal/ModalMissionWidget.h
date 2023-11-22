@@ -18,7 +18,7 @@ class WORLDSPACEUIDEMO_API UModalMissionWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, FString Location, FString Rewards);
+	void SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, bool IsCompleted, FString Location, FString Rewards);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
