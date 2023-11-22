@@ -8,6 +8,7 @@
 
 class UUniformGridPanel;
 class UArsenalCellWidget;
+class UMappableWidget;
 
 USTRUCT(BlueprintType)
 struct FArsenalRow : public FTableRowBase
@@ -42,6 +43,12 @@ public:
 	UPROPERTY(EditAnywhere)
 	UDataTable* ItemsDataTable;
 
+public:
+	void MoveSelectionUp();
+	void MoveSelectionDown();
+	void MoveSelectionRight();
+	void MoveSelectionLeft();
+
 protected:
 	void NativeConstruct() override;
 	void NativePreConstruct() override;
@@ -56,6 +63,16 @@ protected:
 	TSubclassOf<UArsenalCellWidget> ArsenalCellWidgetClass;
 
 private:
+	TArray<UArsenalCellWidget*> ArsenalWidgets;
+	TArray<UArsenalCellWidget*> ItemWidgets;
+	UMappableWidget* SelectedWidget;
+
+private:
 	void LoadAllCells();
-	void LoadCells(UUniformGridPanel* Grid, UDataTable* DataTable);
+	void LoadCells(TArray<UArsenalCellWidget*> Widgets, UUniformGridPanel* Grid, UDataTable* DataTable);
+	void SetupWidgetMapping();
+	void SetupArsenalWidgetMapping();
+	void SetupItemWidgetMapping();
+	void UpdateNewSelectedWidget(UMappableWidget* MappableWidget);
+
 };

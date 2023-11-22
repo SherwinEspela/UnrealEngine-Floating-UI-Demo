@@ -10,6 +10,7 @@
 class UUniformGridPanel;
 class UDataBiosGroupWidget;
 class UTopBarWidget;
+class UArsenalGroupWidget;
 
 /**
  * 
@@ -41,6 +42,9 @@ protected:
 	UDataBiosGroupWidget* DataBiosGroup;
 
 	UPROPERTY(meta = (BindWidget))
+	UArsenalGroupWidget* ArsenalGroup;
+
+	UPROPERTY(meta = (BindWidget))
 	UTopBarWidget* TopBar;
 
 	UPROPERTY(EditAnywhere)
@@ -48,4 +52,7 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	float DotSize = 100.f;
+
+	UPROPERTY(EditAnywhere)
+	bool bIsViewingDataBios = true;
 };

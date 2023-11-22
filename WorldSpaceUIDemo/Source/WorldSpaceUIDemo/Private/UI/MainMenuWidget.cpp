@@ -4,6 +4,7 @@
 #include "UI/MainMenuWidget.h"
 #include "Components/UniformGridPanel.h"
 #include "UI/DataBios/DataBiosGroupWidget.h"
+#include "UI/Arsenal//ArsenalGroupWidget.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -27,7 +28,13 @@ void UMainMenuWidget::NativeConstruct()
 
 void UMainMenuWidget::MoveSelectionUp()
 {
-	if (DataBiosGroup) DataBiosGroup->MoveSelectionUp();
+	if (bIsViewingDataBios)
+	{
+		DataBiosGroup->MoveSelectionUp();
+	}
+	else {
+		ArsenalGroup->MoveSelectionUp();
+	}
 }
 
 void UMainMenuWidget::MoveSelectionDown()
@@ -48,9 +55,11 @@ void UMainMenuWidget::MoveSelectionRight()
 void UMainMenuWidget::MoveTopBarSelectionLeft()
 {
 	if (TopBar) TopBar->MoveSelectionLeft();
+	bIsViewingDataBios = true;
 }
 
 void UMainMenuWidget::MoveTopBarSelectionRight()
 {
 	if (TopBar) TopBar->MoveSelectionRight();
+	bIsViewingDataBios = false;
 }

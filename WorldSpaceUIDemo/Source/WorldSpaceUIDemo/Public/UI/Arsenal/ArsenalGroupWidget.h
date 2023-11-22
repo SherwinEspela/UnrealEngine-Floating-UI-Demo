@@ -17,6 +17,12 @@ UCLASS()
 class WORLDSPACEUIDEMO_API UArsenalGroupWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+public:
+	void MoveSelectionUp();
+	void MoveSelectionDown();
+	void MoveSelectionLeft();
+	void MoveSelectionRight();
 	
 protected:
 	UPROPERTY(meta = (BindWidget))
