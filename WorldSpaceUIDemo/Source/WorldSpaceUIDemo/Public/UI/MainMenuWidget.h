@@ -12,6 +12,7 @@ class UDataBiosGroupWidget;
 class UTopBarWidget;
 class UArsenalGroupWidget;
 class UNavigationBaseWidget;
+class UBottomButtonWidget;
 
 /**
  * 
@@ -28,6 +29,8 @@ public:
 	void MoveSelectionRight();
 	void MoveTopBarSelectionLeft();
 	void MoveTopBarSelectionRight();
+	void OpenModal();
+	void CloseModal();
 
 protected:
 	void NativeConstruct() override;
@@ -39,7 +42,7 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnArsenalGroupSelected();
 
-protected:
+protected: // UI Elements
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UUniformGridPanel* DotGrid;
 
@@ -55,6 +58,13 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	UTopBarWidget* TopBar;
 
+	UPROPERTY(meta = (BindWidget))
+	UBottomButtonWidget* BottomButtonA;
+
+	UPROPERTY(meta = (BindWidget))
+	UBottomButtonWidget* BottomButtonB;
+
+protected:
 	UPROPERTY(EditAnywhere)
 	int DotCount = 20;
 

@@ -42,6 +42,8 @@ void AWSPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(InputActionDPadRightButton, ETriggerEvent::Triggered, this, &AWSPlayerController::DPadRightTapped);
 	EnhancedInputComponent->BindAction(InputActionL1Button, ETriggerEvent::Triggered, this, &AWSPlayerController::ButtonL1Tapped);
 	EnhancedInputComponent->BindAction(InputActionR1Button, ETriggerEvent::Triggered, this, &AWSPlayerController::ButtonR1Tapped);
+	EnhancedInputComponent->BindAction(InputActionAButton, ETriggerEvent::Triggered, this, &AWSPlayerController::ButtonATapped);
+	EnhancedInputComponent->BindAction(InputActionBButton, ETriggerEvent::Triggered, this, &AWSPlayerController::ButtonBTapped);
 }
 
 void AWSPlayerController::Move(const FInputActionValue& Value)
@@ -154,4 +156,14 @@ void AWSPlayerController::ButtonR1Tapped()
 	if (!bIsDisplayingDataBios) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionRight();
 	bIsDisplayingDataBios = false;
+}
+
+void AWSPlayerController::ButtonATapped()
+{
+	PlayerCharacter->GetMainMenuWidgetComponent()->OpenModal();
+}
+
+void AWSPlayerController::ButtonBTapped()
+{
+	PlayerCharacter->GetMainMenuWidgetComponent()->CloseModal();
 }

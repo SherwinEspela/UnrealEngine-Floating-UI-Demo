@@ -48,3 +48,13 @@ void UFloatingWidgetComponent::MoveTopBarSelectionRight()
 {
 	MainMenuWidget->MoveTopBarSelectionRight();
 }
+
+void UFloatingWidgetComponent::OpenModal()
+{
+	MainMenuWidget->OpenModal();
+}
+
+void UFloatingWidgetComponent::CloseModal()
+{
+	MainMenuWidget->CloseModal();
+}

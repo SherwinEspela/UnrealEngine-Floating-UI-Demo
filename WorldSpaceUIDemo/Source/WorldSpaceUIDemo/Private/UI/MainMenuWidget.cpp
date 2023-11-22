@@ -6,6 +6,7 @@
 #include "UI/DataBios/DataBiosGroupWidget.h"
 #include "UI/Arsenal//ArsenalGroupWidget.h"
 #include "UI/Abstract/NavigationBaseWidget.h"
+#include "UI/BottomControls/BottomButtonWidget.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -63,4 +64,16 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 	if (TopBar) TopBar->MoveSelectionRight();
 	CurrentNavigation = ArsenalGroup;
 	OnArsenalGroupSelected();
+}
+
+void UMainMenuWidget::OpenModal()
+{
+	UE_LOG(LogTemp, Warning, TEXT("OpenModal"));
+	BottomButtonA->OnButtonTapped();
+}
+
+void UMainMenuWidget::CloseModal()
+{
+	UE_LOG(LogTemp, Warning, TEXT("CloseModal"));
+	BottomButtonB->OnButtonTapped();
 }

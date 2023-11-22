@@ -28,6 +28,8 @@ public:
 	void MoveSelectionRight();
 	void MoveTopBarSelectionLeft();
 	void MoveTopBarSelectionRight();
+	void OpenModal();
+	void CloseModal();
 
 private:
 	UMainMenuWidget* MainMenuWidget;

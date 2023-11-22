@@ -60,6 +60,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
 	UInputAction* InputActionR1Button;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionAButton;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Player Input")
+	UInputAction* InputActionBButton;
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
 	float MoveSpeedForward;
@@ -87,6 +93,8 @@ private:
 	void DPadRightTapped();
 	void ButtonL1Tapped();
 	void ButtonR1Tapped();
+	void ButtonATapped();
+	void ButtonBTapped();
 
 private:
 	APlayerCharacter* PlayerCharacter;
