@@ -25,9 +25,12 @@ void UArsenalCellWidget::NativeConstruct()
 	ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
 }
 
-void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, int Quantity)
+void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, FString ArsenalNameValue, FString DescriptionValue, int Quantity)
 {
 	if (TextureArsenal) ImageArsenal->SetBrushFromTexture(TextureArsenal, true);
+
+	ArsenalName = ArsenalNameValue;
+	Description = DescriptionValue;
 
 	FString QuantityValue = FString::FromInt(Quantity);
 	TextQuantity->SetText(FText::FromString(QuantityValue));

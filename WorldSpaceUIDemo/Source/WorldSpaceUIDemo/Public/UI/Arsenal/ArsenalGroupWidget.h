@@ -26,6 +26,8 @@ public:
 	void MoveSelectionRight() override;
 	
 protected:
+	void NativeConstruct() override;
+
 	UPROPERTY(meta = (BindWidget))
 	UArsenalContentWidget* ArsenalContents;
 
@@ -37,4 +39,8 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageTopBarBG;
+
+private:
+	UFUNCTION()
+	void HandleArsenalWidgetSelected(FString ArsenalName, FString Description);
 };

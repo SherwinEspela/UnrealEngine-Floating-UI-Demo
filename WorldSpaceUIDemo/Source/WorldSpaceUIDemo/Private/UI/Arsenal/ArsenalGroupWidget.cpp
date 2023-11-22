@@ -3,6 +3,13 @@
 
 #include "UI/Arsenal/ArsenalGroupWidget.h"
 #include "UI/Arsenal/ArsenalContentWidget.h"
+#include "Components/TextBlock.h"
+
+void UArsenalGroupWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+	ArsenalContents->OnArsenalWidgetSelected.AddDynamic(this, &UArsenalGroupWidget::HandleArsenalWidgetSelected);
+}
 
 void UArsenalGroupWidget::MoveSelectionUp()
 {
@@ -22,4 +29,11 @@ void UArsenalGroupWidget::MoveSelectionLeft()
 void UArsenalGroupWidget::MoveSelectionRight()
 {
 	ArsenalContents->MoveSelectionRight();
+}
+
+void UArsenalGroupWidget::HandleArsenalWidgetSelected(FString ArsenalName, FString Description)
+{
+	//UE_LOG(LogTemp, Warning, TEXT("Arsenal Name = %s"), *ArsenalName);
+	TextArsenalName->SetText(FText::FromString(ArsenalName));
+	TextDescription->SetText(FText::FromString(Description));
 }

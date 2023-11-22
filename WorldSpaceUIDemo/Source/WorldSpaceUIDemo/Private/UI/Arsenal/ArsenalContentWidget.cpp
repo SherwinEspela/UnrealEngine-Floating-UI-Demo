@@ -36,7 +36,7 @@ void UArsenalContentWidget::LoadCells(TArray<UArsenalCellWidget*>& OutWidgets, U
 
 			if (Widget)
 			{
-				Widget->SetValues(Row->ArsenalIcon, Row->Quantity);
+				Widget->SetValues(Row->ArsenalIcon, Row->ArsenalName, Row->Description, Row->Quantity);
 				OutWidgets.Add(Widget);
 			}
 		}
@@ -185,5 +185,7 @@ void UArsenalContentWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWid
 		Cast<UArsenalCellWidget>(SelectedWidget)->SetHighlight(false);
 		Cast<UArsenalCellWidget>(MappableWidget)->SetHighlight();
 		SelectedWidget = MappableWidget;
+		UArsenalCellWidget* ArsenalCell = Cast<UArsenalCellWidget>(SelectedWidget);
+		OnArsenalWidgetSelected.Broadcast(ArsenalCell->GetArsenalName(), ArsenalCell->GetArsenalDescription());
 	}
 }

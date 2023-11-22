@@ -23,8 +23,12 @@ public:
 	UArsenalCellWidget();
 
 public:
-	void SetValues(UTexture2D* TextureArsenal, int Quantity);
+	void SetValues(UTexture2D* TextureArsenal, FString ArsenalNameValue, FString DescriptionValue, int Quantity);
 	void SetHighlight(bool ShoudHighlight = true);
+
+public:
+	FORCEINLINE FString GetArsenalName() const { return ArsenalName; }
+	FORCEINLINE FString GetArsenalDescription() const { return Description; }
 
 protected:
 	virtual void NativePreConstruct() override;
@@ -42,4 +46,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextQuantity;
+
+	FString ArsenalName;
+	FString Description;
 };

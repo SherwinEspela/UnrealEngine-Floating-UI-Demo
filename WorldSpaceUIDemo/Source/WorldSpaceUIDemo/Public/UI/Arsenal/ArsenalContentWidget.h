@@ -28,6 +28,8 @@ struct FArsenalRow : public FTableRowBase
 	int Quantity = 1;
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnArsenalWidgetSelectedSignature, FString, ArsenalName, FString, Description);
+
 /**
  * 
  */
@@ -42,6 +44,8 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	UDataTable* ItemsDataTable;
+
+	FOnArsenalWidgetSelectedSignature OnArsenalWidgetSelected;
 
 public:
 	void MoveSelectionUp();
