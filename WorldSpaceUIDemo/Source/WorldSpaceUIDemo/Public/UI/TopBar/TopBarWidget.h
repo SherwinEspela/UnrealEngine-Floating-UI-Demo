@@ -9,6 +9,7 @@
 class UTopBarTabWidget;
 class UMappableWidget;
 class UTextBlock;
+class UTopBarSideButtonWidget;
 
 /**
  * 
@@ -33,6 +34,12 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextPoints;
+
+	UPROPERTY(meta = (BindWidget))
+	UTopBarSideButtonWidget* ButtonL1;
+
+	UPROPERTY(meta = (BindWidget))
+	UTopBarSideButtonWidget* ButtonR1;
 
 private:
 	void SetupWidgetMapping();

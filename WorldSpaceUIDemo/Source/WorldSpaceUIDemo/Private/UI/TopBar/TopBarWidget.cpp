@@ -5,6 +5,7 @@
 #include "UI/TopBar/TopBarTabWidget.h"
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
+#include "UI/TopBar/TopBarSideButtonWidget.h"
 
 void UTopBarWidget::NativeConstruct()
 {
@@ -26,11 +27,13 @@ void UTopBarWidget::SetupWidgetMapping()
 void UTopBarWidget::MoveSelectionRight()
 {
 	UpdateNewSelectedWidget(SelectedTab->MoveRight());
+	ButtonR1->OnSideButtonTapped();
 }
 
 void UTopBarWidget::MoveSelectionLeft()
 {
 	UpdateNewSelectedWidget(SelectedTab->MoveLeft());
+	ButtonL1->OnSideButtonTapped();
 }
 
 void UTopBarWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
