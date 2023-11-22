@@ -44,6 +44,11 @@ void UDataBiosGroupWidget::MoveSelectionRight()
 	}
 }
 
+FName UDataBiosGroupWidget::GetRowNameFromSelectedWidget() const
+{
+	return DataBios->GetRowNameFromSelectedWidget();
+}
+
 void UDataBiosGroupWidget::HandleNewTabSelected(int SelectedTabIndex)
 {
 	TextTitle->SetText(FText::FromString(Titles[SelectedTabIndex]));

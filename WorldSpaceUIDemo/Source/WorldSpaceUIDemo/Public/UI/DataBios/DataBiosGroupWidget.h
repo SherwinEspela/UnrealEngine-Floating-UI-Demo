@@ -25,6 +25,9 @@ public:
 	void MoveSelectionLeft() override;
 	void MoveSelectionRight() override;
 
+public:
+	FName GetRowNameFromSelectedWidget() const;
+
 protected:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	UDataBiosWidget* DataBios;

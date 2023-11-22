@@ -18,8 +18,10 @@ void UMissionWidget::NativeConstruct()
 	ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
 }
 
-void UMissionWidget::SetValues(UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted)
+void UMissionWidget::SetValues(FName RowNameValue, UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted)
 {
+	RowName = RowNameValue;
+
 	if (TextureIcon) {
 		ImageIcon->SetBrushFromTexture(TextureIcon);
 	}

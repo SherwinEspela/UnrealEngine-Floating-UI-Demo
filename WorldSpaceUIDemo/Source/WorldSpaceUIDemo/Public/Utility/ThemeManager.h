@@ -17,9 +17,9 @@
 /**
  * 
  */
-class WORLDSPACEUIDEMO_API ThemeManager
-{
-public:
-	ThemeManager();
-	~ThemeManager();
-};
+//class WORLDSPACEUIDEMO_API ThemeManager
+//{
+//public:
+//	ThemeManager();
+//	~ThemeManager();
+//};

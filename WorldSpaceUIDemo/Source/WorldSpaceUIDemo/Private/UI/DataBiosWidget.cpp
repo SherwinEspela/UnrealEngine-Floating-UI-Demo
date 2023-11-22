@@ -137,3 +137,8 @@ void UDataBiosWidget::HandlePanelExitted()
 {
 	SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
 }
+
+FName UDataBiosWidget::GetRowNameFromSelectedWidget() const
+{
+	return Missions->GetRowNameFromSelectedWidget();
+}

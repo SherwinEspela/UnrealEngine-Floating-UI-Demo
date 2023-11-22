@@ -13,6 +13,7 @@ class UTopBarWidget;
 class UArsenalGroupWidget;
 class UNavigationBaseWidget;
 class UBottomButtonWidget;
+class UModalMissionWidget;
 
 /**
  * 
@@ -64,7 +65,13 @@ protected: // UI Elements
 	UPROPERTY(meta = (BindWidget))
 	UBottomButtonWidget* BottomButtonB;
 
+	UPROPERTY(meta = (BindWidget))
+	UModalMissionWidget* ModalMission;
+
 protected:
+	UPROPERTY(EditAnywhere)
+	UDataTable* MissionsDataTable;
+
 	UPROPERTY(EditAnywhere)
 	int DotCount = 20;
 

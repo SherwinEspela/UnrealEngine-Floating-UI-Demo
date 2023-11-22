@@ -3,6 +3,7 @@
 
 #include "UI/DataBiosMissionsWidget.h"
 #include "UI/DataBios/MissionWidget.h"
+#include "CustomStructs/MissionRow.h"
 #include "Components/UniformGridPanel.h"
 
 void UDataBiosMissionsWidget::NativePreConstruct()
@@ -29,7 +30,7 @@ void UDataBiosMissionsWidget::LoadCells()
 
 			if (Widget)
 			{
-				Widget->SetValues(Row->MissionIcon, Row->MissionName, Row->Difficulty, Row->IsCompleted);
+				Widget->SetValues(RowName, Row->MissionIcon, Row->MissionName, Row->Difficulty, Row->IsCompleted);
 				MissionWidgets.Add(Widget);
 			}
 		}
@@ -116,4 +117,10 @@ void UDataBiosMissionsWidget::MoveSelectionLeft()
 {
 	if (SelectedWidget->bIsExit) Cast<UMissionWidget>(SelectedWidget)->SetHighlight(false);
 	Super::MoveSelectionLeft();
+}
+
+FName UDataBiosMissionsWidget::GetRowNameFromSelectedWidget() const
+{
+	FName RowName = Cast<UMissionWidget>(SelectedWidget)->GetRowName();
+	return RowName;
 }

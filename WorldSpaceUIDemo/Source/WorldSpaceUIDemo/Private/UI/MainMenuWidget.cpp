@@ -7,6 +7,8 @@
 #include "UI/Arsenal//ArsenalGroupWidget.h"
 #include "UI/Abstract/NavigationBaseWidget.h"
 #include "UI/BottomControls/BottomButtonWidget.h"
+#include "UI/DataBios/Modal/ModalMissionWidget.h"
+#include "UI/DataBiosMissionsWidget.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -68,12 +70,17 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 
 void UMainMenuWidget::OpenModal()
 {
-	UE_LOG(LogTemp, Warning, TEXT("OpenModal"));
+	if (!MissionsDataTable) return;
+	FName RowName = DataBiosGroup->GetRowNameFromSelectedWidget();
+	FMissionRow* Row = MissionsDataTable->FindRow<FMissionRow>(RowName, "");
+	//UE_LOG(LogTemp, Warning, TEXT("Mission Name === %s"), *Row->MissionName);
+	ModalMission->SetValues(Row->MissionIcon, Row->MissionName, Row->Description, Row->MissionId, Row->Location, Row->Rewards);
+	ModalMission->SetVisibility(ESlateVisibility::Visible);
 	BottomButtonA->OnButtonTapped();
 }
 
 void UMainMenuWidget::CloseModal()
 {
-	UE_LOG(LogTemp, Warning, TEXT("CloseModal"));
+	ModalMission->SetVisibility(ESlateVisibility::Hidden);
 	BottomButtonB->OnButtonTapped();
 }

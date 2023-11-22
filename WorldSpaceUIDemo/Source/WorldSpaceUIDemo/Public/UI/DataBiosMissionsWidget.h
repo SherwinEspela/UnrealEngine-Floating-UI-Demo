@@ -23,6 +23,18 @@ struct FMissionRow : public FTableRowBase
 	FString MissionName = "";
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Description = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString MissionId = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Location = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Rewards = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int Difficulty = 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -45,6 +57,9 @@ public:
 	virtual void SetHighlightOnFirstElementWidget() override;
 	virtual void SetMenuTab(UMappableWidget* Tab) const override;
 	virtual void MoveSelectionLeft() override;
+
+public:
+	FName GetRowNameFromSelectedWidget() const;
 
 protected:
 	void NativeConstruct() override;

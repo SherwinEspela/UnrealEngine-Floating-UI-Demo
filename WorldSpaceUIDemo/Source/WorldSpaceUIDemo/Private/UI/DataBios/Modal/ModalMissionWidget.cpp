@@ -5,7 +5,7 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 
-void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, FString Location, TArray<FString> Rewards)
+void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, FString Location, FString Rewards)
 {
 	if (TextureMission) ImageMission->SetBrushFromTexture(TextureMission);
 
@@ -14,8 +14,5 @@ void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionN
 	FString MissionIdValue = FString::Printf(TEXT("ID-%S"), *MissionId);
 	TextMissionId->SetText(FText::FromString(MissionIdValue));
 	TextLocation->SetText(FText::FromString(Location));
-
-	FString RewardsValue;
-	for (FString Reward : Rewards) RewardsValue += FString::Printf(TEXT(", "), *Reward);
-	TextRewards->SetText(FText::FromString(RewardsValue));
+	TextRewards->SetText(FText::FromString(Rewards));
 }

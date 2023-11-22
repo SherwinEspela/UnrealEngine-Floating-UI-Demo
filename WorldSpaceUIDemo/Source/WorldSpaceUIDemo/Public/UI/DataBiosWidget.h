@@ -32,6 +32,9 @@ public:
 
 	FOnNewTabSelectedSignature OnNewTabSelected;
 
+public:
+	FName GetRowNameFromSelectedWidget() const;
+
 protected:
 	void NativeConstruct() override;
 
