@@ -33,7 +33,6 @@ void UArsenalGroupWidget::MoveSelectionRight()
 
 void UArsenalGroupWidget::HandleArsenalWidgetSelected(FString ArsenalName, FString Description)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("Arsenal Name = %s"), *ArsenalName);
 	TextArsenalName->SetText(FText::FromString(ArsenalName));
 	TextDescription->SetText(FText::FromString(Description));
 }

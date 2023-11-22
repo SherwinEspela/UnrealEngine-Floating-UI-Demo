@@ -54,9 +54,6 @@ protected:
 	UPROPERTY(EditAnywhere)
 	float DotSize = 100.f;
 
-	UPROPERTY(EditAnywhere)
-	bool bIsViewingDataBios = true;
-
 private:
 	UNavigationBaseWidget* CurrentNavigation;
 };
