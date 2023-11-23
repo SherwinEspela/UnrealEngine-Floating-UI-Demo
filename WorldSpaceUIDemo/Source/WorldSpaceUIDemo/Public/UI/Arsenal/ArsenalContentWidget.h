@@ -52,6 +52,8 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
+	FString GetSelectedArsenalName() const;
+	FString GetSelectedArsenalDescription() const;
 
 protected:
 	void NativeConstruct() override;

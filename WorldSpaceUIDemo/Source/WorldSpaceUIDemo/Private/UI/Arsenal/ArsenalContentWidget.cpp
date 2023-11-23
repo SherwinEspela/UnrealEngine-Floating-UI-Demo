@@ -189,3 +189,15 @@ void UArsenalContentWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWid
 		OnArsenalWidgetSelected.Broadcast(ArsenalCell->GetArsenalName(), ArsenalCell->GetArsenalDescription());
 	}
 }
+
+FString UArsenalContentWidget::GetSelectedArsenalName() const
+{
+	UArsenalCellWidget* ArsenalCell = Cast<UArsenalCellWidget>(SelectedWidget);
+	return ArsenalCell->GetArsenalName();
+}
+
+FString UArsenalContentWidget::GetSelectedArsenalDescription() const
+{
+	UArsenalCellWidget* ArsenalCell = Cast<UArsenalCellWidget>(SelectedWidget);
+	return ArsenalCell->GetArsenalDescription();
+}

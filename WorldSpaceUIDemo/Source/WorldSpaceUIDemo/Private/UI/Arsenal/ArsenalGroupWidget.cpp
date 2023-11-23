@@ -9,6 +9,11 @@ void UArsenalGroupWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	ArsenalContents->OnArsenalWidgetSelected.AddDynamic(this, &UArsenalGroupWidget::HandleArsenalWidgetSelected);
+
+	HandleArsenalWidgetSelected(
+		ArsenalContents->GetSelectedArsenalName(), 
+		ArsenalContents->GetSelectedArsenalDescription()
+	);
 }
 
 void UArsenalGroupWidget::MoveSelectionUp()
