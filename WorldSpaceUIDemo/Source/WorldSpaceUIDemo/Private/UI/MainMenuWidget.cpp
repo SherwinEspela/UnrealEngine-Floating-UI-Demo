@@ -90,6 +90,7 @@ void UMainMenuWidget::OpenModal()
 		{
 			if (!MissionsDataTable) return;
 			FMissionRow* Row = MissionsDataTable->FindRow<FMissionRow>(RowName, "");
+			if (!Row) return;
 			ModalMission->SetValues(
 				Row->MissionIcon, 
 				Row->MissionName, 
@@ -106,6 +107,7 @@ void UMainMenuWidget::OpenModal()
 		{
 			if (!TargetsDataTable) return;
 			FTargetRow* TargetRow = TargetsDataTable->FindRow<FTargetRow>(RowName, "");
+			if (!TargetRow) return;
 			ModalTarget->SetValues(
 				TargetRow->TexturePhoto, 
 				TargetRow->TargetName, 

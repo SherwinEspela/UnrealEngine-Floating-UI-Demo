@@ -9,11 +9,18 @@ void UModalTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName,
 {
 	if (TexturePhoto) ImagePhoto->SetBrushFromTexture(TexturePhoto);
 	TextTargetName->SetText(FText::FromString(TargetName));
-	TextDescription->SetText(FText::FromString(Description));
+	TextDescription->SetText(FText::FromString(Description).ToUpper());
+
 	FString IdValue = FString::Printf(TEXT("ID-%s"), *Id);
-	TextId->SetText(FText::FromString(IdValue));
-	FString StatusValue = IsLocated ? TEXT("Located") : TEXT("Unknown");
-	TextStatus->SetText(FText::FromString(StatusValue));
-	TextDob->SetText(FText::FromString(BirthDate));
-	TextRank->SetText(FText::FromString(FString::FromInt(Rank)));
+	TextId->SetText(FText::FromString(IdValue).ToUpper());
+
+	FString StatusValue = IsLocated ? TEXT("STATUS: Located") : TEXT("STATUS: Unknown");
+	TextStatus->SetText(FText::FromString(StatusValue).ToUpper());
+	
+	TextDob->SetText(FText::FromString(BirthDate).ToUpper());
+	
+	TextLocation->SetText(FText::FromString(Location).ToUpper());
+	
+	FString RankValue = FString::Printf(TEXT("RANK: %s"), *FString::FromInt(Rank));
+	TextRank->SetText(FText::FromString(RankValue));
 }
