@@ -35,8 +35,6 @@ void UMainMenuWidget::NativeConstruct()
 	ArsenalGroup->SetVisibility(ESlateVisibility::Hidden);
 	CurrentNavigation = DataBiosGroup;
 	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
-	BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
-	BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
 	DataBiosGroup->OnSelectedRegionChanged.AddDynamic(this, &UMainMenuWidget::HandleSelectedRegionChanged);
 }
 
@@ -188,14 +186,17 @@ void UMainMenuWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion Selec
 void UMainMenuWidget::SetBottomButtonsInteractable(bool IsInteractable)
 {
 	bCanInteractWithModal = IsInteractable;
-	if (IsInteractable)
-	{
-		BottomButtonA->SetVisibility(ESlateVisibility::Visible);
-		BottomButtonB->SetVisibility(ESlateVisibility::Visible);
-	} else {
-		BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
-		BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
-	}
+	OnShouldShowBottomButtons(IsInteractable);
+
+	//if (IsInteractable)
+	//{
+	///*	BottomButtonA->SetVisibility(ESlateVisibility::Visible);
+	//	BottomButtonB->SetVisibility(ESlateVisibility::Visible);*/
+	//	OnShouldShowBottomButtons(true);
+	//} else {
+	//	BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
+	//	BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
+	//}
 }
 
 void UMainMenuWidget::ValidateModalsVisibility()

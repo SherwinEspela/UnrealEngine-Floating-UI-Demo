@@ -44,6 +44,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnHideMainMenu();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnShouldShowBottomButtons(bool ShouldShow);
+
 protected:
 	void NativeConstruct() override;
 
