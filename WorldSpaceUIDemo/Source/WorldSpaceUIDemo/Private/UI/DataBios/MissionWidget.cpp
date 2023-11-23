@@ -30,8 +30,8 @@ void UMissionWidget::SetValues(FName RowNameValue, UTexture2D* TextureIcon, FStr
 	FString DifficultyLevel = FString::Printf(TEXT("Difficulty: %i"), Difficulty);
 	TextDifficulty->SetText(FText::FromString(DifficultyLevel.ToUpper()));
 
-	FString Status = FString::Printf(TEXT("Status: %s"), IsCompleted ? TEXT("Completed") : TEXT("Pending"));
-	TextStatus->SetText(FText::FromString(Status.ToUpper()));
+	FString Status = FString::Printf(TEXT("Status: %s"), IsCompleted ? TEXT("COMPLETED") : TEXT("PENDING"));
+	TextStatus->SetText(FText::FromString(Status).ToUpper());
 }
 
 void UMissionWidget::SetHighlight(bool ShoudHighlight)
