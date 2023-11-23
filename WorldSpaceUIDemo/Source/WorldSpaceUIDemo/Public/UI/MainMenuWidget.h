@@ -77,6 +77,9 @@ protected:
 	UDataTable* MissionsDataTable;
 
 	UPROPERTY(EditAnywhere)
+	UDataTable* TargetsDataTable;
+
+	UPROPERTY(EditAnywhere)
 	int DotCount = 20;
 
 	UPROPERTY(EditAnywhere)

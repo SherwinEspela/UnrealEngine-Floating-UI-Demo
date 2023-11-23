@@ -22,7 +22,7 @@ class WORLDSPACEUIDEMO_API UTargetWidget : public UMappableWidget, public IHighl
 public:
 	UTargetWidget();
 
-	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated);
+	void SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated);
 	void SetHighlight(bool ShoudHighlight = true);
 	
 protected:

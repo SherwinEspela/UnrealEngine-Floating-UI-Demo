@@ -140,5 +140,15 @@ void UDataBiosWidget::HandlePanelExitted()
 
 FName UDataBiosWidget::GetRowNameFromSelectedWidget() const
 {
-	return Missions->GetRowNameFromSelectedWidget();
+	switch (SelectionRegion)
+	{
+		case EDataBiosSelectionRegion::EDSR_Missions:
+			return Missions->GetRowNameFromSelectedWidget();
+		case EDataBiosSelectionRegion::EDSR_Targets:
+			return Targets->GetRowNameFromSelectedWidget();
+		default:
+			return FName();
+	}
+
+	return FName();
 }

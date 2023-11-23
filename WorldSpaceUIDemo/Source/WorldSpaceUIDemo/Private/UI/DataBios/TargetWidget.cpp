@@ -10,8 +10,10 @@ UTargetWidget::UTargetWidget()
 	SetSelectionRegion(EDataBiosSelectionRegion::EDSR_Targets);
 }
 
-void UTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated)
+void UTargetWidget::SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated)
 {
+	RowName = RowNameValue;
+
 	if (TexturePhoto)
 	{
 		ImagePhoto->SetBrushFromTexture(TexturePhoto);

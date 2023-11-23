@@ -41,3 +41,8 @@ void UDataBiosCommonWidget::SetHighlightOnFirstElementWidget()
 void UDataBiosCommonWidget::SetMenuTab(UMappableWidget* Tab) const
 {
 }
+
+FName UDataBiosCommonWidget::GetRowNameFromSelectedWidget() const
+{
+	return FName();
+}

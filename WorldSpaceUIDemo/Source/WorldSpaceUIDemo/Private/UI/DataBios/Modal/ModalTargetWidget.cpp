@@ -5,7 +5,7 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 
-void UModalTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated, FString BirthDate, FString Location, FString Rank, USoundBase* SFXAudio)
+void UModalTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated, FString BirthDate, FString Location, int Rank)
 {
 	if (TexturePhoto) ImagePhoto->SetBrushFromTexture(TexturePhoto);
 	TextTargetName->SetText(FText::FromString(TargetName));
@@ -15,6 +15,5 @@ void UModalTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName,
 	FString StatusValue = IsLocated ? TEXT("Located") : TEXT("Unknown");
 	TextStatus->SetText(FText::FromString(StatusValue));
 	TextDob->SetText(FText::FromString(BirthDate));
-	TextRank->SetText(FText::FromString(Rank));
-	AudioLog = SFXAudio;
+	TextRank->SetText(FText::FromString(FString::FromInt(Rank)));
 }

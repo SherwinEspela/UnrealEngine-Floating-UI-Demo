@@ -30,7 +30,13 @@ public:
 	FORCEINLINE void SetSelectionRegion(EDataBiosSelectionRegion Value) { SelectionRegion = Value; }
 
 public:
+	FORCEINLINE FName GetRowName() const { return RowName; }
+
+public:
 	bool bIsExit = false;
+
+protected:
+	FName RowName;
 
 private:
 	UMappableWidget* Above;

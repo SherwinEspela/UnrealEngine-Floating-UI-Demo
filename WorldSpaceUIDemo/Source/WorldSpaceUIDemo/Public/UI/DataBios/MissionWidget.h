@@ -26,9 +26,6 @@ public:
 	void SetValues(FName RowNameValue, UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted);
 	void SetHighlight(bool ShoudHighlight = true);
 
-public:
-	FORCEINLINE FName GetRowName() const { return RowName; }
-
 protected:
 	virtual void NativeConstruct() override;
 
@@ -50,7 +47,4 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextStatus;
-
-private:
-	FName RowName;
 };

@@ -57,9 +57,7 @@ public:
 	virtual void SetHighlightOnFirstElementWidget() override;
 	virtual void SetMenuTab(UMappableWidget* Tab) const override;
 	virtual void MoveSelectionLeft() override;
-
-public:
-	FName GetRowNameFromSelectedWidget() const;
+	FName GetRowNameFromSelectedWidget() const override;
 
 protected:
 	void NativeConstruct() override;

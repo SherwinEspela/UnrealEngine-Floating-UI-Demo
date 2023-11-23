@@ -8,7 +8,9 @@
 #include "UI/Abstract/NavigationBaseWidget.h"
 #include "UI/BottomControls/BottomButtonWidget.h"
 #include "UI/DataBios/Modal/ModalMissionWidget.h"
+#include "UI/DataBios/Modal/ModalTargetWidget.h"
 #include "UI/DataBiosMissionsWidget.h"
+#include "UI/DataBios/DataBiosTargetsWidget.h"
 #include "CustomEnums.h"
 
 void UMainMenuWidget::NativeConstruct()
@@ -77,21 +79,48 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 
 void UMainMenuWidget::OpenModal()
 {
-	auto SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
+	if (bIsDisplayingModal) return;
+
+	EDataBiosSelectionRegion SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
+	FName RowName = DataBiosGroup->GetRowNameFromSelectedWidget();
 
 	switch (SelectedTab)
 	{
 		case EDataBiosSelectionRegion::EDSR_Missions:
-			//if (!MissionsDataTable) return;
-			FName RowName = DataBiosGroup->GetRowNameFromSelectedWidget();
+		{
+			if (!MissionsDataTable) return;
 			FMissionRow* Row = MissionsDataTable->FindRow<FMissionRow>(RowName, "");
-			ModalMission->SetValues(Row->MissionIcon, Row->MissionName, Row->Description, Row->MissionId, Row->IsCompleted, Row->Location, Row->Rewards);
-			ModalMission->SetVisibility(ESlateVisibility::Visible);	
+			ModalMission->SetValues(
+				Row->MissionIcon, 
+				Row->MissionName, 
+				Row->Description, 
+				Row->MissionId, 
+				Row->IsCompleted, 
+				Row->Location, 
+				Row->Rewards
+			);
+			ModalMission->SetVisibility(ESlateVisibility::Visible);
+		}
 			break;
-		//case EDataBiosSelectionRegion::EDSR_Targets:
-		//	break;
-		//default:
-		//	break;
+		case EDataBiosSelectionRegion::EDSR_Targets:
+		{
+			if (!TargetsDataTable) return;
+			FTargetRow* TargetRow = TargetsDataTable->FindRow<FTargetRow>(RowName, "");
+			ModalTarget->SetValues(
+				TargetRow->TexturePhoto, 
+				TargetRow->TargetName, 
+				TargetRow->Description, 
+				TargetRow->TargetId, 
+				TargetRow->IsLocated, 
+				TargetRow->BirthDate, 
+				TargetRow->Location, 
+				TargetRow->Rank
+			);
+			ModalTarget->SetVisibility(ESlateVisibility::Visible);
+		}
+			break;
+		default:
+			break;
 	}
 
 	switch (SelectedTab)
@@ -106,16 +135,19 @@ void UMainMenuWidget::OpenModal()
 
 void UMainMenuWidget::CloseModal()
 {
-	auto SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
+	if (!bIsDisplayingModal) return;
+
+	EDataBiosSelectionRegion SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
 	switch (SelectedTab)
 	{
 		case EDataBiosSelectionRegion::EDSR_Missions:
 			ModalMission->SetVisibility(ESlateVisibility::Hidden);
 			break;
-	/*	case EDataBiosSelectionRegion::EDSR_Targets:
+		case EDataBiosSelectionRegion::EDSR_Targets:
+			ModalTarget->SetVisibility(ESlateVisibility::Hidden);
 			break;
 		default:
-			break;*/
+			break;
 	}
 
 	switch (SelectedTab)

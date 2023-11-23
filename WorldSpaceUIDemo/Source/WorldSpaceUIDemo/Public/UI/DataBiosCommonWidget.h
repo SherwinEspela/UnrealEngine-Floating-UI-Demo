@@ -28,6 +28,8 @@ public:
 	virtual void SetHighlightOnFirstElementWidget();
 	virtual void SetMenuTab(UMappableWidget* Tab) const;
 
+	virtual FName GetRowNameFromSelectedWidget() const;
+
 public:
 	FORCEINLINE UMappableWidget* GetFirstElementWidget() const { return FirstElementWidget; }
 

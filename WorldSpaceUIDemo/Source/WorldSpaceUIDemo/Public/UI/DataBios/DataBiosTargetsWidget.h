@@ -20,10 +20,22 @@ struct FTargetRow : public FTableRowBase
 	FString TargetName = "";
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Description = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString TargetId = "";
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString BirthDate = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Location = "";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int Difficulty = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int Rank = 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int AudioCount = 1;
@@ -48,6 +60,7 @@ public:
 	virtual void SetHighlightOnFirstElementWidget() override;
 	virtual void SetMenuTab(UMappableWidget* Tab) const override;
 	virtual void MoveSelectionLeft() override;
+	FName GetRowNameFromSelectedWidget() const override;
 
 protected:
 	void NativeConstruct() override;

@@ -20,7 +20,7 @@ class WORLDSPACEUIDEMO_API UModalTargetWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated,  FString BirthDate, FString Location, FString Rank, USoundBase* SFXAudio);
+	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated,  FString BirthDate, FString Location, int Rank);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -46,7 +46,4 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextRank;
-
-	UPROPERTY(EditAnywhere)
-	USoundBase* AudioLog;
 };

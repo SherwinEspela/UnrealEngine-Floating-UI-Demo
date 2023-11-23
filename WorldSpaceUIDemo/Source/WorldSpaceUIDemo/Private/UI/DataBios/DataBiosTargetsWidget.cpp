@@ -29,7 +29,7 @@ void UDataBiosTargetsWidget::LoadCells()
 
 			if (Widget)
 			{
-				Widget->SetValues(Row->TexturePhoto, Row->TargetName, Row->TargetId, Row->Difficulty, Row->AudioCount, Row->IsLocated);
+				Widget->SetValues(RowName, Row->TexturePhoto, Row->TargetName, Row->TargetId, Row->Difficulty, Row->AudioCount, Row->IsLocated);
 				TargetWidgets.Add(Widget);
 			}
 		}
@@ -110,4 +110,10 @@ void UDataBiosTargetsWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWi
 		Cast<UTargetWidget>(MappableWidget)->SetHighlight();
 		SelectedWidget = MappableWidget;
 	}
+}
+
+FName UDataBiosTargetsWidget::GetRowNameFromSelectedWidget() const
+{
+	FName RowName = Cast<UTargetWidget>(SelectedWidget)->GetRowName();
+	return RowName;
 }
