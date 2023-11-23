@@ -14,6 +14,7 @@ class UArsenalGroupWidget;
 class UNavigationBaseWidget;
 class UBottomButtonWidget;
 class UModalMissionWidget;
+class UModalTargetWidget;
 
 /**
  * 
@@ -68,6 +69,9 @@ protected: // UI Elements
 	UPROPERTY(meta = (BindWidget))
 	UModalMissionWidget* ModalMission;
 
+	UPROPERTY(meta = (BindWidget))
+	UModalTargetWidget* ModalTarget;
+
 protected:
 	UPROPERTY(EditAnywhere)
 	UDataTable* MissionsDataTable;
@@ -80,4 +84,5 @@ protected:
 
 private:
 	UNavigationBaseWidget* CurrentNavigation;
+	bool bIsDisplayingModal = false;
 };

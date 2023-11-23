@@ -52,4 +52,26 @@ FName UDataBiosGroupWidget::GetRowNameFromSelectedWidget() const
 void UDataBiosGroupWidget::HandleNewTabSelected(int SelectedTabIndex)
 {
 	TextTitle->SetText(FText::FromString(Titles[SelectedTabIndex]));
+
+	switch (SelectedTabIndex)
+	{
+		case 0:
+			CurrentSelectedTabType = EDataBiosSelectionRegion::EDSR_Profile;
+			break;
+
+		case 1:
+			CurrentSelectedTabType = EDataBiosSelectionRegion::EDSR_MainSkills;
+			break;
+
+		case 2:
+			CurrentSelectedTabType = EDataBiosSelectionRegion::EDSR_Missions;
+			break;
+
+		case 3:
+			CurrentSelectedTabType = EDataBiosSelectionRegion::EDSR_Targets;
+			break;
+
+		default:
+			break;
+	}
 }

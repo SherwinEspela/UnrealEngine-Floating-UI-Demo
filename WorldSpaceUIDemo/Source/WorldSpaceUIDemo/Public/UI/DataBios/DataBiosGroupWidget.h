@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UI/Abstract/NavigationBaseWidget.h"
+#include "CustomEnums.h"
 #include "DataBiosGroupWidget.generated.h"
 
 class UTextBlock;
@@ -24,9 +25,10 @@ public:
 	void MoveSelectionDown() override;
 	void MoveSelectionLeft() override;
 	void MoveSelectionRight() override;
+	FName GetRowNameFromSelectedWidget() const;
 
 public:
-	FName GetRowNameFromSelectedWidget() const;
+	FORCEINLINE EDataBiosSelectionRegion GetCurrentSelectedTabType() const { return CurrentSelectedTabType; }
 
 protected:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
@@ -40,4 +42,5 @@ private:
 	void HandleNewTabSelected(int SelectedTabIndex);
 
 	TArray<FString> Titles = { "PROFILE", "MAJOR SKILLS", "MISSIONS", "TARGETS" };
+	EDataBiosSelectionRegion CurrentSelectedTabType;
 };

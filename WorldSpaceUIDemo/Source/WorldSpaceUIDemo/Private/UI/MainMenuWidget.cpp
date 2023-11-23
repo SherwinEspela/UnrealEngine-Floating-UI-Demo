@@ -9,6 +9,7 @@
 #include "UI/BottomControls/BottomButtonWidget.h"
 #include "UI/DataBios/Modal/ModalMissionWidget.h"
 #include "UI/DataBiosMissionsWidget.h"
+#include "CustomEnums.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -36,26 +37,31 @@ void UMainMenuWidget::NativeConstruct()
 
 void UMainMenuWidget::MoveSelectionUp()
 {
+	if (bIsDisplayingModal) return;
 	CurrentNavigation->MoveSelectionUp();
 }
 
 void UMainMenuWidget::MoveSelectionDown()
 {
+	if (bIsDisplayingModal) return;
 	CurrentNavigation->MoveSelectionDown();
 }
 
 void UMainMenuWidget::MoveSelectionLeft()
 {
+	if (bIsDisplayingModal) return;
 	CurrentNavigation->MoveSelectionLeft();
 }
 
 void UMainMenuWidget::MoveSelectionRight()
 {
+	if (bIsDisplayingModal) return;
 	CurrentNavigation->MoveSelectionRight();
 }
 
 void UMainMenuWidget::MoveTopBarSelectionLeft()
 {
+	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionLeft();
 	CurrentNavigation = DataBiosGroup;
 	OnDataBiosGroupSelected();
@@ -63,6 +69,7 @@ void UMainMenuWidget::MoveTopBarSelectionLeft()
 
 void UMainMenuWidget::MoveTopBarSelectionRight()
 {
+	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionRight();
 	CurrentNavigation = ArsenalGroup;
 	OnArsenalGroupSelected();
@@ -70,16 +77,53 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 
 void UMainMenuWidget::OpenModal()
 {
-	if (!MissionsDataTable) return;
-	FName RowName = DataBiosGroup->GetRowNameFromSelectedWidget();
-	FMissionRow* Row = MissionsDataTable->FindRow<FMissionRow>(RowName, "");
-	ModalMission->SetValues(Row->MissionIcon, Row->MissionName, Row->Description, Row->MissionId, Row->IsCompleted, Row->Location, Row->Rewards);
-	ModalMission->SetVisibility(ESlateVisibility::Visible);
-	BottomButtonA->OnButtonTapped();
+	auto SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
+
+	switch (SelectedTab)
+	{
+		case EDataBiosSelectionRegion::EDSR_Missions:
+			//if (!MissionsDataTable) return;
+			FName RowName = DataBiosGroup->GetRowNameFromSelectedWidget();
+			FMissionRow* Row = MissionsDataTable->FindRow<FMissionRow>(RowName, "");
+			ModalMission->SetValues(Row->MissionIcon, Row->MissionName, Row->Description, Row->MissionId, Row->IsCompleted, Row->Location, Row->Rewards);
+			ModalMission->SetVisibility(ESlateVisibility::Visible);	
+			break;
+		//case EDataBiosSelectionRegion::EDSR_Targets:
+		//	break;
+		//default:
+		//	break;
+	}
+
+	switch (SelectedTab)
+	{
+		case EDataBiosSelectionRegion::EDSR_Missions:
+		case EDataBiosSelectionRegion::EDSR_Targets:
+			BottomButtonA->OnButtonTapped();
+			bIsDisplayingModal = true;
+			break;
+	}
 }
 
 void UMainMenuWidget::CloseModal()
 {
-	ModalMission->SetVisibility(ESlateVisibility::Hidden);
-	BottomButtonB->OnButtonTapped();
+	auto SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
+	switch (SelectedTab)
+	{
+		case EDataBiosSelectionRegion::EDSR_Missions:
+			ModalMission->SetVisibility(ESlateVisibility::Hidden);
+			break;
+	/*	case EDataBiosSelectionRegion::EDSR_Targets:
+			break;
+		default:
+			break;*/
+	}
+
+	switch (SelectedTab)
+	{
+		case EDataBiosSelectionRegion::EDSR_Missions:
+		case EDataBiosSelectionRegion::EDSR_Targets:
+			BottomButtonB->OnButtonTapped();
+			bIsDisplayingModal = false;
+			break;
+	}
 }
