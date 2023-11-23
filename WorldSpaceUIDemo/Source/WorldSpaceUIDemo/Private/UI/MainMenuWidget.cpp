@@ -35,6 +35,9 @@ void UMainMenuWidget::NativeConstruct()
 	ArsenalGroup->SetVisibility(ESlateVisibility::Hidden);
 	CurrentNavigation = DataBiosGroup;
 	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
+	BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
+	BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
+	DataBiosGroup->OnSelectedRegionChanged.AddDynamic(this, &UMainMenuWidget::HandleSelectedRegionChanged);
 }
 
 void UMainMenuWidget::MoveSelectionUp()
@@ -79,6 +82,7 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 
 void UMainMenuWidget::OpenModal()
 {
+	if (!bCanInteractWithModal) return;
 	if (bIsDisplayingModal) return;
 
 	EDataBiosSelectionRegion SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
@@ -137,6 +141,7 @@ void UMainMenuWidget::OpenModal()
 
 void UMainMenuWidget::CloseModal()
 {
+	if (!bCanInteractWithModal) return;
 	if (!bIsDisplayingModal) return;
 
 	EDataBiosSelectionRegion SelectedTab = DataBiosGroup->GetCurrentSelectedTabType();
@@ -159,5 +164,23 @@ void UMainMenuWidget::CloseModal()
 			BottomButtonB->OnButtonTapped();
 			bIsDisplayingModal = false;
 			break;
+	}
+}
+
+void UMainMenuWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)
+{
+	switch (SelectedRegion)
+	{
+	case EDataBiosSelectionRegion::EDSR_Missions:
+	case EDataBiosSelectionRegion::EDSR_Targets:
+		BottomButtonA->SetVisibility(ESlateVisibility::Visible);
+		BottomButtonB->SetVisibility(ESlateVisibility::Visible);
+		bCanInteractWithModal = true;
+		break;
+	default:
+		BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
+		BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
+		bCanInteractWithModal = false;
+		break;
 	}
 }

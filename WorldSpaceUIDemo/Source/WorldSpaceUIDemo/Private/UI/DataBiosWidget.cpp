@@ -85,6 +85,7 @@ void UDataBiosWidget::MoveSelectionRight()
 			if (NewWidget)
 			{
 				SelectionRegion = NewWidget->GetSelectionRegion();
+				OnSelectedRegionChanged.Broadcast(SelectionRegion);
 				
 				switch (SelectionRegion)
 				{
@@ -136,6 +137,7 @@ void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, 
 void UDataBiosWidget::HandlePanelExitted()
 {
 	SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
+	OnSelectedRegionChanged.Broadcast(SelectionRegion);
 }
 
 FName UDataBiosWidget::GetRowNameFromSelectedWidget() const

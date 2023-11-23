@@ -15,6 +15,7 @@ class UMappableWidget;
 class UWidgetSwitcher;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewTabSelectedSignature, int, SelectedTabIndex);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDataBiosSelectedRegionChangedSignature, EDataBiosSelectionRegion, SelectedRegion);
 
 /**
  * 
@@ -31,6 +32,7 @@ public:
 	void MoveSelectionLeft();
 
 	FOnNewTabSelectedSignature OnNewTabSelected;
+	FOnDataBiosSelectedRegionChangedSignature OnSelectedRegionChanged;
 
 public:
 	FName GetRowNameFromSelectedWidget() const;

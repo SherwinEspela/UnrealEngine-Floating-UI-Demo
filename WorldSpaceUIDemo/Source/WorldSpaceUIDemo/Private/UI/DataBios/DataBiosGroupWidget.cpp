@@ -10,6 +10,7 @@ void UDataBiosGroupWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	DataBios->OnNewTabSelected.AddDynamic(this, &UDataBiosGroupWidget::HandleNewTabSelected);
+	DataBios->OnSelectedRegionChanged.AddDynamic(this, &UDataBiosGroupWidget::HandleSelectedRegionChanged);
 }
 
 void UDataBiosGroupWidget::MoveSelectionUp()
@@ -74,4 +75,9 @@ void UDataBiosGroupWidget::HandleNewTabSelected(int SelectedTabIndex)
 		default:
 			break;
 	}
+}
+
+void UDataBiosGroupWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)
+{
+	OnSelectedRegionChanged.Broadcast(SelectedRegion);
 }

@@ -11,6 +11,8 @@
 class UTextBlock;
 class UDataBiosWidget;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSelectedRegionChangedSignature, EDataBiosSelectionRegion, SelectedRegion);
+
 /**
  * 
  */
@@ -27,6 +29,8 @@ public:
 	void MoveSelectionRight() override;
 	FName GetRowNameFromSelectedWidget() const;
 
+	FOnSelectedRegionChangedSignature OnSelectedRegionChanged;
+
 public:
 	FORCEINLINE EDataBiosSelectionRegion GetCurrentSelectedTabType() const { return CurrentSelectedTabType; }
 
@@ -40,6 +44,9 @@ protected:
 private:
 	UFUNCTION()
 	void HandleNewTabSelected(int SelectedTabIndex);
+
+	UFUNCTION()
+	void HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion);
 
 	TArray<FString> Titles = { "PROFILE", "MAJOR SKILLS", "MISSIONS", "TARGETS" };
 	EDataBiosSelectionRegion CurrentSelectedTabType;

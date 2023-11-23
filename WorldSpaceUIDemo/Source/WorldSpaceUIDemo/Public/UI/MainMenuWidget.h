@@ -88,4 +88,9 @@ protected:
 private:
 	UNavigationBaseWidget* CurrentNavigation;
 	bool bIsDisplayingModal = false;
+	bool bCanInteractWithModal = false;
+
+private:
+	UFUNCTION()
+	void HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion);
 };
