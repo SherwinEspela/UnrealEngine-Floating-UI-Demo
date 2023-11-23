@@ -52,6 +52,8 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
+	void Reset();
+
 	FString GetSelectedArsenalName() const;
 	FString GetSelectedArsenalDescription() const;
 

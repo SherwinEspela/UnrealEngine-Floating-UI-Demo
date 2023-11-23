@@ -50,6 +50,9 @@ public:
 protected:
 	void NativeConstruct() override;
 
+	UFUNCTION(BlueprintCallable)
+	void Reset();
+
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnDataBiosGroupSelected();

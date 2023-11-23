@@ -11,38 +11,28 @@ void UDataBiosGroupWidget::NativeConstruct()
 
 	DataBios->OnNewTabSelected.AddDynamic(this, &UDataBiosGroupWidget::HandleNewTabSelected);
 	DataBios->OnSelectedRegionChanged.AddDynamic(this, &UDataBiosGroupWidget::HandleSelectedRegionChanged);
+
+	Reset();
 }
 
 void UDataBiosGroupWidget::MoveSelectionUp()
 {
-	if (DataBios)
-	{
-		DataBios->MoveSelectionUp();
-	}
+	if (DataBios) DataBios->MoveSelectionUp();
 }
 
 void UDataBiosGroupWidget::MoveSelectionDown()
 {
-	if (DataBios)
-	{
-		DataBios->MoveSelectionDown();
-	}
+	if (DataBios) DataBios->MoveSelectionDown();
 }
 
 void UDataBiosGroupWidget::MoveSelectionLeft()
 {
-	if (DataBios)
-	{
-		DataBios->MoveSelectionLeft();
-	}
+	if (DataBios) DataBios->MoveSelectionLeft();
 }
 
 void UDataBiosGroupWidget::MoveSelectionRight()
 {
-	if (DataBios)
-	{
-		DataBios->MoveSelectionRight();
-	}
+	if (DataBios) DataBios->MoveSelectionRight();
 }
 
 FName UDataBiosGroupWidget::GetRowNameFromSelectedWidget() const
@@ -80,4 +70,10 @@ void UDataBiosGroupWidget::HandleNewTabSelected(int SelectedTabIndex)
 void UDataBiosGroupWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)
 {
 	OnSelectedRegionChanged.Broadcast(SelectedRegion);
+}
+
+void UDataBiosGroupWidget::Reset()
+{
+	TextTitle->SetText(FText::FromString(Titles[0]));
+	DataBios->Reset();
 }

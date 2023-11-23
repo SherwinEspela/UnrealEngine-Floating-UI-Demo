@@ -22,6 +22,7 @@ class WORLDSPACEUIDEMO_API UTopBarWidget : public UUserWidget
 public:
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
+	void Reset();
 
 protected:
 	virtual void NativeConstruct() override;

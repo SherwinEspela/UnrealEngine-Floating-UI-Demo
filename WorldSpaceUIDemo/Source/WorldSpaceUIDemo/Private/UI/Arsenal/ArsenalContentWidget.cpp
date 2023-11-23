@@ -16,6 +16,7 @@ void UArsenalContentWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	SetupWidgetMapping();
+	Reset();
 }
 
 void UArsenalContentWidget::LoadAllCells()
@@ -73,9 +74,6 @@ void UArsenalContentWidget::SetupWidgetMapping()
 	ItemWidgets[0]->SetMapOnLeft(ArsenalWidgets[2]);
 	ItemWidgets[3]->SetMapOnLeft(ArsenalWidgets[5]);
 	ItemWidgets[6]->SetMapOnLeft(ArsenalWidgets[8]);
-
-	ArsenalWidgets[0]->SetHighlight();
-	SelectedWidget = ArsenalWidgets[0];
 }
 
 void UArsenalContentWidget::SetupArsenalWidgetMapping()
@@ -200,4 +198,10 @@ FString UArsenalContentWidget::GetSelectedArsenalDescription() const
 {
 	UArsenalCellWidget* ArsenalCell = Cast<UArsenalCellWidget>(SelectedWidget);
 	return ArsenalCell->GetArsenalDescription();
+}
+
+void UArsenalContentWidget::Reset()
+{
+	ArsenalWidgets[0]->SetHighlight();
+	SelectedWidget = ArsenalWidgets[0];
 }

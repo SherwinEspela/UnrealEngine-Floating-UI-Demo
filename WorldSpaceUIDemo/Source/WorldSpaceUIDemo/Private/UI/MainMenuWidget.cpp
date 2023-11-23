@@ -32,10 +32,9 @@ void UMainMenuWidget::NativeConstruct()
 		}
 	}
 
-	ArsenalGroup->SetVisibility(ESlateVisibility::Hidden);
-	CurrentNavigation = DataBiosGroup;
-	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
 	DataBiosGroup->OnSelectedRegionChanged.AddDynamic(this, &UMainMenuWidget::HandleSelectedRegionChanged);
+
+	Reset();
 }
 
 void UMainMenuWidget::ShowMainMenu()
@@ -187,16 +186,6 @@ void UMainMenuWidget::SetBottomButtonsInteractable(bool IsInteractable)
 {
 	bCanInteractWithModal = IsInteractable;
 	OnShouldShowBottomButtons(IsInteractable);
-
-	//if (IsInteractable)
-	//{
-	///*	BottomButtonA->SetVisibility(ESlateVisibility::Visible);
-	//	BottomButtonB->SetVisibility(ESlateVisibility::Visible);*/
-	//	OnShouldShowBottomButtons(true);
-	//} else {
-	//	BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
-	//	BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
-	//}
 }
 
 void UMainMenuWidget::ValidateModalsVisibility()
@@ -211,4 +200,18 @@ void UMainMenuWidget::ValidateModalsVisibility()
 		SetBottomButtonsInteractable(false);
 		break;
 	}
+}
+
+void UMainMenuWidget::Reset()
+{
+	DataBiosGroup->Reset();
+	ArsenalGroup->Reset();
+	TopBar->Reset();
+
+	ArsenalGroup->SetVisibility(ESlateVisibility::Hidden);
+	CurrentNavigation = DataBiosGroup;
+	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
+
+	bCanInteractWithModal = false;
+	bIsDisplayingModal = false;
 }

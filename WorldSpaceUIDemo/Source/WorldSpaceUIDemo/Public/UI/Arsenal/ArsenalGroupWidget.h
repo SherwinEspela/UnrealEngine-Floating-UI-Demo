@@ -24,6 +24,7 @@ public:
 	void MoveSelectionDown() override;
 	void MoveSelectionLeft() override;
 	void MoveSelectionRight() override;
+	void Reset();
 	
 protected:
 	void NativeConstruct() override;

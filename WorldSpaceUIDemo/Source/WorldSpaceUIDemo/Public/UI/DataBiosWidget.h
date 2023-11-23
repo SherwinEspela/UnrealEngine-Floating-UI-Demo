@@ -30,6 +30,7 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
+	void Reset();
 
 	FOnNewTabSelectedSignature OnNewTabSelected;
 	FOnDataBiosSelectedRegionChangedSignature OnSelectedRegionChanged;

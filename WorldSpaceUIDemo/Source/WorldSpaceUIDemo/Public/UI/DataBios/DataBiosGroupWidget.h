@@ -27,8 +27,9 @@ public:
 	void MoveSelectionDown() override;
 	void MoveSelectionLeft() override;
 	void MoveSelectionRight() override;
-	FName GetRowNameFromSelectedWidget() const;
+	void Reset();
 
+	FName GetRowNameFromSelectedWidget() const;
 	FOnSelectedRegionChangedSignature OnSelectedRegionChanged;
 
 public:

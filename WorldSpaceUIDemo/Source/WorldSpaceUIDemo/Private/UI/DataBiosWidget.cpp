@@ -12,11 +12,11 @@ void UDataBiosWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	SetupWidgetMapping();
-	TabProfile->SetHighlight();
-	SelectedSideTab = TabProfile;
+	Reset();
 
 	Missions->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
 	Targets->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
+	
 }
 
 void UDataBiosWidget::SetupWidgetMapping()
@@ -153,4 +153,12 @@ FName UDataBiosWidget::GetRowNameFromSelectedWidget() const
 	}
 
 	return FName();
+}
+
+void UDataBiosWidget::Reset()
+{
+	TabProfile->SetHighlight();
+	SelectedSideTab = TabProfile;
+	CurrentTabIndex = 0;
+	WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
 }

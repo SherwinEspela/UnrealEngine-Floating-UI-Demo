@@ -10,10 +10,7 @@ void UArsenalGroupWidget::NativeConstruct()
 	Super::NativeConstruct();
 	ArsenalContents->OnArsenalWidgetSelected.AddDynamic(this, &UArsenalGroupWidget::HandleArsenalWidgetSelected);
 
-	HandleArsenalWidgetSelected(
-		ArsenalContents->GetSelectedArsenalName(), 
-		ArsenalContents->GetSelectedArsenalDescription()
-	);
+	Reset();
 }
 
 void UArsenalGroupWidget::MoveSelectionUp()
@@ -40,4 +37,14 @@ void UArsenalGroupWidget::HandleArsenalWidgetSelected(FString ArsenalName, FStri
 {
 	TextArsenalName->SetText(FText::FromString(ArsenalName));
 	TextDescription->SetText(FText::FromString(Description));
+}
+
+void UArsenalGroupWidget::Reset()
+{
+	ArsenalContents->Reset();
+
+	HandleArsenalWidgetSelected(
+		ArsenalContents->GetSelectedArsenalName(),
+		ArsenalContents->GetSelectedArsenalDescription()
+	);
 }

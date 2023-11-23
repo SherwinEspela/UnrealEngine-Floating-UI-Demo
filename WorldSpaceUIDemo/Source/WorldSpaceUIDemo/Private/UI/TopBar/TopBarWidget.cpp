@@ -10,18 +10,15 @@
 void UTopBarWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-
 	SetupWidgetMapping();
-
 	TextPoints->SetColorAndOpacity(FSlateColor(COLOR_TEXT_DEFAULT1));
+	Reset();
 }
 
 void UTopBarWidget::SetupWidgetMapping()
 {
 	TabDataBios->SetMapOnRight(TabArsenal);
 	TabArsenal->SetMapOnLeft(TabDataBios);
-	TabDataBios->SetHighlight();
-	SelectedTab = TabDataBios;
 }
 
 void UTopBarWidget::MoveSelectionRight()
@@ -44,4 +41,10 @@ void UTopBarWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
 		SelectedTab = Cast<UTopBarTabWidget>(MappableWidget);
 		SelectedTab->SetHighlight();
 	}
+}
+
+void UTopBarWidget::Reset()
+{
+	TabDataBios->SetHighlight();
+	SelectedTab = TabDataBios;
 }
