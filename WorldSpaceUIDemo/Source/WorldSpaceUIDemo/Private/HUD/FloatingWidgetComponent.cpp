@@ -19,6 +19,16 @@ void UFloatingWidgetComponent::BeginPlay()
 	MainMenuWidget = Cast<UMainMenuWidget>(GetUserWidgetObject());
 }
 
+void UFloatingWidgetComponent::ShowMainMenu()
+{
+	MainMenuWidget->ShowMainMenu();
+}
+
+void UFloatingWidgetComponent::HideMainMenu()
+{
+	MainMenuWidget->HideMainMenu();
+}
+
 void UFloatingWidgetComponent::MoveSelectionUp()
 {
 	MainMenuWidget->MoveSelectionUp();

@@ -40,6 +40,16 @@ void UMainMenuWidget::NativeConstruct()
 	DataBiosGroup->OnSelectedRegionChanged.AddDynamic(this, &UMainMenuWidget::HandleSelectedRegionChanged);
 }
 
+void UMainMenuWidget::ShowMainMenu()
+{
+	OnShowMainMenu();
+}
+
+void UMainMenuWidget::HideMainMenu()
+{
+	OnHideMainMenu();
+}
+
 void UMainMenuWidget::MoveSelectionUp()
 {
 	if (bIsDisplayingModal) return;

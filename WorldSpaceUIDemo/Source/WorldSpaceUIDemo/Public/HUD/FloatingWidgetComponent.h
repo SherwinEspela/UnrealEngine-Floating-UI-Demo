@@ -22,6 +22,9 @@ public:
 	virtual void BeginPlay() override;
 
 public:
+	void ShowMainMenu();
+	void HideMainMenu();
+
 	void MoveSelectionUp();
 	void MoveSelectionDown();
 	void MoveSelectionLeft();

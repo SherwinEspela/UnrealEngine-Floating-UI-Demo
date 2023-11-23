@@ -116,9 +116,11 @@ void AWSPlayerController::ToggleCamera()
 		HUDCamera->SetActorRotation(SocketRotation);
 
 		SetViewTargetWithBlend(HUDCamera, CameraSwitchBlendTime);
+		PlayerCharacter->GetMainMenuWidgetComponent()->ShowMainMenu();
 	}
 	else {
 		SetViewTargetWithBlend(PlayerCharacter, CameraSwitchBlendTime);
+		PlayerCharacter->GetMainMenuWidgetComponent()->HideMainMenu();
 	}
 
 	bIsViewingPlayerCamera = !bIsViewingPlayerCamera;
@@ -126,26 +128,31 @@ void AWSPlayerController::ToggleCamera()
 
 void AWSPlayerController::DPadUpTapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionUp();
 }
 
 void AWSPlayerController::DPadDownTapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionDown();
 }
 
 void AWSPlayerController::DPadLeftTapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionLeft();
 }
 
 void AWSPlayerController::DPadRightTapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveSelectionRight();
 }
 
 void AWSPlayerController::ButtonL1Tapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	if (bIsDisplayingDataBios) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionLeft();
 	bIsDisplayingDataBios = true;
@@ -153,6 +160,7 @@ void AWSPlayerController::ButtonL1Tapped()
 
 void AWSPlayerController::ButtonR1Tapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	if (!bIsDisplayingDataBios) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->MoveTopBarSelectionRight();
 	bIsDisplayingDataBios = false;
@@ -160,10 +168,12 @@ void AWSPlayerController::ButtonR1Tapped()
 
 void AWSPlayerController::ButtonATapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->OpenModal();
 }
 
 void AWSPlayerController::ButtonBTapped()
 {
+	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->CloseModal();
 }

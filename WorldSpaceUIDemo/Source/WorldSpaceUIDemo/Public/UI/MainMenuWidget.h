@@ -25,6 +25,9 @@ class WORLDSPACEUIDEMO_API UMainMenuWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	void ShowMainMenu();
+	void HideMainMenu();
+
 	void MoveSelectionUp();
 	void MoveSelectionDown();
 	void MoveSelectionLeft();
@@ -33,6 +36,13 @@ public:
 	void MoveTopBarSelectionRight();
 	void OpenModal();
 	void CloseModal();
+
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnShowMainMenu();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHideMainMenu();
 
 protected:
 	void NativeConstruct() override;
