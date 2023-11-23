@@ -18,6 +18,7 @@ void USkillWidget::NativeConstruct()
 void USkillWidget::SetValues(UTexture2D* TextureSkillIcon, FString SkillName, int SkillLevel)
 {
 	if (TextureSkillIcon) ImageIcon->SetBrushFromTexture(TextureSkillIcon);
-	TextSkillName->SetText(FText::FromString(SkillName));
-	TextLevel->SetText(FText::FromString(FString::FromInt(SkillLevel)));
+	TextSkillName->SetText(FText::FromString(SkillName).ToUpper());
+	FString LevelValue = FString::Printf(TEXT("LEVEL %s"), *FString::FromInt(SkillLevel));
+	TextLevel->SetText(FText::FromString(LevelValue));
 }
