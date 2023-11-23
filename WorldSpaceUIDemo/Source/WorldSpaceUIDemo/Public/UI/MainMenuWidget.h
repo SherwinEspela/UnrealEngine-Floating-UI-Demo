@@ -93,4 +93,9 @@ private:
 private:
 	UFUNCTION()
 	void HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion);
+
+	EDataBiosSelectionRegion CurrentSelectedRegion;
+
+	void SetBottomButtonsInteractable(bool IsInteractable = true);
+	void ValidateModalsVisibility();
 };

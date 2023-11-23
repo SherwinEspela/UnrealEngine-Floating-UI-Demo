@@ -69,6 +69,7 @@ void UMainMenuWidget::MoveTopBarSelectionLeft()
 	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionLeft();
 	CurrentNavigation = DataBiosGroup;
+	ValidateModalsVisibility();
 	OnDataBiosGroupSelected();
 }
 
@@ -77,6 +78,7 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionRight();
 	CurrentNavigation = ArsenalGroup;
+	SetBottomButtonsInteractable(false);
 	OnArsenalGroupSelected();
 }
 
@@ -169,18 +171,33 @@ void UMainMenuWidget::CloseModal()
 
 void UMainMenuWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)
 {
-	switch (SelectedRegion)
+	CurrentSelectedRegion = SelectedRegion;
+	ValidateModalsVisibility();
+}
+
+void UMainMenuWidget::SetBottomButtonsInteractable(bool IsInteractable)
+{
+	bCanInteractWithModal = IsInteractable;
+	if (IsInteractable)
+	{
+		BottomButtonA->SetVisibility(ESlateVisibility::Visible);
+		BottomButtonB->SetVisibility(ESlateVisibility::Visible);
+	} else {
+		BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
+		BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
+	}
+}
+
+void UMainMenuWidget::ValidateModalsVisibility()
+{
+	switch (CurrentSelectedRegion)
 	{
 	case EDataBiosSelectionRegion::EDSR_Missions:
 	case EDataBiosSelectionRegion::EDSR_Targets:
-		BottomButtonA->SetVisibility(ESlateVisibility::Visible);
-		BottomButtonB->SetVisibility(ESlateVisibility::Visible);
-		bCanInteractWithModal = true;
+		SetBottomButtonsInteractable();
 		break;
 	default:
-		BottomButtonA->SetVisibility(ESlateVisibility::Hidden);
-		BottomButtonB->SetVisibility(ESlateVisibility::Hidden);
-		bCanInteractWithModal = false;
+		SetBottomButtonsInteractable(false);
 		break;
 	}
 }
