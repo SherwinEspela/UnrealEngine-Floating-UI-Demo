@@ -107,4 +107,8 @@ private:
 	bool bIsViewingPlayerCamera = true;
 	bool bIsDisplayingDataBios = true;
 	bool bIsDisplayingModal = false;
+
+private:
+	UFUNCTION()
+	void HandleModalDisplayChanged(bool IsDisplayingModal);
 };

@@ -33,8 +33,9 @@ void UMainMenuWidget::NativeConstruct()
 	}
 
 	DataBiosGroup->OnSelectedRegionChanged.AddDynamic(this, &UMainMenuWidget::HandleSelectedRegionChanged);
-
 	Reset();
+	ArsenalGroup->SetVisibility(ESlateVisibility::Hidden);
+	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
 }
 
 void UMainMenuWidget::ShowMainMenu()
@@ -144,6 +145,7 @@ void UMainMenuWidget::OpenModal()
 		case EDataBiosSelectionRegion::EDSR_Targets:
 			BottomButtonA->OnButtonTapped();
 			bIsDisplayingModal = true;
+			OnMainMenuModalDisplayChanged.Broadcast(bIsDisplayingModal);
 			break;
 	}
 }
@@ -172,6 +174,7 @@ void UMainMenuWidget::CloseModal()
 		case EDataBiosSelectionRegion::EDSR_Targets:
 			BottomButtonB->OnButtonTapped();
 			bIsDisplayingModal = false;
+			OnMainMenuModalDisplayChanged.Broadcast(bIsDisplayingModal);
 			break;
 	}
 }
@@ -208,11 +211,8 @@ void UMainMenuWidget::Reset()
 	ArsenalGroup->Reset();
 	TopBar->Reset();
 
-	ArsenalGroup->SetVisibility(ESlateVisibility::Hidden);
-	CurrentNavigation = DataBiosGroup;
-	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
-
 	CurrentSelectedRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
+	CurrentNavigation = DataBiosGroup;
 
 	bCanInteractWithModal = false;
 	bIsDisplayingModal = false;

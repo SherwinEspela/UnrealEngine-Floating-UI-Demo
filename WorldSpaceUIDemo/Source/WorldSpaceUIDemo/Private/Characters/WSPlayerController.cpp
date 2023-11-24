@@ -22,6 +22,8 @@ void AWSPlayerController::BeginPlay()
 	bIsViewingPlayerCamera = true;
 	PlayerCharacter = Cast<APlayerCharacter>(GetPawn());
 	HUDCamera = GetWorld()->SpawnActor<AHUDCameraActor>(HUDCameraActorClass);
+
+	PlayerCharacter->GetMainMenuWidgetComponent()->OnFloatingWidgetModalDisplayChanged.AddDynamic(this, &AWSPlayerController::HandleModalDisplayChanged);
 }
 
 void AWSPlayerController::SetupInputComponent()
@@ -106,8 +108,6 @@ void AWSPlayerController::LookAroundCompleted()
 
 void AWSPlayerController::ToggleCamera()
 {
-	if (bIsDisplayingModal) return;
-
 	if (bIsViewingPlayerCamera)
 	{
 		FString SocketName = TEXT("HeadHUDSocket");
@@ -121,8 +121,10 @@ void AWSPlayerController::ToggleCamera()
 		PlayerCharacter->GetMainMenuWidgetComponent()->ShowMainMenu();
 	}
 	else {
+		if (bIsDisplayingModal) return;
 		SetViewTargetWithBlend(PlayerCharacter, CameraSwitchBlendTime);
 		PlayerCharacter->GetMainMenuWidgetComponent()->HideMainMenu();
+		bIsDisplayingDataBios = true;
 	}
 
 	bIsViewingPlayerCamera = !bIsViewingPlayerCamera;
@@ -172,12 +174,15 @@ void AWSPlayerController::ButtonATapped()
 {
 	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->OpenModal();
-	bIsDisplayingModal = true;
 }
 
 void AWSPlayerController::ButtonBTapped()
 {
 	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->CloseModal();
-	bIsDisplayingModal = false;
+}
+
+void AWSPlayerController::HandleModalDisplayChanged(bool IsDisplayingModal)
+{
+	bIsDisplayingModal = IsDisplayingModal;
 }

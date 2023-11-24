@@ -16,6 +16,8 @@ class UBottomButtonWidget;
 class UModalMissionWidget;
 class UModalTargetWidget;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMainMenuModalDisplayChangedSignature, bool, IsDisplayingModal);
+
 /**
  * 
  */
@@ -36,6 +38,8 @@ public:
 	void MoveTopBarSelectionRight();
 	void OpenModal();
 	void CloseModal();
+
+	FOnMainMenuModalDisplayChangedSignature OnMainMenuModalDisplayChanged;
 
 public:
 	UFUNCTION(BlueprintImplementableEvent)

@@ -8,6 +8,8 @@
 
 class UMainMenuWidget;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFloatingWidgetModalDisplayChangedSignature, bool, IsDisplayingModal);
+
 /**
  * 
  */
@@ -34,6 +36,12 @@ public:
 	void OpenModal();
 	void CloseModal();
 
+	FOnFloatingWidgetModalDisplayChangedSignature OnFloatingWidgetModalDisplayChanged;
+
 private:
 	UMainMenuWidget* MainMenuWidget;
+
+private:
+	UFUNCTION()
+	void HandleMainMenuModalDisplayChanged(bool IsDisplayingModal);
 };

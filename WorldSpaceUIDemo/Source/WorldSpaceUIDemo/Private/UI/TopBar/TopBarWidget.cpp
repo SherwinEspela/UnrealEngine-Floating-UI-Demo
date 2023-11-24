@@ -46,5 +46,6 @@ void UTopBarWidget::UpdateNewSelectedWidget(UMappableWidget* MappableWidget)
 void UTopBarWidget::Reset()
 {
 	TabDataBios->SetHighlight();
+	TabArsenal->SetHighlight(false);
 	SelectedTab = TabDataBios;
 }

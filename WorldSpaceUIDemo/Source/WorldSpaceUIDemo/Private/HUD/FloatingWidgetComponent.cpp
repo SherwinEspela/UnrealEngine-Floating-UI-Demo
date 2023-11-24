@@ -17,6 +17,7 @@ void UFloatingWidgetComponent::BeginPlay()
 	Super::BeginPlay();
 
 	MainMenuWidget = Cast<UMainMenuWidget>(GetUserWidgetObject());
+	MainMenuWidget->OnMainMenuModalDisplayChanged.AddDynamic(this, &UFloatingWidgetComponent::HandleMainMenuModalDisplayChanged);
 }
 
 void UFloatingWidgetComponent::ShowMainMenu()
@@ -67,4 +68,9 @@ void UFloatingWidgetComponent::OpenModal()
 void UFloatingWidgetComponent::CloseModal()
 {
 	MainMenuWidget->CloseModal();
+}
+
+void UFloatingWidgetComponent::HandleMainMenuModalDisplayChanged(bool IsDisplayingModal)
+{
+	OnFloatingWidgetModalDisplayChanged.Broadcast(IsDisplayingModal);
 }
