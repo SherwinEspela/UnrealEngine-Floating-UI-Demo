@@ -106,4 +106,5 @@ private:
 	bool IsLookingAround = false;
 	bool bIsViewingPlayerCamera = true;
 	bool bIsDisplayingDataBios = true;
+	bool bIsDisplayingModal = false;
 };

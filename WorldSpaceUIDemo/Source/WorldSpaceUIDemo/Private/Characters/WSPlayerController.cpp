@@ -106,6 +106,8 @@ void AWSPlayerController::LookAroundCompleted()
 
 void AWSPlayerController::ToggleCamera()
 {
+	if (bIsDisplayingModal) return;
+
 	if (bIsViewingPlayerCamera)
 	{
 		FString SocketName = TEXT("HeadHUDSocket");
@@ -170,10 +172,12 @@ void AWSPlayerController::ButtonATapped()
 {
 	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->OpenModal();
+	bIsDisplayingModal = true;
 }
 
 void AWSPlayerController::ButtonBTapped()
 {
 	if (bIsViewingPlayerCamera) return;
 	PlayerCharacter->GetMainMenuWidgetComponent()->CloseModal();
+	bIsDisplayingModal = false;
 }
