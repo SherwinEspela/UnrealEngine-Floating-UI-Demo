@@ -157,8 +157,14 @@ FName UDataBiosWidget::GetRowNameFromSelectedWidget() const
 
 void UDataBiosWidget::Reset()
 {
+	if (SelectedSideTab) SelectedSideTab->SetHighlight(false);
+
 	TabProfile->SetHighlight();
 	SelectedSideTab = TabProfile;
 	CurrentTabIndex = 0;
 	WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
+	SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
+
+	Missions->Reset();
+	Targets->Reset();
 }

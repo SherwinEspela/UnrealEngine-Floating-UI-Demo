@@ -60,6 +60,8 @@ public:
 	virtual void SetHighlightOnFirstElementWidget() override;
 	virtual void SetMenuTab(UMappableWidget* Tab) const override;
 	virtual void MoveSelectionLeft() override;
+	void Reset();
+
 	FName GetRowNameFromSelectedWidget() const override;
 
 protected:

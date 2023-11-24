@@ -117,3 +117,8 @@ FName UDataBiosTargetsWidget::GetRowNameFromSelectedWidget() const
 	FName RowName = Cast<UTargetWidget>(SelectedWidget)->GetRowName();
 	return RowName;
 }
+
+void UDataBiosTargetsWidget::Reset()
+{
+	if (SelectedWidget) Cast<UTargetWidget>(SelectedWidget)->SetHighlight(false);
+}

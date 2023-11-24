@@ -212,6 +212,8 @@ void UMainMenuWidget::Reset()
 	CurrentNavigation = DataBiosGroup;
 	CurrentNavigation->SetVisibility(ESlateVisibility::Visible);
 
+	CurrentSelectedRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
+
 	bCanInteractWithModal = false;
 	bIsDisplayingModal = false;
 }

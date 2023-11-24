@@ -124,3 +124,8 @@ FName UDataBiosMissionsWidget::GetRowNameFromSelectedWidget() const
 	FName RowName = Cast<UMissionWidget>(SelectedWidget)->GetRowName();
 	return RowName;
 }
+
+void UDataBiosMissionsWidget::Reset()
+{
+	if (SelectedWidget) Cast<UMissionWidget>(SelectedWidget)->SetHighlight(false);
+}
