@@ -6,6 +6,7 @@
 #include "Components/WidgetSwitcher.h"
 #include "UI/DataBiosMissionsWidget.h"
 #include "UI/DataBios/DataBiosTargetsWidget.h"
+#include "Components/Image.h"
 
 void UDataBiosWidget::NativeConstruct()
 {
@@ -16,7 +17,8 @@ void UDataBiosWidget::NativeConstruct()
 
 	Missions->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
 	Targets->OnPanelExitted.AddDynamic(this, &UDataBiosWidget::HandlePanelExitted);
-	
+
+	SetTransparentBackgroundColor(ImageSideMenuBG);
 }
 
 void UDataBiosWidget::SetupWidgetMapping()

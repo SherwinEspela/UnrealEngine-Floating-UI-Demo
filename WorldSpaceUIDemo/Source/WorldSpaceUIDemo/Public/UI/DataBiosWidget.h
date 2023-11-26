@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "CustomEnums.h"
+#include "UI/Interface/Themable.h"
 #include "DataBiosWidget.generated.h"
 
 class UDataBiosMajorSkillsWidget;
@@ -13,6 +14,7 @@ class UDataBiosTargetsWidget;
 class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
+class UImage;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewTabSelectedSignature, int, SelectedTabIndex);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDataBiosSelectedRegionChangedSignature, EDataBiosSelectionRegion, SelectedRegion);
@@ -21,7 +23,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDataBiosSelectedRegionChangedSign
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UDataBiosWidget : public UUserWidget
+class WORLDSPACEUIDEMO_API UDataBiosWidget : public UUserWidget, public IThemable
 {
 	GENERATED_BODY()
 
@@ -62,6 +64,10 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UWidgetSwitcher* WidgetSwitcher;
+
+protected:
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageSideMenuBG;
 
 private:
 	USideMenuTab* SelectedSideTab;

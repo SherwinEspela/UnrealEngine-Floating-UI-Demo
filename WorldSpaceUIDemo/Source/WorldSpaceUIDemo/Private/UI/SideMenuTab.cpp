@@ -3,6 +3,7 @@
 
 #include "UI/SideMenuTab.h"
 #include "Components/Image.h"
+#include "Components/TextBlock.h"
 
 USideMenuTab::USideMenuTab()
 {
@@ -14,6 +15,7 @@ void USideMenuTab::NativeConstruct()
 	Super::NativeConstruct();
 
 	SetHighlight(false);
+	SetTextToWhite(TextTitle);
 }
 
 void USideMenuTab::SetHighlight(bool ShoudHighlight)

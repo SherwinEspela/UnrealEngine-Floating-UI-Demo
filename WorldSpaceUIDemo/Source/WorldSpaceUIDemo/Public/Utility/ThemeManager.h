@@ -13,13 +13,8 @@
 #define COLOR_WHITE FColor::White
 #define COLOR_TOPBARTABTEXT_HIGHLIGHT1 FColor::FromHex(TEXT("E9D811"))
 #define COLOR_TOPBARTABLINE_DEFAULT FColor::FromHex(TEXT("EE7519"))
+#define COLOR_DARKGREEN FColor::FromHex(TEXT("0B1E1C")) 
 
-/**
- * 
- */
-//class WORLDSPACEUIDEMO_API ThemeManager
-//{
-//public:
-//	ThemeManager();
-//	~ThemeManager();
-//};
+// Opacity
+#define OPACITY1 0.5f
+

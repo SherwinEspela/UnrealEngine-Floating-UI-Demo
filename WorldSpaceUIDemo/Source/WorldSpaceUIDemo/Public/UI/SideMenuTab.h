@@ -5,15 +5,17 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UI/MappableWidget.h"
+#include "UI/Interface/Themable.h"
 #include "SideMenuTab.generated.h"
 
 class UImage;
+class UTextBlock;
 
 /**
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API USideMenuTab : public UMappableWidget
+class WORLDSPACEUIDEMO_API USideMenuTab : public UMappableWidget, public IThemable
 {
 	GENERATED_BODY()
 
@@ -27,4 +29,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageBorder;
+
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
+	UTextBlock* TextTitle;
 };
