@@ -8,10 +8,11 @@
 
 class USpringArmComponent;
 class UCameraComponent;
-//class UWidgetComponent;
 class UFloatingWidgetComponent;
 class AHUDCameraActor;
 class UMainMenuWidget;
+class URectLightComponent;
+
 
 UCLASS()
 class WORLDSPACEUIDEMO_API APlayerCharacter : public ACharacter
@@ -26,6 +27,10 @@ public:
 	void SetOrientRotationToMovement(bool Value);
 
 	UMainMenuWidget* GetMainMenuWidget();
+
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnTurnScreenLightOn(bool IsOn);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Display)
@@ -58,6 +63,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	UFloatingWidgetComponent* MainMenuWidgetComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	URectLightComponent* RectLight;
 
 protected:
 	UCharacterMovementComponent* MovementComponent;

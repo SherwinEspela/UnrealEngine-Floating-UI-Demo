@@ -11,6 +11,7 @@
 #include "Characters/HUDCameraActor.h"
 #include "UI/MainMenuWidget.h"
 #include "HUD/FloatingWidgetComponent.h"
+#include "Components/RectLightComponent.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -38,6 +39,10 @@ APlayerCharacter::APlayerCharacter()
 
 	MainMenuWidgetComponent = CreateDefaultSubobject<UFloatingWidgetComponent>(TEXT("Indicator Widget"));
 	MainMenuWidgetComponent->SetupAttachment(GetRootComponent());
+
+	RectLight = CreateDefaultSubobject<URectLightComponent>(TEXT("Floating Widget Rect Light"));
+	RectLight->SetupAttachment(GetRootComponent());
+	RectLight->Intensity = 0.f;
 }
 
 void APlayerCharacter::BeginPlay()
@@ -50,6 +55,8 @@ void APlayerCharacter::BeginPlay()
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
 
 	MainMenuWidget = Cast<UMainMenuWidget>(MainMenuWidgetComponent->GetUserWidgetObject());
+
+	RectLight->Intensity = 0.f;
 }
 
 void APlayerCharacter::Tick(float DeltaTime)

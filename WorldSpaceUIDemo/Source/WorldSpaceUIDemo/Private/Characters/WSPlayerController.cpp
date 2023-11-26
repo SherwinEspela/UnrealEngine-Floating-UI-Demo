@@ -119,11 +119,13 @@ void AWSPlayerController::ToggleCamera()
 
 		SetViewTargetWithBlend(HUDCamera, CameraSwitchBlendTime);
 		PlayerCharacter->GetMainMenuWidgetComponent()->ShowMainMenu();
+		PlayerCharacter->OnTurnScreenLightOn(true);
 	}
 	else {
 		if (bIsDisplayingModal) return;
 		SetViewTargetWithBlend(PlayerCharacter, CameraSwitchBlendTime);
 		PlayerCharacter->GetMainMenuWidgetComponent()->HideMainMenu();
+		PlayerCharacter->OnTurnScreenLightOn(false);
 		bIsDisplayingDataBios = true;
 	}
 
