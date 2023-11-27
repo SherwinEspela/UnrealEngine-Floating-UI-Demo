@@ -21,6 +21,12 @@ public:
 	void SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, bool IsCompleted, FString Location, FString Rewards);
 
 protected:
+	virtual void NativeConstruct() override;
+
+protected:
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBG;
+
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageMission;
 

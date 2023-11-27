@@ -6,13 +6,14 @@
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
 #include "UI/TopBar/TopBarSideButtonWidget.h"
+#include "Utility/ThemeManager.h"
 
 void UTopBarWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	SetupWidgetMapping();
-	TextPoints->SetColorAndOpacity(FSlateColor(COLOR_TEXT_DEFAULT1));
 	Reset();
+	ThemeManager::SetTextToDefault(TextPoints);
 }
 
 void UTopBarWidget::SetupWidgetMapping()

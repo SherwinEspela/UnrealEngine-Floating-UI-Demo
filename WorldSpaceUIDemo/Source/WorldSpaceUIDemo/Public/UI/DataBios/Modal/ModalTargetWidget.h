@@ -23,6 +23,12 @@ public:
 	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated,  FString BirthDate, FString Location, int Rank);
 
 protected:
+	virtual void NativeConstruct() override;
+
+protected:
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBG;
+
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImagePhoto;
 

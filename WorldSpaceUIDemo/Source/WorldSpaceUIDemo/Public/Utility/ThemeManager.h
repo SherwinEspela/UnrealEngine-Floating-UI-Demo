@@ -38,6 +38,8 @@ class UTextBlock;
 
  public:
 	 void static SetBackgroundColor(UImage* ImageBG);
+	 void static SetBackgroundColor(UImage* ImageBG, FColor Color);
+	 void static SetBackgroundColor(UImage* ImageBG, FColor Color, float Opacity);
 	 void static SetCellBackgroundColor(UImage* ImageBG);
 	 void static SetCellBackgroundColor(UImage* ImageBG, float Opacity);
 	 void static SetCellHighlightColor(UImage* ImageBG);
@@ -45,6 +47,7 @@ class UTextBlock;
 	 void static SetTransparentBackgroundColor(UImage* ImageBG, float Opacity);
 	 void static SetTextToWhite(UTextBlock* Text);
 	 void static SetTextToDefault(UTextBlock* Text);
+	 void static SetTextColor(UTextBlock* Text, FColor Color);
 	 void static SetTextArrayColor(TArray<UTextBlock*> TextArray, FColor Color);
 	 void static SetAllTextToDefault(const UUserWidget& UserWidget);
 	 void static SetBorderColor(UImage* ImageBG);

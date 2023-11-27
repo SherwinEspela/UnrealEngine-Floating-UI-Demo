@@ -20,6 +20,17 @@ void ThemeManager::SetBackgroundColor(UImage* ImageBG)
 	ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
 }
 
+void ThemeManager::SetBackgroundColor(UImage* ImageBG, FColor Color)
+{
+	ImageBG->SetBrushTintColor(FSlateColor(Color));
+}
+
+void ThemeManager::SetBackgroundColor(UImage* ImageBG, FColor Color, float Opacity)
+{
+	ImageBG->SetBrushTintColor(FSlateColor(Color));
+	ImageBG->SetOpacity(Opacity);
+}
+
 void ThemeManager::SetCellBackgroundColor(UImage* ImageBG)
 {
 	ImageBG->SetBrushTintColor(FSlateColor(COLOR_CELL_BACKGROUND1));
@@ -56,6 +67,11 @@ void ThemeManager::SetTextToWhite(UTextBlock* Text)
 void ThemeManager::SetTextToDefault(UTextBlock* Text)
 {
 	Text->SetColorAndOpacity(FSlateColor(COLOR_TEXT_DEFAULT1));
+}
+
+void ThemeManager::SetTextColor(UTextBlock* Text, FColor Color)
+{
+	Text->SetColorAndOpacity(FSlateColor(Color));
 }
 
 void ThemeManager::SetTextArrayColor(TArray<UTextBlock*> TextArray, FColor Color)

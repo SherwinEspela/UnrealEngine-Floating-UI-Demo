@@ -6,6 +6,12 @@
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
 
+void UModalMissionWidget::NativeConstruct()
+{
+	ThemeManager::SetCellBackgroundColor(ImageBG, 1.f);
+	ThemeManager::SetAllTextToDefault(*this);
+}
+
 void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, bool IsCompleted, FString Location, FString Rewards)
 {
 	if (TextureMission) ImageMission->SetBrushFromTexture(TextureMission);

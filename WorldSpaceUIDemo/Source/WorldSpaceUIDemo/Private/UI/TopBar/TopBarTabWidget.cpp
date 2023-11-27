@@ -9,21 +9,15 @@
 void UTopBarTabWidget::NativePreConstruct()
 {
 	Super::NativePreConstruct();
-
-	TextTitle->SetColorAndOpacity(FSlateColor(COLOR_TEXT_DEFAULT1));
-	ImageTopLine->SetColorAndOpacity(FLinearColor(COLOR_TOPBARTABLINE_DEFAULT));
-	ImageBottomLine->SetColorAndOpacity(FLinearColor(COLOR_TOPBARTABLINE_DEFAULT));
-
-	SetHighlight(false);
 }
 
 void UTopBarTabWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	TextTitle->SetColorAndOpacity(FSlateColor(COLOR_TEXT_DEFAULT1));
-	ImageTopLine->SetColorAndOpacity(FLinearColor(COLOR_TOPBARTABLINE_DEFAULT));
-	ImageBottomLine->SetColorAndOpacity(FLinearColor(COLOR_TOPBARTABLINE_DEFAULT));
+	ThemeManager::SetBackgroundColor(ImageTopLine, COLOR_TOPBARTABTEXT_HIGHLIGHT1);
+	ThemeManager::SetBackgroundColor(ImageBottomLine, COLOR_TOPBARTABTEXT_HIGHLIGHT1);
+	ThemeManager::SetTextToDefault(TextTitle);
 
 	SetHighlight(false);
 }
@@ -33,5 +27,12 @@ void UTopBarTabWidget::SetHighlight(bool ShouldHighlight)
 	ESlateVisibility SlateVisibility = ShouldHighlight ? ESlateVisibility::Visible : ESlateVisibility::Hidden;
 	ImageTopLine->SetVisibility(SlateVisibility);
 	ImageBottomLine->SetVisibility(SlateVisibility);
-	TextTitle->SetColorAndOpacity(FSlateColor(ShouldHighlight ? COLOR_TOPBARTABTEXT_HIGHLIGHT1 : COLOR_TEXT_DEFAULT1));
+
+	if (ShouldHighlight)
+	{
+		ThemeManager::SetTextColor(TextTitle, COLOR_TOPBARTABTEXT_HIGHLIGHT1);
+	}
+	else {
+		ThemeManager::SetTextToDefault(TextTitle);
+	}
 }

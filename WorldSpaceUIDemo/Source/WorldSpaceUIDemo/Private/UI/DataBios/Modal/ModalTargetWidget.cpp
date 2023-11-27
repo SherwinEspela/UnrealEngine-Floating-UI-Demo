@@ -4,6 +4,13 @@
 #include "UI/DataBios/Modal/ModalTargetWidget.h"
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
+
+void UModalTargetWidget::NativeConstruct()
+{
+	ThemeManager::SetCellBackgroundColor(ImageBG, 1.f);
+	ThemeManager::SetAllTextToDefault(*this);
+}
 
 void UModalTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated, FString BirthDate, FString Location, int Rank)
 {
