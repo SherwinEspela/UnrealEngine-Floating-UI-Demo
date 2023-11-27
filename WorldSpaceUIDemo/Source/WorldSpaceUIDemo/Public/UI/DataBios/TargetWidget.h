@@ -24,6 +24,9 @@ public:
 
 	void SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated);
 	void SetHighlight(bool ShoudHighlight = true);
+
+public:
+	void NativeConstruct() override;
 	
 protected:
 	UPROPERTY(meta = (BindWidget))

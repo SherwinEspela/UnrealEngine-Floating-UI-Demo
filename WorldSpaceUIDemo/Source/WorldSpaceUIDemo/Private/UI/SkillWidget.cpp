@@ -6,13 +6,13 @@
 #include "Utility/ThemeManager.h"
 #include "Components/Image.h"
 
-
 void USkillWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
-	ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
+	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
+	ThemeManager::SetBorderColor(ImageBorder);
+	ThemeManager::SetAllTextToDefault(*this);
 }
 
 void USkillWidget::SetValues(UTexture2D* TextureSkillIcon, FString SkillName, int SkillLevel)

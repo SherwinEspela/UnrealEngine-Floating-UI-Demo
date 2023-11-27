@@ -4,6 +4,7 @@
 #include "UI/SideMenuTab.h"
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
 
 USideMenuTab::USideMenuTab()
 {
@@ -15,7 +16,7 @@ void USideMenuTab::NativeConstruct()
 	Super::NativeConstruct();
 
 	SetHighlight(false);
-	SetTextToWhite(TextTitle);
+	ThemeManager::SetTextToWhite(TextTitle);
 }
 
 void USideMenuTab::SetHighlight(bool ShoudHighlight)

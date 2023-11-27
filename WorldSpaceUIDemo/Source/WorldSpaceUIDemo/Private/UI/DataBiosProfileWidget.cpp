@@ -3,6 +3,7 @@
 
 #include "UI/DataBiosProfileWidget.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
 
 void UDataBiosProfileWidget::NativeConstruct()
 {
@@ -32,4 +33,7 @@ void UDataBiosProfileWidget::NativeConstruct()
 		FString Details = FString::Printf(TEXT("%s%s"), *Paragraph1, *Paragraph2);
 		Text3Details->SetText(FText::FromString(Details.ToUpper()));
 	}
+
+	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
+	ThemeManager::SetAllTextToDefault(*this);
 }

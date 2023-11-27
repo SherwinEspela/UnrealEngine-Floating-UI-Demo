@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "CustomEnums.h"
-#include "UI/Interface/Themable.h"
 #include "DataBiosWidget.generated.h"
 
 class UDataBiosMajorSkillsWidget;
@@ -23,7 +22,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDataBiosSelectedRegionChangedSign
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API UDataBiosWidget : public UUserWidget, public IThemable
+class WORLDSPACEUIDEMO_API UDataBiosWidget : public UUserWidget
 {
 	GENERATED_BODY()
 

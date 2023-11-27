@@ -7,6 +7,7 @@
 #include "DataBiosProfileWidget.generated.h"
 
 class UTextBlock;
+class UImage;
 
 /**
  * 
@@ -26,4 +27,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* Text3Details;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageBG;
 };

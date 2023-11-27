@@ -29,8 +29,3 @@ void IThemable::SetTextArrayColor(TArray<UTextBlock*> TextArray, FColor Color)
 		Text->SetColorAndOpacity(FSlateColor(Color));
 	}
 }
-
-//void IThemable::SetTextArrayColor(TArray<UTextBlock*> TextArray, FColor Color)
-//{
-
-//}

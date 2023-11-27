@@ -9,6 +9,7 @@
 #include "DataBiosGroupWidget.generated.h"
 
 class UTextBlock;
+class UImage;
 class UDataBiosWidget;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSelectedRegionChangedSignature, EDataBiosSelectionRegion, SelectedRegion);
@@ -41,6 +42,9 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextTitle;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImagePanelTitleBG;
 
 private:
 	UFUNCTION()

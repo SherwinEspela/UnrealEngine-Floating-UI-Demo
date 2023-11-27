@@ -4,6 +4,7 @@
 #include "UI/DataBios/Modal/ModalMissionWidget.h"
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
 
 void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, bool IsCompleted, FString Location, FString Rewards)
 {

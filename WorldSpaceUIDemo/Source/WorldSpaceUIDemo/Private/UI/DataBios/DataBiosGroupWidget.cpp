@@ -4,6 +4,7 @@
 #include "UI/DataBios/DataBiosGroupWidget.h"
 #include "UI/DataBiosWidget.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
 
 void UDataBiosGroupWidget::NativeConstruct()
 {
@@ -13,6 +14,9 @@ void UDataBiosGroupWidget::NativeConstruct()
 	DataBios->OnSelectedRegionChanged.AddDynamic(this, &UDataBiosGroupWidget::HandleSelectedRegionChanged);
 
 	Reset();
+
+	ThemeManager::SetTransparentBackgroundColor(ImagePanelTitleBG);
+	ThemeManager::SetTextToDefault(TextTitle);
 }
 
 void UDataBiosGroupWidget::MoveSelectionUp()

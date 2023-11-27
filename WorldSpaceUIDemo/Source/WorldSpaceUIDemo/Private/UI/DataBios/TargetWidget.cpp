@@ -4,10 +4,20 @@
 #include "UI/DataBios/TargetWidget.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
+#include "Utility/ThemeManager.h"
 
 UTargetWidget::UTargetWidget()
 {
 	SetSelectionRegion(EDataBiosSelectionRegion::EDSR_Targets);
+}
+
+void UTargetWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
+	ThemeManager::SetBorderColor(ImageBorder);
+	ThemeManager::SetAllTextToDefault(*this);
 }
 
 void UTargetWidget::SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated)

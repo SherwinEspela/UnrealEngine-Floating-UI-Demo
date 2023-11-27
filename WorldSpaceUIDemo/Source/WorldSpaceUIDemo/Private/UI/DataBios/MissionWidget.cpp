@@ -14,8 +14,9 @@ void UMissionWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
-	ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
+	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
+	ThemeManager::SetBorderColor(ImageBorder);
+	ThemeManager::SetAllTextToDefault(*this);
 }
 
 void UMissionWidget::SetValues(FName RowNameValue, UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted)

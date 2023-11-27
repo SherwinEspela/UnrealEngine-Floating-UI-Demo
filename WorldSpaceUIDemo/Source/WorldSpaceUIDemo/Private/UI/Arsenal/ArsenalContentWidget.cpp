@@ -5,6 +5,7 @@
 #include "UI/Arsenal/ArsenalCellWidget.h"
 #include "Components/UniformGridPanel.h"
 #include "UI/MappableWidget.h"
+#include "Utility/ThemeManager.h"
 
 void UArsenalContentWidget::NativePreConstruct()
 {
@@ -17,6 +18,7 @@ void UArsenalContentWidget::NativeConstruct()
 	Super::NativeConstruct();
 	SetupWidgetMapping();
 	Reset();
+	ThemeManager::SetAllTextToDefault(*this);
 }
 
 void UArsenalContentWidget::LoadAllCells()

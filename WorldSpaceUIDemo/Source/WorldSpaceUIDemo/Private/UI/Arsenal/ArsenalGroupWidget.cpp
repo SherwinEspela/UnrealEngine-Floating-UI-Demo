@@ -4,6 +4,7 @@
 #include "UI/Arsenal/ArsenalGroupWidget.h"
 #include "UI/Arsenal/ArsenalContentWidget.h"
 #include "Components/TextBlock.h"
+#include "Utility/ThemeManager.h"
 
 void UArsenalGroupWidget::NativeConstruct()
 {
@@ -11,6 +12,10 @@ void UArsenalGroupWidget::NativeConstruct()
 	ArsenalContents->OnArsenalWidgetSelected.AddDynamic(this, &UArsenalGroupWidget::HandleArsenalWidgetSelected);
 
 	Reset();
+
+	ThemeManager::SetTransparentBackgroundColor(ImageTopBarBG);
+	ThemeManager::SetTextToDefault(TextArsenalName);
+	ThemeManager::SetTextToDefault(TextDescription);
 }
 
 void UArsenalGroupWidget::MoveSelectionUp()

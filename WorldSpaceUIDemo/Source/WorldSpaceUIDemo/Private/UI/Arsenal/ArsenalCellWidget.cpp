@@ -21,8 +21,10 @@ void UArsenalCellWidget::NativePreConstruct()
 void UArsenalCellWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-	ImageBG->SetBrushTintColor(FSlateColor(COLOR_BACKGROUND1));
-	ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
+	
+	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
+	ThemeManager::SetBorderColor(ImageBorder);
+	ThemeManager::SetTextToDefault(TextQuantity);
 }
 
 void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, FString ArsenalNameValue, FString DescriptionValue, int Quantity)

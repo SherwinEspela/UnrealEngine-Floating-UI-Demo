@@ -5,17 +5,15 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UI/MappableWidget.h"
-#include "UI/Interface/Themable.h"
 #include "SideMenuTab.generated.h"
 
 class UImage;
 class UTextBlock;
-
 /**
  * 
  */
 UCLASS()
-class WORLDSPACEUIDEMO_API USideMenuTab : public UMappableWidget, public IThemable
+class WORLDSPACEUIDEMO_API USideMenuTab : public UMappableWidget
 {
 	GENERATED_BODY()
 
