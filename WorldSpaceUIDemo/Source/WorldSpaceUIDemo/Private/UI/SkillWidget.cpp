@@ -13,6 +13,7 @@ void USkillWidget::NativeConstruct()
 	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
 	ThemeManager::SetBorderColor(ImageBorder);
 	ThemeManager::SetAllTextToDefault(*this);
+	ThemeManager::SetBackgroundColor(ImageIcon, COLOR_TEXT_DEFAULT1);
 }
 
 void USkillWidget::SetValues(UTexture2D* TextureSkillIcon, FString SkillName, int SkillLevel)
