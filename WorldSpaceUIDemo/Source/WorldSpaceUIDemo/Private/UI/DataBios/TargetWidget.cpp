@@ -18,6 +18,8 @@ void UTargetWidget::NativeConstruct()
 	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
 	ThemeManager::SetBorderColor(ImageBorder);
 	ThemeManager::SetAllTextToDefault(*this);
+	ThemeManager::SetBackgroundColor(ImageIcon1, COLOR_TEXT_DEFAULT1);
+	ThemeManager::SetBackgroundColor(ImageIcon2, COLOR_TEXT_DEFAULT1);
 }
 
 void UTargetWidget::SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated)

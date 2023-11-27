@@ -52,4 +52,10 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextStatus;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageIcon1;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageIcon2;
 };
