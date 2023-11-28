@@ -102,6 +102,9 @@ protected: // UI Elements
 	UPROPERTY(meta = (BindWidget))
 	UScifiBarsWidget* ScifiBars;
 
+	UPROPERTY(meta = (BindWidget))
+	UScifiBarsWidget* ScifiBars2;
+
 protected:
 	UPROPERTY(EditAnywhere)
 	UDataTable* MissionsDataTable;
