@@ -65,6 +65,12 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnArsenalGroupSelected();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnShowModal();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHideModal();
+
 protected: // UI Elements
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UUniformGridPanel* DotGrid;

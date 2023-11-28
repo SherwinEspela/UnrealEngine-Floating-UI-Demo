@@ -156,6 +156,8 @@ void UMainMenuWidget::OpenModal()
 			OnMainMenuModalDisplayChanged.Broadcast(bIsDisplayingModal);
 			break;
 	}
+
+	OnShowModal();
 }
 
 void UMainMenuWidget::CloseModal()
@@ -185,6 +187,8 @@ void UMainMenuWidget::CloseModal()
 			OnMainMenuModalDisplayChanged.Broadcast(bIsDisplayingModal);
 			break;
 	}
+
+	OnHideModal();
 }
 
 void UMainMenuWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)
