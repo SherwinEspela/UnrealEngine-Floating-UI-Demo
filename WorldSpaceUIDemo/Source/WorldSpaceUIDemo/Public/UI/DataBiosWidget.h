@@ -10,6 +10,7 @@
 class UDataBiosMajorSkillsWidget;
 class UDataBiosMissionsWidget;
 class UDataBiosTargetsWidget;
+class UDataBiosProfileWidget;
 class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
@@ -31,6 +32,7 @@ public:
 	void MoveSelectionDown();
 	void MoveSelectionRight();
 	void MoveSelectionLeft();
+	void ShouldPlayProfileFX(bool ShouldPlay);
 	void Reset();
 
 	FOnNewTabSelectedSignature OnNewTabSelected;
@@ -60,6 +62,9 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UDataBiosTargetsWidget* Targets;
+
+	UPROPERTY(meta = (BindWidget))
+	UDataBiosProfileWidget* Profile;
 
 	UPROPERTY(meta = (BindWidget))
 	UWidgetSwitcher* WidgetSwitcher;

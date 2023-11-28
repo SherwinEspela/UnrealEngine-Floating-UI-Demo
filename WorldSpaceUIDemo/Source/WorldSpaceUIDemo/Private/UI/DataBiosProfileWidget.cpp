@@ -4,6 +4,7 @@
 #include "UI/DataBiosProfileWidget.h"
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
+#include "UI/Scifi/ScifiBarWidget.h"
 
 void UDataBiosProfileWidget::NativeConstruct()
 {
@@ -36,4 +37,19 @@ void UDataBiosProfileWidget::NativeConstruct()
 
 	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
 	ThemeManager::SetAllTextToDefault(*this);
+}
+
+void UDataBiosProfileWidget::PlayScifiFX()
+{
+	if (ScifiBar) ScifiBar->Play();
+}
+
+void UDataBiosProfileWidget::StopScifiFX()
+{
+	if (ScifiBar) ScifiBar->Stop();
+}
+
+void UDataBiosProfileWidget::Reset()
+{
+	if (ScifiBar) ScifiBar->Stop();
 }

@@ -40,6 +40,7 @@ void UMainMenuWidget::NativeConstruct()
 
 void UMainMenuWidget::ShowMainMenu()
 {
+	DataBiosGroup->ShouldPlayProfileFX(true);
 	OnShowMainMenu();
 }
 
@@ -77,6 +78,7 @@ void UMainMenuWidget::MoveTopBarSelectionLeft()
 	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionLeft();
 	CurrentNavigation = DataBiosGroup;
+	DataBiosGroup->ShouldPlayProfileFX(true);
 	ValidateModalsVisibility();
 	OnDataBiosGroupSelected();
 }
@@ -86,6 +88,7 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionRight();
 	CurrentNavigation = ArsenalGroup;
+	DataBiosGroup->ShouldPlayProfileFX(false);
 	SetBottomButtonsInteractable(false);
 	OnArsenalGroupSelected();
 }

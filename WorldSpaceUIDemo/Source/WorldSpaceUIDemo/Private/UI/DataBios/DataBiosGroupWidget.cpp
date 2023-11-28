@@ -76,6 +76,11 @@ void UDataBiosGroupWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion 
 	OnSelectedRegionChanged.Broadcast(SelectedRegion);
 }
 
+void UDataBiosGroupWidget::ShouldPlayProfileFX(bool ShouldPlay)
+{
+	DataBios->ShouldPlayProfileFX(ShouldPlay);
+}
+
 void UDataBiosGroupWidget::Reset()
 {
 	TextTitle->SetText(FText::FromString(Titles[0]));

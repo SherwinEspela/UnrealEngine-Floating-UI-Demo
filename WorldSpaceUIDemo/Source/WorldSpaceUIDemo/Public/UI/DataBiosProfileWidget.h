@@ -8,6 +8,7 @@
 
 class UTextBlock;
 class UImage;
+class UScifiBarWidget;
 
 /**
  * 
@@ -16,6 +17,12 @@ UCLASS()
 class WORLDSPACEUIDEMO_API UDataBiosProfileWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+public:
+	void PlayScifiFX();
+	void StopScifiFX();
+	void Reset();
+
 protected:
 	void NativeConstruct() override;
 
@@ -30,4 +37,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageBG;
+
+	UPROPERTY(meta = (BindWidget))
+	UScifiBarWidget* ScifiBar;
 };

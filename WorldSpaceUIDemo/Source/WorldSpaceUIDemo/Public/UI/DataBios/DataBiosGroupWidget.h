@@ -28,6 +28,7 @@ public:
 	void MoveSelectionDown() override;
 	void MoveSelectionLeft() override;
 	void MoveSelectionRight() override;
+	void ShouldPlayProfileFX(bool ShouldPlay);
 	void Reset();
 
 	FName GetRowNameFromSelectedWidget() const;
