@@ -38,4 +38,5 @@ void UMissionWidget::SetValues(FName RowNameValue, UTexture2D* TextureIcon, FStr
 void UMissionWidget::SetHighlight(bool ShoudHighlight)
 {
 	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
+	OnHighlighted(ShoudHighlight);
 }

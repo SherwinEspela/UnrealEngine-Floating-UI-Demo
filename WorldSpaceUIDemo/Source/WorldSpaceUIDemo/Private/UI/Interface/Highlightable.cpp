@@ -10,10 +10,8 @@ void IHighlightable::SetHighlightOnBackgroundAndBorder(UImage* ImageBG, UImage* 
 	if (ShoudHighlight)
 	{
 		ThemeManager::SetCellHighlightColor(ImageBG);
-		ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_HIGHLIGHT));
 	}
 	else {
 		ThemeManager::SetCellBackgroundColor(ImageBG);
-		ImageBorder->SetBrushTintColor(FSlateColor(COLOR_BORDER_DEFAULT));
 	}
 }
