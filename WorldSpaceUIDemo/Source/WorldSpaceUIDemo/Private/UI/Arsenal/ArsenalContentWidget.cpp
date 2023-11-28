@@ -205,7 +205,7 @@ FString UArsenalContentWidget::GetSelectedArsenalDescription() const
 
 void UArsenalContentWidget::Reset()
 {
-	if (SelectedWidget) Cast<UArsenalCellWidget>(SelectedWidget)->SetHighlight(false);
-	ArsenalWidgets[0]->SetHighlight();
+	if (SelectedWidget) Cast<UArsenalCellWidget>(SelectedWidget)->Reset();
+	ArsenalWidgets[0]->SetHighlight(true, false);
 	SelectedWidget = ArsenalWidgets[0];
 }

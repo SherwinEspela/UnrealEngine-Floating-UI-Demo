@@ -44,7 +44,7 @@ void UTargetWidget::SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FStr
 
 void UTargetWidget::SetHighlight(bool ShoudHighlight)
 {
-	if (SfxSound) UGameplayStatics::PlaySound2D(this, SfxSound);
+	if (ShoudHighlight && SfxSound) UGameplayStatics::PlaySound2D(this, SfxSound);
 	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
 	OnHighlighted(ShoudHighlight);
 }

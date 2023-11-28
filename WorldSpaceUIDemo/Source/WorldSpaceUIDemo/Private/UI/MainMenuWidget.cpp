@@ -164,7 +164,7 @@ void UMainMenuWidget::OpenModal()
 	}
 
 	OnShowModal();
-	if (SfxModal) UGameplayStatics::PlaySound2D(this, SfxModal);
+	if (SfxSwitchPanel) UGameplayStatics::PlaySound2D(this, SfxSwitchPanel);
 }
 
 void UMainMenuWidget::CloseModal()

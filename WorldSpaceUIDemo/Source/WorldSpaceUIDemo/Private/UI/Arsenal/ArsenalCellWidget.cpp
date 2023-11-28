@@ -36,9 +36,15 @@ void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, FString ArsenalNa
 	TextQuantity->SetText(FText::FromString(QuantityValue));
 }
 
-void UArsenalCellWidget::SetHighlight(bool ShouldHighlight)
+void UArsenalCellWidget::SetHighlight(bool ShouldHighlight, bool WithSound)
 {
-	if (SfxSound) UGameplayStatics::PlaySound2D(this, SfxSound);
+	if (ShouldHighlight && SfxSound && WithSound) UGameplayStatics::PlaySound2D(this, SfxSound);
 	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShouldHighlight);
 	OnHighlighted(ShouldHighlight);
+}
+
+void UArsenalCellWidget::Reset()
+{
+	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, false);
+	OnHighlighted(false);
 }

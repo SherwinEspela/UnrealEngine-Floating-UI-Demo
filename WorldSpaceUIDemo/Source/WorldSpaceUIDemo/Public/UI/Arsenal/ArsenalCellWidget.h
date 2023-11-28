@@ -21,7 +21,8 @@ class WORLDSPACEUIDEMO_API UArsenalCellWidget : public UMappableWidget, public I
 
 public:
 	void SetValues(UTexture2D* TextureArsenal, FString ArsenalNameValue, FString DescriptionValue, int Quantity);
-	void SetHighlight(bool ShoudHighlight = true);
+	void SetHighlight(bool ShoudHighlight = true, bool WithSound = true);
+	void Reset();
 
 public:
 	FORCEINLINE FString GetArsenalName() const { return ArsenalName; }
