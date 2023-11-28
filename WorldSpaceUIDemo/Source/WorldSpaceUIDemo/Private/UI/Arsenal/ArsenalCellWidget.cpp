@@ -25,6 +25,8 @@ void UArsenalCellWidget::NativeConstruct()
 	ThemeManager::SetCellBackgroundColor(ImageBG, 0.9f);
 	ThemeManager::SetBorderColor(ImageBorder);
 	ThemeManager::SetTextToDefault(TextQuantity);
+
+	OnHighlighted(false);
 }
 
 void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, FString ArsenalNameValue, FString DescriptionValue, int Quantity)
@@ -38,7 +40,8 @@ void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, FString ArsenalNa
 	TextQuantity->SetText(FText::FromString(QuantityValue));
 }
 
-void UArsenalCellWidget::SetHighlight(bool ShoudHighlight)
+void UArsenalCellWidget::SetHighlight(bool ShouldHighlight)
 {
-	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
+	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShouldHighlight);
+	OnHighlighted(ShouldHighlight);
 }

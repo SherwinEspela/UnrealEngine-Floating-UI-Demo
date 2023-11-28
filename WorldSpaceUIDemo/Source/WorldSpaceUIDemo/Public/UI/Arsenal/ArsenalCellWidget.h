@@ -34,6 +34,9 @@ protected:
 	virtual void NativePreConstruct() override;
 	virtual void NativeConstruct() override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHighlighted(bool Highlighted);
+
 protected:
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageBG;
