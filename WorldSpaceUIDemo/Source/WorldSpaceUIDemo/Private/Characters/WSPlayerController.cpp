@@ -52,6 +52,8 @@ void AWSPlayerController::SetupInputComponent()
 
 void AWSPlayerController::Move(const FInputActionValue& Value)
 {
+	if (!bIsViewingPlayerCamera) return;
+
 	const FVector2D MovementVector = Value.Get<FVector2D>();
 
 	const FRotator Rotation = GetControlRotation();
@@ -79,6 +81,8 @@ void AWSPlayerController::Move(const FInputActionValue& Value)
 
 void AWSPlayerController::LookAround(const FInputActionValue& Value)
 {
+	if (!bIsViewingPlayerCamera) return;
+
 	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 	PlayerCharacter->AddControllerYawInput(LookAxisVector.X);
 	PlayerCharacter->AddControllerPitchInput(LookAxisVector.Y);
