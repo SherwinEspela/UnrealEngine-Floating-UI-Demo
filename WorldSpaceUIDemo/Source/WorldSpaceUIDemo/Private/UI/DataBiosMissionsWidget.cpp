@@ -31,6 +31,7 @@ void UDataBiosMissionsWidget::LoadCells()
 			if (Widget)
 			{
 				Widget->SetValues(RowName, Row->MissionIcon, Row->MissionName, Row->Difficulty, Row->IsCompleted);
+				Widget->SetSoundFx(SfxMissionSelect);
 				MissionWidgets.Add(Widget);
 			}
 		}

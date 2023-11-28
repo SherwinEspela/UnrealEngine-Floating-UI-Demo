@@ -16,6 +16,7 @@ class UBottomButtonWidget;
 class UModalMissionWidget;
 class UModalTargetWidget;
 class UScifiBarsWidget;
+class USoundBase;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMainMenuModalDisplayChangedSignature, bool, IsDisplayingModal);
 
@@ -117,6 +118,13 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	float DotSize = 100.f;
+	
+protected:
+	UPROPERTY(EditAnywhere)
+	USoundBase* SfxSwitchPanel;
+
+	UPROPERTY(EditAnywhere)
+	USoundBase* SfxModal;
 
 private:
 	UNavigationBaseWidget* CurrentNavigation;

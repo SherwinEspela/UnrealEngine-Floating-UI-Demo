@@ -15,6 +15,7 @@ class USideMenuTab;
 class UMappableWidget;
 class UWidgetSwitcher;
 class UImage;
+class USoundBase;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewTabSelectedSignature, int, SelectedTabIndex);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDataBiosSelectedRegionChangedSignature, EDataBiosSelectionRegion, SelectedRegion);
@@ -72,6 +73,9 @@ protected:
 protected:
 	UPROPERTY(meta = (BindWidget))
 	UImage* ImageSideMenuBG;
+
+	UPROPERTY(EditAnywhere)
+	USoundBase* SfxTabSelect;
 
 private:
 	USideMenuTab* SelectedSideTab;

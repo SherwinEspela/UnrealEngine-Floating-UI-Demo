@@ -20,15 +20,13 @@ class WORLDSPACEUIDEMO_API UArsenalCellWidget : public UMappableWidget, public I
 	GENERATED_BODY()
 
 public:
-	UArsenalCellWidget();
-
-public:
 	void SetValues(UTexture2D* TextureArsenal, FString ArsenalNameValue, FString DescriptionValue, int Quantity);
 	void SetHighlight(bool ShoudHighlight = true);
 
 public:
 	FORCEINLINE FString GetArsenalName() const { return ArsenalName; }
 	FORCEINLINE FString GetArsenalDescription() const { return Description; }
+	FORCEINLINE void SetSoundFx(USoundBase* NewSound) { SfxSound = NewSound; }
 
 protected:
 	virtual void NativePreConstruct() override;
@@ -52,4 +50,7 @@ protected:
 
 	FString ArsenalName;
 	FString Description;
+
+private:
+	USoundBase* SfxSound;
 };

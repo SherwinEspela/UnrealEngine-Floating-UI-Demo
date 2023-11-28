@@ -5,11 +5,7 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
-
-UArsenalCellWidget::UArsenalCellWidget()
-{
-
-}
+#include "Kismet/GameplayStatics.h"
 
 void UArsenalCellWidget::NativePreConstruct()
 {
@@ -42,6 +38,7 @@ void UArsenalCellWidget::SetValues(UTexture2D* TextureArsenal, FString ArsenalNa
 
 void UArsenalCellWidget::SetHighlight(bool ShouldHighlight)
 {
+	if (SfxSound) UGameplayStatics::PlaySound2D(this, SfxSound);
 	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShouldHighlight);
 	OnHighlighted(ShouldHighlight);
 }

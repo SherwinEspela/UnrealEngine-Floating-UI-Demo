@@ -10,6 +10,7 @@
 
 class UMissionWidget;
 class UMappableWidget;
+class USoundBase;
 
 USTRUCT(BlueprintType)
 struct FMissionRow : public FTableRowBase

@@ -70,6 +70,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UArsenalCellWidget> ArsenalCellWidgetClass;
 
+	UPROPERTY(EditAnywhere)
+	USoundBase* SfxArsenalSelect;
+
 private:
 	TArray<UArsenalCellWidget*> ArsenalWidgets;
 	TArray<UArsenalCellWidget*> ItemWidgets;

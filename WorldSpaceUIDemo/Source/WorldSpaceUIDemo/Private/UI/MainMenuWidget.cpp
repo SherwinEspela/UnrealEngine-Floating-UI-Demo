@@ -13,6 +13,8 @@
 #include "UI/DataBios/DataBiosTargetsWidget.h"
 #include "UI/Scifi/ScifiBarsWidget.h"
 #include "CustomEnums.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -88,6 +90,7 @@ void UMainMenuWidget::MoveTopBarSelectionLeft()
 	DataBiosGroup->ShouldPlayProfileFX(true);
 	ValidateModalsVisibility();
 	OnDataBiosGroupSelected();
+	if (SfxSwitchPanel) UGameplayStatics::PlaySound2D(this, SfxSwitchPanel);
 }
 
 void UMainMenuWidget::MoveTopBarSelectionRight()
@@ -98,6 +101,7 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 	DataBiosGroup->ShouldPlayProfileFX(false);
 	SetBottomButtonsInteractable(false);
 	OnArsenalGroupSelected();
+	if (SfxSwitchPanel) UGameplayStatics::PlaySound2D(this, SfxSwitchPanel);
 }
 
 void UMainMenuWidget::OpenModal()
@@ -160,6 +164,7 @@ void UMainMenuWidget::OpenModal()
 	}
 
 	OnShowModal();
+	if (SfxModal) UGameplayStatics::PlaySound2D(this, SfxModal);
 }
 
 void UMainMenuWidget::CloseModal()
@@ -191,6 +196,7 @@ void UMainMenuWidget::CloseModal()
 	}
 
 	OnHideModal();
+	if (SfxModal) UGameplayStatics::PlaySound2D(this, SfxModal);
 }
 
 void UMainMenuWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)

@@ -7,6 +7,7 @@
 #include "Highlightable.generated.h"
 
 class UImage;
+class USoundBase;
 
 UINTERFACE(MinimalAPI)
 class UHighlightable : public UInterface

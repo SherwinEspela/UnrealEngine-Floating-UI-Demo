@@ -4,6 +4,7 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 #include "Utility/ThemeManager.h"
+#include "Kismet/GameplayStatics.h"
 
 UMissionWidget::UMissionWidget()
 {
@@ -37,6 +38,7 @@ void UMissionWidget::SetValues(FName RowNameValue, UTexture2D* TextureIcon, FStr
 
 void UMissionWidget::SetHighlight(bool ShoudHighlight)
 {
+	if (SfxSound) UGameplayStatics::PlaySound2D(this, SfxSound);
 	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
 	OnHighlighted(ShoudHighlight);
 }

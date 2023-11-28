@@ -9,6 +9,8 @@
 #include "UI/DataBiosProfileWidget.h"
 #include "Components/Image.h"
 #include "Utility/ThemeManager.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 
 void UDataBiosWidget::NativeConstruct()
 {
@@ -142,6 +144,8 @@ void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, 
 		else {
 			Profile->StopScifiFX();
 		}
+
+		UGameplayStatics::PlaySound2D(this, SfxTabSelect);
 	}
 }
 

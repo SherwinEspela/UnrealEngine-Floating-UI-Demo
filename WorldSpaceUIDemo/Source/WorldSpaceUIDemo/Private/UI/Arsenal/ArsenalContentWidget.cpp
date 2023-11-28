@@ -40,6 +40,7 @@ void UArsenalContentWidget::LoadCells(TArray<UArsenalCellWidget*>& OutWidgets, U
 			if (Widget)
 			{
 				Widget->SetValues(Row->ArsenalIcon, Row->ArsenalName, Row->Description, Row->Quantity);
+				Widget->SetSoundFx(SfxArsenalSelect);
 				OutWidgets.Add(Widget);
 			}
 		}

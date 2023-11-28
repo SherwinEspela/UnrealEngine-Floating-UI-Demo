@@ -11,6 +11,7 @@
 class UImage;
 class UTextBlock;
 class UTexture2D;
+class USoundBase;
 
 /**
  * 
@@ -25,6 +26,9 @@ public:
 
 	void SetValues(FName RowNameValue, UTexture2D* TextureIcon, FString MissionName, int Difficulty, bool IsCompleted);
 	void SetHighlight(bool ShoudHighlight = true);
+
+public:
+	FORCEINLINE void SetSoundFx(USoundBase* NewSound) { SfxSound = NewSound; }
 
 protected:
 	virtual void NativeConstruct() override;
@@ -50,4 +54,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextStatus;
+
+private:
+	USoundBase* SfxSound;
 };

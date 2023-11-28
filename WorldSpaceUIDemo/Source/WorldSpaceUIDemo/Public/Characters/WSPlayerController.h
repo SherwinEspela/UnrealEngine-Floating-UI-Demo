@@ -12,6 +12,7 @@ class UInputAction;
 class APlayerCharacter;
 class AHUDCameraActor;
 class UMainMenuWidget;
+class USoundBase;
 
 /**
  * 
@@ -78,6 +79,9 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AHUDCameraActor> HUDCameraActorClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USoundBase* SfxMainMenu;
 
 private:
 	void Move(const FInputActionValue& Value);

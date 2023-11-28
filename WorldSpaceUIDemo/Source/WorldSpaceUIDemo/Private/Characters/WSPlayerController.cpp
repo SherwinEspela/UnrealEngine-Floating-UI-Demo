@@ -11,6 +11,8 @@
 #include "Characters/HUDCameraActor.h"
 #include "UI/MainMenuWidget.h"
 #include "HUD/FloatingWidgetComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 
 void AWSPlayerController::BeginPlay()
 {
@@ -129,6 +131,7 @@ void AWSPlayerController::ToggleCamera()
 		bIsDisplayingDataBios = true;
 	}
 
+	if (SfxMainMenu) UGameplayStatics::PlaySound2D(this, SfxMainMenu);
 	bIsViewingPlayerCamera = !bIsViewingPlayerCamera;
 }
 

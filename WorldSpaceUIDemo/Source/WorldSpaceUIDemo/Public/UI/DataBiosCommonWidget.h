@@ -48,6 +48,9 @@ protected:
 	UMappableWidget* FirstElementWidget;
 	UMappableWidget* SelectedWidget;
 
+	UPROPERTY(EditAnywhere)
+	USoundBase* SfxMissionSelect;
+
 protected:
 	virtual void UpdateNewSelectedWidget(UMappableWidget* MappableWidget);
 };

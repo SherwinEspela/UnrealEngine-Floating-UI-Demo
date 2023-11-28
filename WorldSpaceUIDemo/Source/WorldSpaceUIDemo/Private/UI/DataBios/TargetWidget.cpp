@@ -5,6 +5,7 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 #include "Utility/ThemeManager.h"
+#include "Kismet/GameplayStatics.h"
 
 UTargetWidget::UTargetWidget()
 {
@@ -43,6 +44,7 @@ void UTargetWidget::SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FStr
 
 void UTargetWidget::SetHighlight(bool ShoudHighlight)
 {
+	if (SfxSound) UGameplayStatics::PlaySound2D(this, SfxSound);
 	SetHighlightOnBackgroundAndBorder(ImageBG, ImageBorder, ShoudHighlight);
 	OnHighlighted(ShoudHighlight);
 }

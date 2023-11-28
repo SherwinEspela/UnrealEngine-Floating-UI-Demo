@@ -30,6 +30,7 @@ void UDataBiosTargetsWidget::LoadCells()
 			if (Widget)
 			{
 				Widget->SetValues(RowName, Row->TexturePhoto, Row->TargetName, Row->TargetId, Row->Difficulty, Row->AudioCount, Row->IsLocated);
+				Widget->SetSoundFx(SfxMissionSelect);
 				TargetWidgets.Add(Widget);
 			}
 		}
