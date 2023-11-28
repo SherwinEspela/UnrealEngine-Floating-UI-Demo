@@ -37,11 +37,11 @@ void UModalTargetWidget::SetEnable(bool Enabled)
 {
 	if (Enabled)
 	{
-		SetVisibility(ESlateVisibility::Visible);
 		ScifiBars->Play();
+		OnEnabled(true);
 	}
 	else {
-		SetVisibility(ESlateVisibility::Hidden);
 		ScifiBars->Stop();
+		OnEnabled(false);
 	}
 }

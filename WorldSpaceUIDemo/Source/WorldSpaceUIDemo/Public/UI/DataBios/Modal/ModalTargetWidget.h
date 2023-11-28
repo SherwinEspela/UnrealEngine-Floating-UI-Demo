@@ -24,8 +24,15 @@ public:
 	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated,  FString BirthDate, FString Location, int Rank);
 	void SetEnable(bool Enabled);
 
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnSetHidden();
+
 protected:
 	virtual void NativeConstruct() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnEnabled(bool Enabled);
 
 protected:
 	UPROPERTY(meta = (BindWidget))

@@ -44,6 +44,7 @@ void UMainMenuWidget::ShowMainMenu()
 	DataBiosGroup->ShouldPlayProfileFX(true);
 	ScifiBars->Play();
 	ModalMission->OnSetHidden();
+	ModalTarget->OnSetHidden();
 	OnShowMainMenu();
 }
 
