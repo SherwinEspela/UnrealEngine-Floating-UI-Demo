@@ -4,7 +4,7 @@
 #include "UI/DataBiosProfileWidget.h"
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
-#include "UI/Scifi/ScifiBarWidget.h"
+#include "UI/Scifi/ScifiBarsWidget.h"
 
 void UDataBiosProfileWidget::NativeConstruct()
 {
@@ -41,15 +41,15 @@ void UDataBiosProfileWidget::NativeConstruct()
 
 void UDataBiosProfileWidget::PlayScifiFX()
 {
-	if (ScifiBar) ScifiBar->Play();
+	ScifiBars->Play();
 }
 
 void UDataBiosProfileWidget::StopScifiFX()
 {
-	if (ScifiBar) ScifiBar->Stop();
+	ScifiBars->Stop();
 }
 
 void UDataBiosProfileWidget::Reset()
 {
-	if (ScifiBar) ScifiBar->Stop();
+	StopScifiFX();
 }

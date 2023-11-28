@@ -8,7 +8,7 @@
 
 class UTextBlock;
 class UImage;
-class UScifiBarWidget;
+class UScifiBarsWidget;
 
 /**
  * 
@@ -39,5 +39,5 @@ protected:
 	UImage* ImageBG;
 
 	UPROPERTY(meta = (BindWidget))
-	UScifiBarWidget* ScifiBar;
+	UScifiBarsWidget* ScifiBars;
 };

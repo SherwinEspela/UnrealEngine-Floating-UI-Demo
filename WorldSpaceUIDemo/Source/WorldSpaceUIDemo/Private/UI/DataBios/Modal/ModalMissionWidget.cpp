@@ -5,6 +5,7 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
+#include "UI/Scifi/ScifiBarsWidget.h"
 
 void UModalMissionWidget::NativeConstruct()
 {
@@ -24,4 +25,17 @@ void UModalMissionWidget::SetValues(UTexture2D* TextureMission, FString MissionN
 	TextStatus->SetText(FText::FromString(StatusValue));
 	TextLocation->SetText(FText::FromString(FString::Printf(TEXT("LOCATION: %s"), *Location)));
 	TextRewards->SetText(FText::FromString(FString::Printf(TEXT("REWARDS: %s"), *Rewards)));
+}
+
+void UModalMissionWidget::SetEnable(bool Enabled)
+{
+	if (Enabled)
+	{
+		SetVisibility(ESlateVisibility::Visible);
+		ScifiBars->Play();
+	}
+	else {
+		SetVisibility(ESlateVisibility::Hidden);
+		ScifiBars->Stop();
+	}
 }

@@ -15,6 +15,7 @@ class UNavigationBaseWidget;
 class UBottomButtonWidget;
 class UModalMissionWidget;
 class UModalTargetWidget;
+class UScifiBarsWidget;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMainMenuModalDisplayChangedSignature, bool, IsDisplayingModal);
 
@@ -91,6 +92,9 @@ protected: // UI Elements
 
 	UPROPERTY(meta = (BindWidget))
 	UModalTargetWidget* ModalTarget;
+
+	UPROPERTY(meta = (BindWidget))
+	UScifiBarsWidget* ScifiBars;
 
 protected:
 	UPROPERTY(EditAnywhere)

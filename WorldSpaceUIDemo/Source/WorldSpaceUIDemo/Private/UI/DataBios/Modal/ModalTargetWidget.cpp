@@ -5,6 +5,7 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "Utility/ThemeManager.h"
+#include "UI/Scifi/ScifiBarsWidget.h"
 
 void UModalTargetWidget::NativeConstruct()
 {
@@ -30,4 +31,17 @@ void UModalTargetWidget::SetValues(UTexture2D* TexturePhoto, FString TargetName,
 	
 	FString RankValue = FString::Printf(TEXT("RANK: %s"), *FString::FromInt(Rank));
 	TextRank->SetText(FText::FromString(RankValue));
+}
+
+void UModalTargetWidget::SetEnable(bool Enabled)
+{
+	if (Enabled)
+	{
+		SetVisibility(ESlateVisibility::Visible);
+		ScifiBars->Play();
+	}
+	else {
+		SetVisibility(ESlateVisibility::Hidden);
+		ScifiBars->Stop();
+	}
 }
