@@ -25,8 +25,11 @@ public:
 	void SetValues(FName RowNameValue, UTexture2D* TexturePhoto, FString TargetName, FString TargetId, int Difficulty, int AudioCount, bool IsLocated);
 	void SetHighlight(bool ShoudHighlight = true);
 
-public:
+protected:
 	void NativeConstruct() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHighlighted(bool Highlighted);
 	
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -52,4 +55,10 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextStatus;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageIcon1;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImageIcon2;
 };

@@ -6,6 +6,7 @@
 #include "Components/WidgetSwitcher.h"
 #include "UI/DataBiosMissionsWidget.h"
 #include "UI/DataBios/DataBiosTargetsWidget.h"
+#include "UI/DataBiosProfileWidget.h"
 #include "Components/Image.h"
 #include "Utility/ThemeManager.h"
 
@@ -121,7 +122,6 @@ void UDataBiosWidget::MoveSelectionLeft()
 	case EDataBiosSelectionRegion::EDSR_SideMenu:
 		break;
 	}
-
 }
 
 void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, bool IsMovingUp)
@@ -134,6 +134,14 @@ void UDataBiosWidget::UpdateNewSelectedSideTab(UMappableWidget* MappableWidget, 
 		CurrentTabIndex = IsMovingUp ? --CurrentTabIndex : ++CurrentTabIndex;
 		WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
 		OnNewTabSelected.Broadcast(CurrentTabIndex);
+
+		if (CurrentTabIndex == 0)
+		{
+			Profile->PlayScifiFX();
+		}
+		else {
+			Profile->StopScifiFX();
+		}
 	}
 }
 
@@ -168,6 +176,18 @@ void UDataBiosWidget::Reset()
 	WidgetSwitcher->SetActiveWidgetIndex(CurrentTabIndex);
 	SelectionRegion = EDataBiosSelectionRegion::EDSR_SideMenu;
 
+	Profile->Reset();
 	Missions->Reset();
 	Targets->Reset();
+}
+
+void UDataBiosWidget::ShouldPlayProfileFX(bool ShouldPlay)
+{
+	if (ShouldPlay)
+	{
+		Profile->PlayScifiFX();
+	}
+	else {
+		Profile->StopScifiFX();
+	}
 }

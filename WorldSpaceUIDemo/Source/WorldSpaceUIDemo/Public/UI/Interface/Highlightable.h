@@ -22,5 +22,5 @@ class WORLDSPACEUIDEMO_API IHighlightable
 	GENERATED_BODY()
 
 public:
-	virtual void SetHighlightOnBackgroundAndBorder(UImage* ImageBG, UImage* ImageBorder, bool ShoudHighlight = true);
+	virtual void SetHighlightOnBackgroundAndBorder(UImage* ImageBG, UImage* ImageBorder, bool ShouldHighlight = true);
 };

@@ -15,6 +15,7 @@ class UNavigationBaseWidget;
 class UBottomButtonWidget;
 class UModalMissionWidget;
 class UModalTargetWidget;
+class UScifiBarsWidget;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMainMenuModalDisplayChangedSignature, bool, IsDisplayingModal);
 
@@ -64,6 +65,12 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnArsenalGroupSelected();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnShowModal();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHideModal();
+
 protected: // UI Elements
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UUniformGridPanel* DotGrid;
@@ -91,6 +98,12 @@ protected: // UI Elements
 
 	UPROPERTY(meta = (BindWidget))
 	UModalTargetWidget* ModalTarget;
+
+	UPROPERTY(meta = (BindWidget))
+	UScifiBarsWidget* ScifiBars;
+
+	UPROPERTY(meta = (BindWidget))
+	UScifiBarsWidget* ScifiBars2;
 
 protected:
 	UPROPERTY(EditAnywhere)

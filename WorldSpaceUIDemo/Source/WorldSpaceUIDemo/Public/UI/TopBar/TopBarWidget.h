@@ -10,6 +10,7 @@ class UTopBarTabWidget;
 class UMappableWidget;
 class UTextBlock;
 class UTopBarSideButtonWidget;
+class UImage;
 
 /**
  * 
@@ -41,6 +42,9 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTopBarSideButtonWidget* ButtonR1;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* ImagePointsIcon;
 
 private:
 	void SetupWidgetMapping();

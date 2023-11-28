@@ -11,6 +11,7 @@
 #include "UI/DataBios/Modal/ModalTargetWidget.h"
 #include "UI/DataBiosMissionsWidget.h"
 #include "UI/DataBios/DataBiosTargetsWidget.h"
+#include "UI/Scifi/ScifiBarsWidget.h"
 #include "CustomEnums.h"
 
 void UMainMenuWidget::NativeConstruct()
@@ -40,11 +41,18 @@ void UMainMenuWidget::NativeConstruct()
 
 void UMainMenuWidget::ShowMainMenu()
 {
+	DataBiosGroup->ShouldPlayProfileFX(true);
+	ScifiBars->Play();
+	ScifiBars2->Play();
+	ModalMission->OnSetHidden();
+	ModalTarget->OnSetHidden();
 	OnShowMainMenu();
 }
 
 void UMainMenuWidget::HideMainMenu()
 {
+	ScifiBars->Stop();
+	ScifiBars2->Stop();
 	OnHideMainMenu();
 }
 
@@ -77,6 +85,7 @@ void UMainMenuWidget::MoveTopBarSelectionLeft()
 	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionLeft();
 	CurrentNavigation = DataBiosGroup;
+	DataBiosGroup->ShouldPlayProfileFX(true);
 	ValidateModalsVisibility();
 	OnDataBiosGroupSelected();
 }
@@ -86,6 +95,7 @@ void UMainMenuWidget::MoveTopBarSelectionRight()
 	if (bIsDisplayingModal) return;
 	if (TopBar) TopBar->MoveSelectionRight();
 	CurrentNavigation = ArsenalGroup;
+	DataBiosGroup->ShouldPlayProfileFX(false);
 	SetBottomButtonsInteractable(false);
 	OnArsenalGroupSelected();
 }
@@ -114,7 +124,7 @@ void UMainMenuWidget::OpenModal()
 				Row->Location, 
 				Row->Rewards
 			);
-			ModalMission->SetVisibility(ESlateVisibility::Visible);
+			ModalMission->SetEnable(true);
 		}
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
@@ -132,7 +142,7 @@ void UMainMenuWidget::OpenModal()
 				TargetRow->Location, 
 				TargetRow->Rank
 			);
-			ModalTarget->SetVisibility(ESlateVisibility::Visible);
+			ModalTarget->SetEnable(true);
 		}
 			break;
 		default:
@@ -148,6 +158,8 @@ void UMainMenuWidget::OpenModal()
 			OnMainMenuModalDisplayChanged.Broadcast(bIsDisplayingModal);
 			break;
 	}
+
+	OnShowModal();
 }
 
 void UMainMenuWidget::CloseModal()
@@ -159,10 +171,10 @@ void UMainMenuWidget::CloseModal()
 	switch (SelectedTab)
 	{
 		case EDataBiosSelectionRegion::EDSR_Missions:
-			ModalMission->SetVisibility(ESlateVisibility::Hidden);
+			ModalMission->SetEnable(false);
 			break;
 		case EDataBiosSelectionRegion::EDSR_Targets:
-			ModalTarget->SetVisibility(ESlateVisibility::Hidden);
+			ModalTarget->SetEnable(false);
 			break;
 		default:
 			break;
@@ -177,6 +189,8 @@ void UMainMenuWidget::CloseModal()
 			OnMainMenuModalDisplayChanged.Broadcast(bIsDisplayingModal);
 			break;
 	}
+
+	OnHideModal();
 }
 
 void UMainMenuWidget::HandleSelectedRegionChanged(EDataBiosSelectionRegion SelectedRegion)

@@ -10,6 +10,7 @@ class UImage;
 class UTextBlock;
 class UTexture2D;
 class USoundBase;
+class UScifiBarsWidget;
 
 /**
  * 
@@ -21,9 +22,17 @@ class WORLDSPACEUIDEMO_API UModalTargetWidget : public UUserWidget
 
 public:
 	void SetValues(UTexture2D* TexturePhoto, FString TargetName, FString Description, FString Id, bool IsLocated,  FString BirthDate, FString Location, int Rank);
+	void SetEnable(bool Enabled);
+
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnSetHidden();
 
 protected:
 	virtual void NativeConstruct() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnEnabled(bool Enabled);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -52,4 +61,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextRank;
+
+	UPROPERTY(meta = (BindWidget))
+	UScifiBarsWidget* ScifiBars;
 };

@@ -14,6 +14,7 @@ void UTopBarWidget::NativeConstruct()
 	SetupWidgetMapping();
 	Reset();
 	ThemeManager::SetTextToDefault(TextPoints);
+	ThemeManager::SetBackgroundColor(ImagePointsIcon, COLOR_TEXT_DEFAULT1);
 }
 
 void UTopBarWidget::SetupWidgetMapping()
