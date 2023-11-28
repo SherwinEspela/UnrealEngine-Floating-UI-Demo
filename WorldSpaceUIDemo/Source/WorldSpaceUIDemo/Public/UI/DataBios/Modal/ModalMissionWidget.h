@@ -22,8 +22,15 @@ public:
 	void SetValues(UTexture2D* TextureMission, FString MissionName, FString Description, FString MissionId, bool IsCompleted, FString Location, FString Rewards);
 	void SetEnable(bool Enabled);
 
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnSetHidden();
+
 protected:
 	virtual void NativeConstruct() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnEnabled(bool Enabled);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
