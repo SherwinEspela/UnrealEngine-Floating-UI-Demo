@@ -114,3 +114,8 @@ WorldSpaceUIDemo/Saved/MaterialStats/
 WorldSpaceUIDemo/Saved/MaterialStatsDebug/
 WorldSpaceUIDemo/Config/
 WorldSpaceUIDemo/Saved/
+*.uasset
+WorldSpaceUIDemo/Content/ParagonGadget/
+WorldSpaceUIDemo/WorldSpaceUIDemo.png
+WorldSpaceUIDemo/Content/BrutalistLevelKit/
+WorldSpaceUIDemo/Content/Maps/
